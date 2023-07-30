@@ -17,7 +17,7 @@ function LoginForm() {
 
     return (
         <form action='submit' onSubmit={handleSubmit}>
-            <h1>Bienvenue chez nous</h1>
+            <h1>Bienvenue chez nous !</h1>
             <br />
             <h2>Connectez-vous</h2>
             <input value={inputValue} type='text' placeholder='Entrez votre prénom...' required onChange={handleChange}/>
