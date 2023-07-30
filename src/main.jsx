@@ -19,6 +19,10 @@ const router = createBrowserRouter([
       path: "/order/:name",
       element: <OrderPage />,
       errorElement: <ErrorPage />
+  },
+  {
+    path: "*",
+    element: <ErrorPage />
   }
 ]);
 
