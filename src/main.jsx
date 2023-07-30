@@ -11,6 +11,10 @@ import LoginPage from './components/pages/login/LoginPage.jsx';
 
 const router = createBrowserRouter([
   {
+    path: '*',
+    element: <ErrorPage />
+  },
+  {
     path: "/",
     element: <LoginPage />,
     errorElement: <ErrorPage />
@@ -19,10 +23,6 @@ const router = createBrowserRouter([
       path: "/order/:name",
       element: <OrderPage />,
       errorElement: <ErrorPage />
-  },
-  {
-    path: "*",
-    element: <ErrorPage />
   }
 ]);
 
