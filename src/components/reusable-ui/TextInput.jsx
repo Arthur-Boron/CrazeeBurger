@@ -3,14 +3,14 @@ import { styled } from 'styled-components'
 
 function TextInput({value, onChange, Icon, ...extraProps}) {
   return (
-    <InputStyled>
+    <TextInputStyled>
         {Icon && Icon}
         <input value={value} type='text' onChange={onChange} {...extraProps}/>
-    </InputStyled>
+    </TextInputStyled>
   )
 }
 
-const InputStyled = styled.div`
+const TextInputStyled = styled.div`
     display: flex;
     line-height: 28px;
     align-items: center;
