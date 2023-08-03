@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {  useNavigate } from 'react-router-dom'
 import { styled } from 'styled-components'
-import TextInput from './TextInput'
+import TextInput from '../../reusable-ui/TextInput'
 import { BsPersonCircle } from 'react-icons/bs'
 
 function LoginForm() {

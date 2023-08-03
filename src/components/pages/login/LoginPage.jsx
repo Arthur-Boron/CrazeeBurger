@@ -1,6 +1,6 @@
 import React from 'react'
 import LoginForm from './LoginForm'
-import Logo from '../../reusable-ui/logo/Logo'
+import Logo from '../../reusable-ui/Logo'
 import { styled } from 'styled-components'
 
 function LoginPage() {
