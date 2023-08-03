@@ -3,6 +3,8 @@ import {  useNavigate } from 'react-router-dom'
 import { styled } from 'styled-components'
 import TextInput from '../../reusable-ui/TextInput'
 import { BsPersonCircle } from 'react-icons/bs'
+import { BiSolidChevronRight } from 'react-icons/bi'
+import PrimaryButton from '../../reusable-ui/PrimaryButton'
 
 function LoginForm() {
 
@@ -27,11 +29,14 @@ function LoginForm() {
             <TextInput 
                 value={inputValue}
                 onChange={handleChange}
-                Icon={<BsPersonCircle className='icon'/>}
+                Icon={<BsPersonCircle className='inputIcon'/>}
                 placeholder='Entrez votre prénom'
                 required 
             />
-            <button type='submit'>Accéder à mon espace</button>
+            <PrimaryButton
+                Label="Accéder à mon espace"
+                Icon={<BiSolidChevronRight className='buttonIcon'/>}
+            />
         </LoginFormStyled>
     )
 }
@@ -61,25 +66,18 @@ const LoginFormStyled = styled.form`
         font-size: 36px;
     }
 
-    button {
-        width: 100%;
-        height: 40px;
-        line-height: 28px;
-        padding: 0 1rem;
-        padding-left: 2.5rem;
-        border: 2px solid #ff9f1b;
-        border-radius: 5px;
-        outline: none;
-        transition: .3s ease;
-        background: #ff9f1b;
-        color: white;
-        font-family: 'Open Sans', sans-serif;
+    .inputIcon {
+        position: absolute;
+        left: 1rem;
+        fill: #93a2b1;
+        width: 1rem;
+        height: 1rem;
     }
 
-    button:hover {
-        background: white;
-        color: #ff9f1b;
-        cursor: pointer;
+    .buttonIcon {
+        vertical-align: middle;
+        font-size: 15px;
+        margin-left: 4px;
     }
 `
 

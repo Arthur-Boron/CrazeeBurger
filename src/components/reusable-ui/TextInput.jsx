@@ -39,14 +39,6 @@ const TextInputStyled = styled.div`
         outline: none;
         border-color: #ff9f1b;
     }
-
-    .icon {
-        position: absolute;
-        left: 1rem;
-        fill: #93a2b1;
-        width: 1rem;
-        height: 1rem;
-    }
 `
 
 export default TextInput
