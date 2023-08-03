@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import {  useNavigate } from 'react-router-dom'
 import { styled } from 'styled-components'
-import {BsPersonCircle} from "react-icons/bs"
+import TextInput from './TextInput'
+import { BsPersonCircle } from 'react-icons/bs'
 
 function LoginForm() {
 
@@ -18,17 +19,18 @@ function LoginForm() {
         setInputValue(event.target.value)
     }
 
-
     return (
         <LoginFormStyled action='submit' onSubmit={handleSubmit}>
             <h1>Bienvenue chez nous !</h1>
             <hr />
             <h2>Connectez-vous</h2>
-            <div className='input-container'>
-                <BsPersonCircle className='icon'/>
-                <input value={inputValue} type='text' placeholder='Entrez votre prénom' required onChange={handleChange}/>
-            </div>
-            
+            <TextInput 
+                value={inputValue}
+                onChange={handleChange}
+                Icon={<BsPersonCircle className='icon'/>}
+                placeholder='Entrez votre prénom'
+                required 
+            />
             <button type='submit'>Accéder à mon espace</button>
         </LoginFormStyled>
     )
@@ -54,50 +56,9 @@ const LoginFormStyled = styled.form`
     }
 
     h2 {
-        color: #8e8b8b;
         margin: 20px 10px 10px;
         color: white;
         font-size: 36px;
-    }
-
-    .input-container {
-        display: flex;
-        line-height: 28px;
-        align-items: center;
-        position: relative;
-        margin: 18px 0;
-    }
-
-    input {
-        width: 100%;
-        height: 40px;
-        line-height: 28px;
-        padding: 0 1rem;
-        padding-left: 2.5rem;
-        border: 3px solid transparent;
-        border-radius: 5px;
-        outline: none;
-        color: #0d0c22;
-        transition: .3s ease;
-        font-family: 'Open Sans', sans-serif;
-    }
-
-    input::placeholder {
-        color: lightgrey;
-        background: white;
-    }
-
-    input:focus, input:hover {
-        outline: none;
-        border-color: #ff9f1b;
-    }
-
-    .icon {
-        position: absolute;
-        left: 1rem;
-        fill: #93a2b1;
-        width: 1rem;
-        height: 1rem;
     }
 
     button {
