@@ -24,6 +24,7 @@ const LogoStyled = styled.div`
   h1 {
     display: inline;
     text-align: center;
+    color: #f56a2c;
     font-size: 36px;
     line-height: 1em;
     font-weight: 700;
