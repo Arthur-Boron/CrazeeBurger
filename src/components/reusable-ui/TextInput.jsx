@@ -29,16 +29,16 @@ const TextInputStyled = styled.div`
         color: ${theme.colors.dark};
         transition: .3s ease;
         font-family: 'Open Sans', sans-serif;
-    }
 
-    input::placeholder {
-        color: ${theme.colors.greyMedium};
-        background: ${theme.colors.white};
-    }
+        &::placeholder {
+            color: ${theme.colors.greyMedium};
+            background: ${theme.colors.white};
+        }
 
-    input:focus, input:hover {
-        outline: none;
-        border-color: ${theme.colors.primary};
+        &:focus, &:hover {
+            outline: none;
+            border-color: ${theme.colors.primary};
+        }
     }
 `
 
