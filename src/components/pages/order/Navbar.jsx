@@ -6,11 +6,17 @@ function Navbar({name}) {
     
     return (
         <NavbarStyled>
-            <h1>Bonjour {name}</h1>
-            <br />
-            <Link to={'/'}>
-                <button>Déconnexion</button>
-            </Link>
+            <div className='left-side'>
+                Left
+            </div>
+            <div className='right-side'>
+                <h1>Bonjour {name}</h1>
+                <br />
+                <Link to={'/'}>
+                    <button>Déconnexion</button>
+                </Link>
+            </div>
+            
         </NavbarStyled>
     )
 }
@@ -18,6 +24,16 @@ function Navbar({name}) {
 const NavbarStyled = styled.nav`
     background-color: blue;
     height: 80px;
+    display: flex;
+    justify-content: space-between;
+
+    .left-side {
+        background-color: pink;
+    }
+
+    .right-side {   
+        background-color: purple;
+    }
 `
 
 export default Navbar
