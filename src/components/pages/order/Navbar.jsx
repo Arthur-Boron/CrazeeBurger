@@ -15,11 +15,12 @@ function Navbar({name}) {
 }
 
 const NavbarStyled = styled.nav`
-    background-color: ${theme.colors.background_white};
+    background-color: ${theme.colors.white};
     height: ${theme.spacing.xxl};
     display: flex;
     justify-content: space-between;
     padding: 0px ${theme.spacing.md};
+    border-radius: ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound} 0 0px;
 `
 
 export default Navbar

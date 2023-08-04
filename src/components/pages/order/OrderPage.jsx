@@ -29,9 +29,8 @@ const OrderPageStyled = styled.div`
   align-items: center;
 
   .container {
-    background-color: red;
-    height: 98vh;
-    width: 98vw;
+    height: 95vh;
+    width: 95vw;
     display: flex;
     flex-direction: column;
   }

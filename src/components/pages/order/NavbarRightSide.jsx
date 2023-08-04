@@ -6,7 +6,9 @@ import Profile from './Profile'
 function NavbarRightSide({name}) {
   return (
     <NavbarRightSideStyled>
-        <div>AdminButton</div>
+        <div className='admin-button'>
+
+        </div>
         <Profile name={name}/>
     </NavbarRightSideStyled>
   )
