@@ -1,21 +1,21 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import { styled } from 'styled-components'
+import { theme } from "../../../theme"
+import Profile from './Profile'
 
 function NavbarRightSide({name}) {
   return (
     <NavbarRightSideStyled>
-        <h1>Bonjour {name}</h1>
-        <br />
-        <Link to={'/'}>
-            <button>Déconnexion</button>
-        </Link>
+        <div>AdminButton</div>
+        <Profile name={name}/>
     </NavbarRightSideStyled>
   )
 }
 
 const NavbarRightSideStyled = styled.div`
-    background-color: purple;
+    display: flex;
+    align-items: center;
+    padding-right:  ${theme.spacing.xl};
 `
 
 export default NavbarRightSide
