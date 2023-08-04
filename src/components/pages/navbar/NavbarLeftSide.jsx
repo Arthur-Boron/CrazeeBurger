@@ -1,11 +1,12 @@
 import React from 'react'
 import { styled } from 'styled-components'
 import Logo from '../../reusable-ui/Logo'
+import { refreshPage } from '../../../utils/window'
 
 function NavbarLeftSide() {
 
   const handleOnClick = () => {
-    window.location.reload()
+    refreshPage()
   }
 
   return (
