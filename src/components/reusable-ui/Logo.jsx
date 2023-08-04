@@ -2,9 +2,9 @@ import React from 'react'
 import { styled } from 'styled-components'
 import { theme } from '../../theme'
 
-function Logo() {
+function Logo({className}) {
   return (
-    <LogoStyled>
+    <LogoStyled className={className && className}>
       <h1>
         Crazee
       </h1>
@@ -17,10 +17,8 @@ function Logo() {
 }
 
 const LogoStyled = styled.div`
-  color: ${theme.colors.white};
   display: flex;
   align-items: center;
-  transform: scale(2.5);
 
   h1 {
     display: inline;
