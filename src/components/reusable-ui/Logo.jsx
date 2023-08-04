@@ -2,9 +2,9 @@ import React from 'react'
 import { styled } from 'styled-components'
 import { theme } from '../../theme'
 
-function Logo({className}) {
+function Logo({className, onClick}) {
   return (
-    <LogoStyled className={className && className}>
+    <LogoStyled className={className && className} onClick={onClick && onClick}>
       <h1>
         Crazee
       </h1>

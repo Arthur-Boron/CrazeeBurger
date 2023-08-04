@@ -1,9 +1,8 @@
 import React from 'react'
 import { useParams } from 'react-router'
 import { styled } from 'styled-components'
-import Navbar from './Navbar'
+import Navbar from '../navbar/Navbar'
 import Main from './Main'
-import { theme } from '../../../theme'
 
 
 function OrderPage() {
