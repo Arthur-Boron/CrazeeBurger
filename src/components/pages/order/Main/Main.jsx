@@ -21,6 +21,7 @@ const MainStyled = styled.main`
     border-radius: 0px 0px ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
     display: grid;
     grid-template-columns: 25% 75%;
+    overflow-y: auto;
 `
 
 export default Main
