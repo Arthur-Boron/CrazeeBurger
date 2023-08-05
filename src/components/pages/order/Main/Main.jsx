@@ -1,8 +1,9 @@
 import React from 'react'
 import { styled } from 'styled-components'
-import { theme } from '../../../theme'
-import Menu from '../menu/Menu'
-import Basket from '../basket/Basket'
+import { theme } from '../../../../theme'
+import Basket from './Basket/Basket'
+import Menu from './Menu/Menu'
+
 
 function Main() {
   return (

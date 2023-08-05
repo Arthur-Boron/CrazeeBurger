@@ -1,7 +1,7 @@
 import React from 'react'
 import { styled } from 'styled-components'
 import { theme } from "../../../theme"
-import Profile from '../order/Profile'
+import Profile from './Profile'
 
 function NavbarRightSide({name}) {
   return (

@@ -2,7 +2,7 @@ import React from 'react'
 import { useParams } from 'react-router'
 import { styled } from 'styled-components'
 import Navbar from '../navbar/Navbar'
-import Main from './Main'
+import Main from './Main/Main'
 import { theme } from '../../../theme'
 
 
