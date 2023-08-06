@@ -1,14 +1,41 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { styled } from 'styled-components'
 import { theme } from "../../../theme"
 import Profile from './Profile'
+import ToggleButton from '../../reusable-ui/ToggleButton'
+import { toast} from 'react-toastify'
+import "react-toastify/dist/ReactToastify.css"
+import { FaUserSecret } from "react-icons/fa"
 
 function NavbarRightSide({name}) {
+
+  const [isModeAdmin, setIsModeAdmin] = useState(false)
+
+  const displayToastNotifiaction = () => {
+    if (!isModeAdmin) {
+      toast.info("Mode admin activé", {
+        icon: <FaUserSecret size={30} />,
+        theme: "light",
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      })
+    }
+    setIsModeAdmin(!isModeAdmin)
+    
+  }
+
   return (
     <NavbarRightSideStyled>
-        <div className='admin-button'>
-
-        </div>
+        <ToggleButton 
+          labelIfChecked={"DÉSACTIVER LE MODE ADMIN"}
+          labelIfUnchecked={"ACTIVER LE MODE ADMIN"}
+          onToggle={displayToastNotifiaction}
+        />
         <Profile name={name}/>
     </NavbarRightSideStyled>
   )
