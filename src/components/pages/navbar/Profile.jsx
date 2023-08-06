@@ -28,6 +28,7 @@ const ProfileStyled = styled.div`
   align-items: center;
   justify-content: space-between;
   min-width: 100px;
+  padding-left: ${theme.spacing.lg};
 
   .info {
     text-align: right;

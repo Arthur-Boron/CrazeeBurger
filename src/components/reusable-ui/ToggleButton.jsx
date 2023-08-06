@@ -29,7 +29,7 @@ function ToggleButton({
 
 const ToggleButtonStyled = styled.div`
   display: flex;
-  margin-right: 10px;
+  
   input[type="checkbox"] {
     &.toggle {
       display: none;

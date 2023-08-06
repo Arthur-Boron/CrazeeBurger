@@ -7,7 +7,10 @@ import ToggleButton from '../../reusable-ui/ToggleButton'
 function NavbarRightSide({name}) {
   return (
     <NavbarRightSideStyled>
-        <ToggleButton labelIfChecked={"DÉSACTIVER LE MODE ADMIN"} labelIfUnchecked={"ACTIVER LE MODE ADMIN"}/>
+        <ToggleButton 
+          labelIfChecked={"DÉSACTIVER LE MODE ADMIN"}
+          labelIfUnchecked={"ACTIVER LE MODE ADMIN"}
+        />
         <Profile name={name}/>
     </NavbarRightSideStyled>
   )
