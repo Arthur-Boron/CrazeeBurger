@@ -3,7 +3,7 @@ import { styled } from 'styled-components'
 import { theme } from '../../../../theme'
 import Basket from './Basket/Basket'
 import Menu from './Menu/Menu'
-import AdminPanel from './AdminPanel/AdminPanel'
+import Admin from './Admin/Admin'
 
 
 function Main() {
@@ -12,7 +12,7 @@ function Main() {
       <Basket />
       <div className='menu-and-admin'>
         <Menu />
-        <AdminPanel />
+        <Admin />
       </div>
       
     </MainStyled>
