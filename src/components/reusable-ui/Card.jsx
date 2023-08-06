@@ -2,6 +2,7 @@ import React from 'react'
 import { styled } from 'styled-components'
 import { theme } from '../../theme'
 import PrimaryButton from './PrimaryButton'
+import { formatPrice } from '../../utils/maths'
 
 function Card({title, imageSource, leftDescription}) {
   return (
@@ -12,7 +13,7 @@ function Card({title, imageSource, leftDescription}) {
       <div className="info-text">
         <div className="title">{title}</div>
         <div className="description">
-          <div className="left-description">{leftDescription}</div>
+          <div className="left-description">{formatPrice(leftDescription)}</div>
           <div className="right-description">
             <PrimaryButton className="primary-button" Label={"Ajouter"} />
           </div>
