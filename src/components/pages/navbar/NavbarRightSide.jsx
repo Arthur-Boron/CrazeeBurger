@@ -3,7 +3,7 @@ import { styled } from 'styled-components'
 import { theme } from "../../../theme"
 import Profile from './Profile'
 import ToggleButton from '../../reusable-ui/ToggleButton'
-import { ToastContainer, toast} from 'react-toastify'
+import { toast} from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css"
 import { FaUserSecret } from "react-icons/fa"
 
@@ -37,7 +37,6 @@ function NavbarRightSide({name}) {
           onToggle={displayToastNotifiaction}
         />
         <Profile name={name}/>
-        <ToastContainer />
     </NavbarRightSideStyled>
   )
 }
@@ -46,10 +45,6 @@ const NavbarRightSideStyled = styled.div`
     display: flex;
     align-items: center;
     padding-right:  ${theme.spacing.xl};
-
-  .Toastify__progress-bar--info {
-    background: ${theme.colors.primary};
-  }
 `
 
 export default NavbarRightSide
