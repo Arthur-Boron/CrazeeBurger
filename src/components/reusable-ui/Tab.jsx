@@ -2,9 +2,9 @@ import React from 'react'
 import { styled } from 'styled-components'
 import { theme } from '../../theme'
 
-function Tab({Icon}) {
+function Tab({Icon, onClick, className}) {
   return (
-    <TabStyled>
+    <TabStyled className={className} onClick={onClick}>
         <div className='icon'>{Icon && Icon}</div>
     </TabStyled>
   )
