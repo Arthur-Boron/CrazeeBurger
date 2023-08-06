@@ -2,3 +2,18 @@ body {
     margin: 0;
     font-family: 'Open Sans', sans-serif;
 }
+
+::-webkit-scrollbar-track
+{
+	background: transparent;
+}
+
+::-webkit-scrollbar
+{
+	width: 3px;
+}
+
+::-webkit-scrollbar-thumb
+{
+	background: linear-gradient(#aaa 96%, transparent 96%);
+}
