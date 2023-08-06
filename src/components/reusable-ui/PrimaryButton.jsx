@@ -28,6 +28,11 @@ const PrimaryButtonStyled = styled.button`
     color: ${theme.colors.primary};
     cursor: pointer;
   }
+
+  &:active {
+    background-color: ${theme.colors.primary};
+    color: ${theme.colors.white};
+  }
 `
 
 export default PrimaryButton
