@@ -53,8 +53,8 @@ const CardStyled = styled.div`
             margin: auto 0;
             position: relative;
             bottom: 15px;
-            font-size: ${theme.fonts.P4};
-            font-weight: ${theme.weights.bold};
+            font-size: ${theme.fonts.size.P4};
+            font-weight: ${theme.fonts.weights.bold};
             font-family: 'Amatic SC', cursive;
             color: ${theme.colors.dark};
             text-align: left;
@@ -72,11 +72,11 @@ const CardStyled = styled.div`
                 display: flex;
                 justify-content: flex-start;
                 align-items: center;
-                font-weight: ${theme.weights.medium};
+                font-weight: ${theme.fonts.weights.medium};
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
-                font-weight: ${theme.weights.medium};
+                font-weight: ${theme.fonts.weights.medium};
                 color: ${theme.colors.primary};
             }
 
@@ -84,10 +84,10 @@ const CardStyled = styled.div`
                 display: flex;
                 justify-content: flex-end;
                 align-items: center;
-                font-size: ${theme.fonts.P1};
+                font-size: ${theme.fonts.size.P1};
 
                 .primary-button {
-                    font-size: ${theme.fonts.XS};
+                    font-size: ${theme.fonts.size.XS};
                     padding: ${theme.spacing.sm};
                 }
             }
