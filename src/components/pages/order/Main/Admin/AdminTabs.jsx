@@ -4,7 +4,7 @@ import { theme } from '../../../../../theme'
 import {FiChevronDown, FiChevronUp} from 'react-icons/fi'
 import Tab from '../../../../reusable-ui/Tab'
 import AdminTabContext from '../../../../../context/AdminTabContext'
-import getTabsConfig from '../../../../../config/TabsConfig'
+import getTabsConfig from '../../../../../config/tabsConfig'
 
 function AdminTabs() {
 

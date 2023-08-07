@@ -3,11 +3,11 @@ import { styled } from 'styled-components'
 import { theme } from '../../../../../theme'
 import AdminTabs from './AdminTabs'
 import AdminPanel from './AdminPanel'
-import AdminTabsContext from '../../../../../context/AdminTabContext'
+import AdminTabContext from '../../../../../context/AdminTabContext'
 
 function Admin() {
 
-  const {isCollapsed} = useContext(AdminTabsContext)
+  const {isCollapsed} = useContext(AdminTabContext)
 
   return (
     <AdminStyled>
