@@ -12,13 +12,15 @@ function Admin() {
 
   const adminTabsContextValue = {
     selectedTab,
-    setSelectedTab
+    setSelectedTab,
+    isCollapsed,
+    setIsCollapsed
   }
 
   return (
     <AdminTabsContext.Provider value={adminTabsContextValue}>
       <AdminStyled>
-          <AdminTabs isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed}/>
+          <AdminTabs />
           {!isCollapsed && <AdminPanel />}
       </AdminStyled>
     </AdminTabsContext.Provider>

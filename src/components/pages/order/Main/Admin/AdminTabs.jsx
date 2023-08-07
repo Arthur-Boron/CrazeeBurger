@@ -7,9 +7,9 @@ import {AiOutlinePlus} from 'react-icons/ai'
 import {MdModeEditOutline} from 'react-icons/md'
 import AdminTabContext from '../../../../../context/AdminTabContext'
 
-function AdminTabs({isCollapsed, setIsCollapsed}) {
+function AdminTabs() {
 
-    const {selectedTab, setSelectedTab} = useContext(AdminTabContext)
+    const {isCollapsed, setIsCollapsed, selectedTab, setSelectedTab} = useContext(AdminTabContext)
 
     const handleClick = () => {
         setIsCollapsed(!isCollapsed)

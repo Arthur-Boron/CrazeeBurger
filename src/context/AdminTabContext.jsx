@@ -2,5 +2,7 @@ import { createContext } from "react";
 
 export default createContext({
     selectedTab : "",
-    setSelectedTab: () => {}
+    setSelectedTab: () => {},
+    isCollapsed: false,
+    setIsCollapsed: () => {}
 })
