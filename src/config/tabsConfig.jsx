@@ -1,0 +1,19 @@
+import {AiOutlinePlus} from 'react-icons/ai'
+import {MdModeEditOutline} from 'react-icons/md'
+
+const getTabsConfig = () => 
+    [
+        {
+            key: 'add',
+            Icon: <AiOutlinePlus />,
+            Label:"Ajouter un produit"
+        },
+        {
+            key: 'edit',
+            Icon: <MdModeEditOutline />,
+            Label: "Modifier un produit"
+        }
+    ]
+ 
+
+export default getTabsConfig

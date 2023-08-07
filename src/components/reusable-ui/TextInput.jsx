@@ -13,6 +13,7 @@ function TextInput({value, onChange, Icon, ...extraProps}) {
 
 const TextInputStyled = styled.div`
     display: flex;
+    font-size: ${theme.fonts.size.SM};
     line-height: 28px;
     align-items: center;
     position: relative;

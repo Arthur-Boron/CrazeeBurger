@@ -4,12 +4,12 @@ import { styled } from 'styled-components'
 import NavbarRightSide from './NavbarRightSide'
 import NavbarLeftSide from './NavbarLeftSide'
 
-function Navbar({name}) {
+function Navbar() {
     
     return (
         <NavbarStyled>
             <NavbarLeftSide />
-            <NavbarRightSide name={name} />
+            <NavbarRightSide/>
         </NavbarStyled>
     )
 }

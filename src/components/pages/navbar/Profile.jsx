@@ -1,9 +1,12 @@
 import { BsPersonCircle } from "react-icons/bs"
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import styled from "styled-components"
 import { theme } from "../../../theme"
 
-function Profile({ name }) {
+function Profile() {
+
+  const {name} = useParams()
+
   return (
     <ProfileStyled>
       <div className="info">
@@ -48,9 +51,9 @@ const ProfileStyled = styled.div`
           color: ${theme.colors.greyDark};
         }
         small {
-          font-size: ${theme.fonts.XXS};
+          font-size: ${theme.fonts.size.XXS};
           color: ${theme.colors.greyBlue};
-          font-weight: ${theme.weights.medium};
+          font-weight: ${theme.fonts.weights.medium};
           text-decoration: none;
           position: relative;
           bottom: 2px;
@@ -63,7 +66,7 @@ const ProfileStyled = styled.div`
     height: auto;
     display: flex;
     height: 100%;
-    font-size: ${theme.fonts.P4};
+    font-size: ${theme.fonts.size.P4};
     color: ${theme.colors.greyBlue};
   }
 `
