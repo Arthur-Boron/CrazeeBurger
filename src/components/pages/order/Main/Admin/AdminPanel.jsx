@@ -7,7 +7,7 @@ import getTabsConfig from '../../../../../config/tabsConfig';
 function AdminPanel() {
     const { selectedTab } = useContext(AdminTabContext);
 
-    const tabs = getTabsConfig(selectedTab)
+    const tabs = getTabsConfig()
     const activeTab = tabs.find(tab => tab.key === selectedTab);
 
     return (
