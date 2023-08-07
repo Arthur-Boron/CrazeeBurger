@@ -34,7 +34,7 @@ function AdminTabs() {
                     return <Tab
                         key={tab.key}
                         Icon={tab.Icon}
-                        className={tab.className}
+                        className={selectedTab == tab.key ? 'is-active' : ''}
                         Label={tab.Label}
                         onClick={() => handleSelectedTab(tab.key)}
                     />
