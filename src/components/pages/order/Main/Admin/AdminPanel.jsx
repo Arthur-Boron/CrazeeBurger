@@ -2,16 +2,19 @@ import React, { useContext } from 'react'
 import { styled } from 'styled-components'
 import { theme } from '../../../../../theme'
 import AdminTabContext from '../../../../../context/AdminTabContext'
+import getTabsConfig from '../../../../../config/TabsConfig';
 
 function AdminPanel() {
     const { selectedTab } = useContext(AdminTabContext);
 
+    const tabs = getTabsConfig(selectedTab)
+    const activeTab = tabs.find(tab => tab.key === selectedTab);
+
     return (
         <AdminPanelStyled>
-            {selectedTab === 'add' && <div>Ajouter un produit</div>}
-            {selectedTab === 'edit' && <div>Modifier un produit</div>}
+            {activeTab && <div>{activeTab.Label}</div>}
         </AdminPanelStyled>
-    )
+    );
 }
 
 const AdminPanelStyled = styled.div`
