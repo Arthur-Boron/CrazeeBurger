@@ -19,7 +19,7 @@ function AdminTabs() {
         setSelectedTab(tabName)
     }
 
-    const tabs = getTabsConfig(selectedTab)
+    const tabs = getTabsConfig()
 
     return (
         <AdminTabsStyled>
