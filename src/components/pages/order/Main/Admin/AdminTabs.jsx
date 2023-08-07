@@ -4,7 +4,7 @@ import { theme } from '../../../../../theme'
 import {FiChevronDown, FiChevronUp} from 'react-icons/fi'
 import Tab from '../../../../reusable-ui/Tab'
 import AdminTabContext from '../../../../../context/AdminTabContext'
-import tabsConfig from '../../../../../config/TabsConfig'
+import getTabsConfig from '../../../../../config/TabsConfig'
 
 function AdminTabs() {
 
@@ -19,7 +19,7 @@ function AdminTabs() {
         setSelectedTab(tabName)
     }
 
-    const tabs = tabsConfig(selectedTab)
+    const tabs = getTabsConfig(selectedTab)
 
     return (
         <AdminTabsStyled>
