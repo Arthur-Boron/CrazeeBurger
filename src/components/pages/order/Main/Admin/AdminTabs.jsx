@@ -20,25 +20,42 @@ function AdminTabs() {
         setSelectedTab(tabName)
     }
 
+    const tabsConfig = [
+        {
+            key: 'collapse',
+            Icon: isCollapsed ? <FiChevronUp /> : <FiChevronDown />,
+            onClick: () => handleClick(),
+            className: isCollapsed ? 'is-active' : ''
+        },
+        {
+            key: 'add',
+            Icon: <AiOutlinePlus />,
+            className: selectedTab == 'add' ? 'is-active' : '',
+            Label:"Ajouter un produit",
+            onClick: () => handleSelectedTab('add'),
+        },
+        {
+            key: 'edit',
+            Icon: <MdModeEditOutline />,
+            className: selectedTab == 'edit' ? 'is-active' : '',
+            Label: "Modifier un produit",
+            onClick: () => handleSelectedTab('edit')
+        }
+    ]
+
     return (
         <AdminTabsStyled>
-            <Tab 
-                Icon={isCollapsed ? <FiChevronUp /> : <FiChevronDown />}
-                onClick={handleClick}
-                className={isCollapsed ? 'is-active' : ''}    
-            />
-            <Tab 
-                Icon={<AiOutlinePlus />}
-                className={selectedTab == 'add' ? 'is-active' : ''}
-                Label={"Ajouter un produit"}
-                onClick={() => handleSelectedTab('add')}
-            />
-            <Tab 
-                Icon={<MdModeEditOutline />}
-                className={selectedTab == 'edit' ? 'is-active' : ''}
-                Label={"Modifier un produit"}
-                onClick={() => handleSelectedTab('edit')}
-            />
+            {
+                tabsConfig.map((tab) => {
+                    return <Tab
+                        key={tab.key}
+                        Icon={tab.Icon}
+                        className={tab.className}
+                        Label={tab.Label}
+                        onClick={tab.onClick}
+                    />
+                })
+            }
         </AdminTabsStyled>
     )
 }
