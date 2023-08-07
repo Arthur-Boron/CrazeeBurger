@@ -19,7 +19,7 @@ function OrderPage() {
     <OrderContext.Provider value={orderContextValue}>
       <OrderPageStyled>
         <div className='container'>
-          <Navbar name={name}/>
+          <Navbar/>
           <Main />
         </div>
       </OrderPageStyled>

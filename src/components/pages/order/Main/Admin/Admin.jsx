@@ -3,16 +3,26 @@ import { styled } from 'styled-components'
 import { theme } from '../../../../../theme'
 import AdminTabs from './AdminTabs'
 import AdminPanel from './AdminPanel'
+import AdminTabsContext from '../../../../../context/AdminTabContext'
 
 function Admin() {
 
   const [isCollapsed, setIsCollapsed] = useState(false)
+  const [selectedTab, setSelectedTab] = useState('add')
+
+  const adminTabsContextValue = {
+    selectedTab,
+    setSelectedTab
+  }
 
   return (
-    <AdminStyled>
-        <AdminTabs isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed}/>
-        {!isCollapsed && <AdminPanel />}
-    </AdminStyled>
+    <AdminTabsContext.Provider value={adminTabsContextValue}>
+      <AdminStyled>
+          <AdminTabs isCollapsed={isCollapsed} setIsCollapsed={setIsCollapsed}/>
+          {!isCollapsed && <AdminPanel />}
+      </AdminStyled>
+    </AdminTabsContext.Provider>
+    
   )
 }
 
