@@ -4,6 +4,7 @@ import Navbar from '../navbar/Navbar'
 import Main from './Main/Main'
 import { theme } from '../../../theme'
 import OrderContext from '../../../context/OrderContext'
+import AdminTabContext from '../../../context/AdminTabContext'
 
 
 function OrderPage() {
@@ -15,14 +16,26 @@ function OrderPage() {
     setIsModeAdmin
   }
 
+  const [isCollapsed, setIsCollapsed] = useState(false)
+  const [selectedTab, setSelectedTab] = useState('add')
+
+  const adminTabsContextValue = {
+    selectedTab,
+    setSelectedTab,
+    isCollapsed,
+    setIsCollapsed
+  }
+
   return (
     <OrderContext.Provider value={orderContextValue}>
-      <OrderPageStyled>
-        <div className='container'>
-          <Navbar/>
-          <Main />
-        </div>
-      </OrderPageStyled>
+      <AdminTabContext.Provider value={adminTabsContextValue}>
+        <OrderPageStyled>
+          <div className='container'>
+            <Navbar/>
+            <Main />
+          </div>
+        </OrderPageStyled>
+      </AdminTabContext.Provider>
     </OrderContext.Provider>
     
   )

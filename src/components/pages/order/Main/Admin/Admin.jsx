@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import { styled } from 'styled-components'
 import { theme } from '../../../../../theme'
 import AdminTabs from './AdminTabs'
@@ -7,24 +7,13 @@ import AdminTabsContext from '../../../../../context/AdminTabContext'
 
 function Admin() {
 
-  const [isCollapsed, setIsCollapsed] = useState(false)
-  const [selectedTab, setSelectedTab] = useState('add')
-
-  const adminTabsContextValue = {
-    selectedTab,
-    setSelectedTab,
-    isCollapsed,
-    setIsCollapsed
-  }
+  const {isCollapsed} = useContext(AdminTabsContext)
 
   return (
-    <AdminTabsContext.Provider value={adminTabsContextValue}>
-      <AdminStyled>
-          <AdminTabs />
-          {!isCollapsed && <AdminPanel />}
-      </AdminStyled>
-    </AdminTabsContext.Provider>
-    
+    <AdminStyled>
+        <AdminTabs />
+        {!isCollapsed && <AdminPanel />}
+    </AdminStyled>
   )
 }
 
