@@ -1,11 +1,10 @@
 import React, { useContext, useState } from 'react'
 import { styled } from 'styled-components'
 import { theme } from '../../../../../theme'
-import Tab from '../../../../reusable-ui/Tab'
 import {FiChevronDown, FiChevronUp} from 'react-icons/fi'
-import {AiOutlinePlus} from 'react-icons/ai'
-import {MdModeEditOutline} from 'react-icons/md'
+import Tab from '../../../../reusable-ui/Tab'
 import AdminTabContext from '../../../../../context/AdminTabContext'
+import tabsConfig from '../../../../../config/TabsConfig'
 
 function AdminTabs() {
 
@@ -20,39 +19,24 @@ function AdminTabs() {
         setSelectedTab(tabName)
     }
 
-    const tabsConfig = [
-        {
-            key: 'collapse',
-            Icon: isCollapsed ? <FiChevronUp /> : <FiChevronDown />,
-            onClick: () => handleClick(),
-            className: isCollapsed ? 'is-active' : ''
-        },
-        {
-            key: 'add',
-            Icon: <AiOutlinePlus />,
-            className: selectedTab == 'add' ? 'is-active' : '',
-            Label:"Ajouter un produit",
-            onClick: () => handleSelectedTab('add'),
-        },
-        {
-            key: 'edit',
-            Icon: <MdModeEditOutline />,
-            className: selectedTab == 'edit' ? 'is-active' : '',
-            Label: "Modifier un produit",
-            onClick: () => handleSelectedTab('edit')
-        }
-    ]
+    const tabs = tabsConfig(selectedTab)
 
     return (
         <AdminTabsStyled>
+            <Tab
+                key= 'collapse'
+                Icon={isCollapsed ? <FiChevronUp /> : <FiChevronDown />}
+                onClick={() => handleClick()}
+                className={isCollapsed ? 'is-active' : ''}
+            />
             {
-                tabsConfig.map((tab) => {
+                tabs.map((tab) => {
                     return <Tab
                         key={tab.key}
                         Icon={tab.Icon}
                         className={tab.className}
                         Label={tab.Label}
-                        onClick={tab.onClick}
+                        onClick={() => handleSelectedTab(tab.key)}
                     />
                 })
             }
