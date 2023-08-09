@@ -1,11 +1,26 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { styled } from 'styled-components'
 import { theme } from '../../../../../../theme'
+import OrderContext from '../../../../../../context/OrderContext'
 
 function AddForm() {
 
+    const {handleAddProduct} = useContext(OrderContext)
+
+    const newProduct = {
+        id: 11,
+        imageSource: "/images/ice-cream.png",
+        title: "Glaces artisanales",
+        price: 4.678,
+        quantity: 0,
+        isAvailable: true,
+        isAdvertised: false,
+
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault()
+        handleAddProduct(newProduct)
     }
 
   return (

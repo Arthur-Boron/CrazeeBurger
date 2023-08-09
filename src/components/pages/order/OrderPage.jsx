@@ -5,15 +5,26 @@ import Main from './Main/Main'
 import { theme } from '../../../theme'
 import OrderContext from '../../../context/OrderContext'
 import AdminTabContext from '../../../context/AdminTabContext'
+import { fakeMenu } from '../../../fakeData/fakeMenu'
 
 
 function OrderPage() {
 
   const [isModeAdmin, setIsModeAdmin] = useState(false)
+  const [menu, setFakeMenu] = useState(fakeMenu.LARGE)
+
+  const handleAddProduct = (newProduct) => {
+    const menuCopy = [...menu]
+    const menuUpdated = [newProduct, ...menuCopy];
+    setFakeMenu(menuUpdated)
+  }
 
   const orderContextValue = {
     isModeAdmin,
-    setIsModeAdmin
+    setIsModeAdmin,
+    menu,
+    setFakeMenu,
+    handleAddProduct
   }
 
   const [isCollapsed, setIsCollapsed] = useState(false)

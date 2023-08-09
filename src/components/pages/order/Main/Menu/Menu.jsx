@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import { styled } from 'styled-components'
-import { fakeMenu } from '../../../../../fakeData/fakeMenu'
 import Card from '../../../../reusable-ui/Card'
 import {formatPrice} from '../../../../../utils/maths'
+import OrderContext from '../../../../../context/OrderContext'
 
 function Menu() {
 
-  const [menu, setFakeMenu] = useState(fakeMenu.LARGE)
+  const {menu} = useContext(OrderContext)
 
   return (
     <MenuStyled>
