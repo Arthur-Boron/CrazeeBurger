@@ -3,33 +3,48 @@ import { styled } from 'styled-components'
 import { theme } from '../../../../../../theme'
 import OrderContext from '../../../../../../context/OrderContext'
 
+const EMPTY_PRODUCT = {
+    id: "",
+    imageSource: "",
+    title: "",
+    price: 0,
+    quantity: 0,
+    isAvailable: true,
+    isAdvertised: false,
+}
+
 function AddForm() {
 
     const {handleAddProduct} = useContext(OrderContext)
+    const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
 
-    const newProduct = {
-        id: 11,
-        imageSource: "/images/ice-cream.png",
-        title: "Glaces artisanales",
-        price: 4.678,
-        quantity: 0,
-        isAvailable: true,
-        isAdvertised: false,
 
-    }
+    
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        handleAddProduct(newProduct)
+
+        const newProductToAdd = {
+            ...newProduct,
+            id: new Date().getTime()
+        }
+
+        handleAddProduct(newProductToAdd)
+    }
+
+    const handleChange = (event) => {
+        const newValue = event.target.value
+        const propertyName = event.target.name
+        setNewProduct({...newProduct, [propertyName]: newValue})
     }
 
   return (
     <AddFormStyled action='submit' onSubmit={handleSubmit}>
         <div className='previewImage'>Imagepreview</div>
         <div className='inputFields'>
-            <input type="text" placeholder='nom'/>
-            <input type="text" placeholder='url'/>
-            <input type="text" placeholder='price'/>
+            <input name="title" value={newProduct.title} onChange={handleChange} type="text" placeholder='nom'/>
+            <input name="imageSource" value={newProduct.imageSource} onChange={handleChange} type="text" placeholder='url'/>
+            <input name="price" value={newProduct.price ? newProduct.price : ''} onChange={handleChange} type="number" placeholder='price'/>
         </div>
         <button type="submit" className='submitButton'>
             Submit
