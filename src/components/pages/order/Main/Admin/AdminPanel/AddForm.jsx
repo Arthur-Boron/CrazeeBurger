@@ -40,9 +40,11 @@ function AddForm() {
 
   return (
     <AddFormStyled action='submit' onSubmit={handleSubmit}>
-        <div className='previewImage'>Imagepreview</div>
+        <div className='previewImage'>
+            {newProduct.imageSource ? <img src={newProduct.imageSource} alt={newProduct.title} /> : "Aucune image"}
+        </div>
         <div className='inputFields'>
-            <input name="title" value={newProduct.title} onChange={handleChange} type="text" placeholder='nom'/>
+            <input name="title" value={newProduct.title} onChange={handleChange} type="text" placeholder='nom' required/>
             <input name="imageSource" value={newProduct.imageSource} onChange={handleChange} type="text" placeholder='url'/>
             <input name="price" value={newProduct.price ? newProduct.price : ''} onChange={handleChange} type="number" placeholder='price'/>
         </div>
@@ -58,10 +60,22 @@ const AddFormStyled = styled.form`
     display: grid;
     grid-template-columns: 1fr 3fr;
     grid-template-rows: repeat(4, 1fr);
+    height: 100%;
 
     .previewImage {
         grid-area: 1/1/4/2;
         background-color: green;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+        }
+        
     }
     
     .inputFields {
