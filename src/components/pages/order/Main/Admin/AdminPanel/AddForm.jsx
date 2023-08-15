@@ -26,7 +26,7 @@ function AddForm() {
 
         const newProductToAdd = {
             ...newProduct,
-            id: new Date().getTime()
+            id: crypto.randomUUID()
         }
 
         handleAddProduct(newProductToAdd)
