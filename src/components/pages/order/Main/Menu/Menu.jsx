@@ -7,6 +7,7 @@ import OrderContext from '../../../../../context/OrderContext'
 function Menu() {
 
   const {menu} = useContext(OrderContext)
+  const IMG_BY_DEFAULT = '/images/coming-soon.png'
 
   return (
     <MenuStyled>
@@ -14,7 +15,7 @@ function Menu() {
         return (
           <Card key={product.id} 
             title={product.title} 
-            imageSource={product.imageSource} 
+            imageSource={product.imageSource ? product.imageSource : IMG_BY_DEFAULT} 
             leftDescription={formatPrice(product.price)}
           />
         )
