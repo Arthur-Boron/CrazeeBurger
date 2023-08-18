@@ -28,9 +28,10 @@ function LoginForm() {
             <hr />
             <h2>Connectez-vous</h2>
             <TextInput 
+                className="input-login"
                 value={inputValue}
                 onChange={handleChange}
-                Icon={<BsPersonCircle className='inputIcon'/>}
+                Icon={<BsPersonCircle />}
                 placeholder='Entrez votre prénom'
                 required 
             />
@@ -67,12 +68,8 @@ const LoginFormStyled = styled.form`
         font-size: ${theme.fonts.size.P4};
     }
 
-    .inputIcon {
-        position: absolute;
-        left: 1rem;
-        fill: ${theme.colors.greyMedium};
-        width: 1rem;
-        height: 1rem;
+    .input-login {
+        margin: ${theme.gridUnit * 2}px 0;
     }
 
     .buttonIcon {

@@ -4,7 +4,11 @@ import { theme } from '../../../../../../theme'
 import OrderContext from '../../../../../../context/OrderContext'
 import { toast} from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css"
-import { MdAddShoppingCart } from "react-icons/md"
+import { MdAddShoppingCart, MdOutlineEuro } from "react-icons/md"
+import { BsFillCameraFill } from 'react-icons/bs'
+import { FaHamburger } from 'react-icons/fa'
+import TextInput from '../../../../../reusable-ui/TextInput'
+
 
 const EMPTY_PRODUCT = {
     id: "",
@@ -35,9 +39,6 @@ function AddForm() {
         })
     }
 
-
-    
-
     const handleSubmit = (e) => {
         e.preventDefault()
 
@@ -59,12 +60,34 @@ function AddForm() {
   return (
     <AddFormStyled action='submit' onSubmit={handleSubmit}>
         <div className='previewImage'>
-            {newProduct.imageSource ? <img src={newProduct.imageSource} alt={newProduct.title} /> : "Aucune image"}
+            {newProduct.imageSource ? <img src={newProduct.imageSource} alt={newProduct.title} /> : <div className='empty-image'>Aucune Image</div>}
         </div>
         <div className='inputFields'>
-            <input name="title" value={newProduct.title} onChange={handleChange} type="text" placeholder='Nom du produit' required/>
-            <input name="imageSource" value={newProduct.imageSource} onChange={handleChange} type="text" placeholder="Lien URL d'une image"/>
-            <input name="price" value={newProduct.price ? newProduct.price : ''} onChange={handleChange} type="number" placeholder='Prix'/>
+            <TextInput
+                name="title"
+                value={newProduct.title}
+                onChange={handleChange}
+                Icon={<FaHamburger />}
+                placeholder='Nom du produit'
+                required 
+            />
+            <TextInput
+                name="imageSource"
+                value={newProduct.imageSource}
+                onChange={handleChange}
+                Icon={<BsFillCameraFill />}
+                placeholder="Lien URL d'une image"
+                required 
+            />
+            <TextInput
+                name="price"
+                value={newProduct.price ? newProduct.price : ''}
+                onChange={handleChange}
+                Icon={<MdOutlineEuro />}
+                type="number"
+                placeholder='Prix'
+                required 
+            />
         </div>
         <button type="submit" className='submitButton'>
             Submit
@@ -79,10 +102,11 @@ const AddFormStyled = styled.form`
     grid-template-columns: 1fr 3fr;
     grid-template-rows: repeat(4, 1fr);
     height: 100%;
+    grid-row-gap: ${theme.spacing.xs};
+    grid-column-gap: ${theme.spacing.md};
 
     .previewImage {
         grid-area: 1/1/4/2;
-        background-color: green;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -93,6 +117,18 @@ const AddFormStyled = styled.form`
             object-fit: contain;
             object-position: center;
         }
+
+        .empty-image {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid ${theme.colors.greyLight};
+            line-height: 1.5;
+            color: ${theme.colors.greySemiDark};
+            border-radius: ${theme.borderRadius.round};
+        }
         
     }
     
@@ -100,7 +136,6 @@ const AddFormStyled = styled.form`
         grid-area: 1/2/4/2;
         display: grid;
         grid-template-rows: repeat(3, 1fr);
-        background-color: red;
     } 
 
     .submitButton {
@@ -108,16 +143,6 @@ const AddFormStyled = styled.form`
         width: 50%;
         background-color: cyan;
     } 
-
-
-
-    .inputIcon {
-        position: absolute;
-        left: 1rem;
-        fill: ${theme.colors.greyMedium};
-        width: 1rem;
-        height: 1rem;
-    }
 `
 
 export default AddForm

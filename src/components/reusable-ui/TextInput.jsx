@@ -2,10 +2,10 @@ import React from 'react'
 import { styled } from 'styled-components'
 import { theme } from '../../theme'
 
-function TextInput({value, onChange, Icon, ...extraProps}) {
+function TextInput({value, onChange, Icon, className, ...extraProps}) {
   return (
-    <TextInputStyled>
-        {Icon && Icon}
+    <TextInputStyled className={className}>
+        <div className='inputIcon'>{Icon && Icon}</div>
         <input value={value} type='text' onChange={onChange} {...extraProps}/>
     </TextInputStyled>
   )
@@ -17,7 +17,6 @@ const TextInputStyled = styled.div`
     line-height: 28px;
     align-items: center;
     position: relative;
-    margin: ${theme.gridUnit * 2}px 0;
 
     input {
         width: 100%;
@@ -40,6 +39,21 @@ const TextInputStyled = styled.div`
             outline: none;
             border-color: ${theme.colors.primary};
         }
+    }
+
+    .inputIcon {
+        height: 100%;
+
+        svg {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            fill: ${theme.colors.greyMedium};
+            width: 1rem;
+            height: 1rem;
+        }
+        
     }
 `
 
