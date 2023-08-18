@@ -19,12 +19,19 @@ function OrderPage() {
     setFakeMenu(menuUpdated)
   }
 
+  const handleDeleteProduct = (productIdToDelete) => {
+    const menuCopy = [...menu]
+    const menuUpdated = menuCopy.filter((product) => product.id !== productIdToDelete)
+    setFakeMenu(menuUpdated)
+  }
+
   const orderContextValue = {
     isModeAdmin,
     setIsModeAdmin,
     menu,
     setFakeMenu,
-    handleAddProduct
+    handleAddProduct,
+    handleDeleteProduct
   }
 
   const [isCollapsed, setIsCollapsed] = useState(false)
