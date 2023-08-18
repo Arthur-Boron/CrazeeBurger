@@ -3,11 +3,33 @@ import { styled } from 'styled-components'
 import Card from '../../../../reusable-ui/Card'
 import {formatPrice} from '../../../../../utils/maths'
 import OrderContext from '../../../../../context/OrderContext'
+import { toast } from 'react-toastify'
+import "react-toastify/dist/ReactToastify.css"
+import { MdAddShoppingCart } from "react-icons/md"
 
 function Menu() {
 
   const {menu, isModeAdmin, handleDeleteProduct} = useContext(OrderContext)
   const IMG_BY_DEFAULT = '/images/coming-soon.png'
+
+  const displayToastNotification = (productName) => {
+    toast.info(`Produit '${productName}' supprimé avec succès`, {
+    icon: <MdAddShoppingCart size={30} />,
+    theme: "light",
+    position: "bottom-right",
+    autoClose: 2000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    })
+  }
+
+  const handleDelete = (productToDelete) => {
+    handleDeleteProduct(productToDelete.id)
+    displayToastNotification(productToDelete.title)
+  }
 
   return (
     <MenuStyled>
@@ -18,7 +40,7 @@ function Menu() {
             imageSource={product.imageSource ? product.imageSource : IMG_BY_DEFAULT} 
             leftDescription={formatPrice(product.price)}
             hasDeleteButton={isModeAdmin}
-            onDelete={() => handleDeleteProduct(product.id)}
+            onDelete={() => handleDelete(product)}
           />
         )
       })}
