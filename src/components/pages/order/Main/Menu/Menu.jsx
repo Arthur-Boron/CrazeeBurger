@@ -6,6 +6,8 @@ import OrderContext from '../../../../../context/OrderContext'
 import { toast } from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css"
 import { MdAddShoppingCart } from "react-icons/md"
+import EmptyMenuAdmin from './EmptyMenuAdmin'
+import EmptyMenuClient from './EmptyMenuClient'
 
 function Menu() {
 
@@ -31,28 +33,22 @@ function Menu() {
     displayToastNotification(productToDelete.title)
   }
 
-  if (menu.length === 0) {
-    return (
-      <div>
-        <p>Pas de produits</p>
-        <button onClick={regenerateMenu}>Regénérer le menu</button>
-      </div>
-    )
-  }
-
-  return (
+  return menu.length === 0 ? (
+    isModeAdmin ? 
+      <EmptyMenuAdmin onReset={regenerateMenu} /> : 
+      <EmptyMenuClient />
+  ) : (
     <MenuStyled>
-      {menu.map(product => {
-        return (
-          <Card key={product.id} 
-            title={product.title} 
-            imageSource={product.imageSource ? product.imageSource : IMG_BY_DEFAULT} 
-            leftDescription={formatPrice(product.price)}
-            hasDeleteButton={isModeAdmin}
-            onDelete={() => handleDelete(product)}
-          />
-        )
-      })}
+      {menu.map(({ id, title, imageSource = IMG_BY_DEFAULT, price }) => (
+        <Card 
+          key={id} 
+          title={title} 
+          imageSource={imageSource} 
+          leftDescription={formatPrice(price)}
+          hasDeleteButton={isModeAdmin}
+          onDelete={() => handleDelete({ id, title, imageSource, price })}
+        />
+      ))}
     </MenuStyled>
   )
 }
