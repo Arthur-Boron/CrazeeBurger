@@ -6,7 +6,7 @@ import OrderContext from '../../../../../context/OrderContext'
 
 function Menu() {
 
-  const {menu} = useContext(OrderContext)
+  const {menu, isModeAdmin} = useContext(OrderContext)
   const IMG_BY_DEFAULT = '/images/coming-soon.png'
 
   return (
@@ -17,6 +17,7 @@ function Menu() {
             title={product.title} 
             imageSource={product.imageSource ? product.imageSource : IMG_BY_DEFAULT} 
             leftDescription={formatPrice(product.price)}
+            hasDeleteButton={isModeAdmin}
           />
         )
       })}
