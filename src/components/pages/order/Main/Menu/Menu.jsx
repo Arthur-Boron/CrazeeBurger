@@ -9,7 +9,7 @@ import { MdAddShoppingCart } from "react-icons/md"
 
 function Menu() {
 
-  const {menu, isModeAdmin, handleDeleteProduct} = useContext(OrderContext)
+  const {menu, isModeAdmin, handleDeleteProduct, regenerateMenu} = useContext(OrderContext)
   const IMG_BY_DEFAULT = '/images/coming-soon.png'
 
   const displayToastNotification = (productName) => {
@@ -29,6 +29,15 @@ function Menu() {
   const handleDelete = (productToDelete) => {
     handleDeleteProduct(productToDelete.id)
     displayToastNotification(productToDelete.title)
+  }
+
+  if (menu.length === 0) {
+    return (
+      <div>
+        <p>Pas de produits</p>
+        <button onClick={regenerateMenu}>Regénérer le menu</button>
+      </div>
+    )
   }
 
   return (

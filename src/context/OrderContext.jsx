@@ -7,5 +7,6 @@ export default createContext({
     menu: [],
     setFakeMenu: () => {},
     handleAddProduct: () => {},
-    handleDeleteProduct: () => {}
+    handleDeleteProduct: () => {},
+    regenerateMenu: () => {}
 })

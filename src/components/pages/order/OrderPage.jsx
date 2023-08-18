@@ -25,13 +25,18 @@ function OrderPage() {
     setFakeMenu(menuUpdated)
   }
 
+  const regenerateMenu = () => {
+    setFakeMenu(fakeMenu.LARGE)
+  }
+
   const orderContextValue = {
     isModeAdmin,
     setIsModeAdmin,
     menu,
     setFakeMenu,
     handleAddProduct,
-    handleDeleteProduct
+    handleDeleteProduct,
+    regenerateMenu
   }
 
   const [isCollapsed, setIsCollapsed] = useState(false)
