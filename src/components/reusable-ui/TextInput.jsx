@@ -1,10 +1,10 @@
 import React from 'react'
-import { styled } from 'styled-components'
+import { css, styled } from 'styled-components'
 import { theme } from '../../theme'
 
-function TextInput({value, onChange, Icon, className, ...extraProps}) {
+function TextInput({value, onChange, Icon, className, version=light, ...extraProps}) {
   return (
-    <TextInputStyled className={className}>
+    <TextInputStyled className={className} version={version}>
         <div className='inputIcon'>{Icon && Icon}</div>
         <input value={value} type='text' onChange={onChange} {...extraProps}/>
     </TextInputStyled>
@@ -17,6 +17,11 @@ const TextInputStyled = styled.div`
     line-height: 28px;
     align-items: center;
     position: relative;
+    ${(props) =>  {
+        if (props.version === 'light') return extraLightStyle
+        if (props.version === 'dark') return extraDarkStyle ;
+    }};
+    
 
     input {
         width: 100%;
@@ -29,10 +34,10 @@ const TextInputStyled = styled.div`
         color: ${theme.colors.dark};
         transition: .3s ease;
         font-family: 'Open Sans', sans-serif;
+        
 
         &::placeholder {
             color: ${theme.colors.greyMedium};
-            background: ${theme.colors.white};
         }
 
         &:focus, &:hover {
@@ -54,6 +59,52 @@ const TextInputStyled = styled.div`
             height: 1rem;
         }
         
+    }
+`
+
+const extraLightStyle = css`
+    input {
+        background: ${theme.colors.white}
+    }
+
+    input:-webkit-autofill,
+    input:-internal-autofill-selected {
+        background-color: ${theme.colors.white} !important;
+        color: black !important;
+        -webkit-box-shadow: 0 0 0px 1000px ${theme.colors.white} inset !important;
+        border: 3px solid ${theme.colors.white} !important;
+    }
+
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        background-color: ${theme.colors.white} !important;
+        color: black !important;
+        -webkit-box-shadow: 0 0 0px 1000px ${theme.colors.white} inset !important;
+        border: 3px solid ${theme.colors.primary} !important;
+    }
+`
+
+const extraDarkStyle = css`
+    input {
+        background: ${theme.colors.greyLight}
+    }
+
+    input:-webkit-autofill,
+    input:-internal-autofill-selected {
+        background-color: ${theme.colors.greyLight} !important;
+        color: black !important;
+        -webkit-box-shadow: 0 0 0px 1000px ${theme.colors.greyLight} inset !important;
+        border: 3px solid ${theme.colors.greyLight} !important;
+    }
+
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active {
+        background-color: ${theme.colors.greyLight} !important;
+        color: black !important;
+        -webkit-box-shadow: 0 0 0px 1000px ${theme.colors.greyLight} inset !important;
+        border: 3px solid ${theme.colors.primary} !important;
     }
 `
 

@@ -33,6 +33,7 @@ function LoginForm() {
                 onChange={handleChange}
                 Icon={<BsPersonCircle />}
                 placeholder='Entrez votre prénom'
+                version="light"
                 required 
             />
             <PrimaryButton

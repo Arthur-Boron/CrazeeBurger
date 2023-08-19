@@ -69,6 +69,7 @@ function AddForm() {
                 onChange={handleChange}
                 Icon={<FaHamburger />}
                 placeholder='Nom du produit'
+                version="dark"
                 required 
             />
             <TextInput
@@ -77,6 +78,7 @@ function AddForm() {
                 onChange={handleChange}
                 Icon={<BsFillCameraFill />}
                 placeholder="Lien URL d'une image"
+                version="dark"
                 required 
             />
             <TextInput
@@ -86,6 +88,7 @@ function AddForm() {
                 Icon={<MdOutlineEuro />}
                 type="number"
                 placeholder='Prix'
+                version="dark"
                 required 
             />
         </div>
@@ -110,6 +113,8 @@ const AddFormStyled = styled.form`
         display: flex;
         align-items: center;
         justify-content: center;
+        margin-left: 20px;
+        padding: 8px 0px;
 
         img {
             width: 100%;
@@ -124,7 +129,7 @@ const AddFormStyled = styled.form`
             display: flex;
             justify-content: center;
             align-items: center;
-            border: 1px solid ${theme.colors.greyLight};
+            border: 3px solid ${theme.colors.greyLight};
             line-height: 1.5;
             color: ${theme.colors.greySemiDark};
             border-radius: ${theme.borderRadius.round};
@@ -136,6 +141,7 @@ const AddFormStyled = styled.form`
         grid-area: 1/2/4/2;
         display: grid;
         grid-template-rows: repeat(3, 1fr);
+        margin-right: 20px;
     } 
 
     .submitButton {
