@@ -4,12 +4,11 @@ import { theme } from '../../../../../../theme'
 import OrderContext from '../../../../../../context/OrderContext'
 import { toast} from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css"
-import { MdAddShoppingCart, MdOutlineEuro } from "react-icons/md"
-import { BsFillCameraFill } from 'react-icons/bs'
-import { FaHamburger } from 'react-icons/fa'
+import { MdAddShoppingCart } from "react-icons/md"
 import TextInput from '../../../../../reusable-ui/TextInput'
 import Button from '../../../../../reusable-ui/Button'
 import ImagePreview from './ImagePreview'
+import getInputConfig from '../../../../../../config/addFormInputConfig'
 
 
 export const EMPTY_PRODUCT = {
@@ -58,47 +57,37 @@ function AddForm() {
         setNewProduct({...newProduct, [propertyName]: newValue})
     }
 
-  return (
-    <AddFormStyled action='submit' onSubmit={handleSubmit}>
-        <ImagePreview imageSource={newProduct.imageSource} title={newProduct.title} />
-        <div className='inputFields'>
-            <TextInput
-                name="title"
-                value={newProduct.title}
-                onChange={handleChange}
-                Icon={<FaHamburger />}
-                placeholder='Nom du produit'
-                version="dark"
-                required 
+    const inputs = getInputConfig(newProduct)
+
+    return (
+        <AddFormStyled action='submit' onSubmit={handleSubmit}>
+            <ImagePreview imageSource={newProduct.imageSource} title={newProduct.title} />
+            <div className='inputFields'>
+                {
+                    inputs.map((input) => {
+                        return  <TextInput
+                            key={input.key}
+                            name={input.name}
+                            value={input.value}
+                            onChange={handleChange}
+                            Icon={input.Icon}
+                            type={input.type}
+                            placeholder={input.placeholder}
+                            version="dark"
+                            required 
+                        />
+                    })
+                }
+            
+            </div>
+            <Button
+                className='submitButton'
+                Label="Ajouter un nouveau produit"
+                version="success"
             />
-            <TextInput
-                name="imageSource"
-                value={newProduct.imageSource}
-                onChange={handleChange}
-                Icon={<BsFillCameraFill />}
-                placeholder="Lien URL d'une image"
-                version="dark"
-                required 
-            />
-            <TextInput
-                name="price"
-                value={newProduct.price ? newProduct.price : ''}
-                onChange={handleChange}
-                Icon={<MdOutlineEuro />}
-                type="number"
-                placeholder='Prix'
-                version="dark"
-                required 
-            />
-        </div>
-        <Button
-            className='submitButton'
-            Label="Ajouter un nouveau produit"
-            version="success"
-        />
-        
-    </AddFormStyled>
-  )
+            
+        </AddFormStyled>
+    )
 }
 
 const AddFormStyled = styled.form`
