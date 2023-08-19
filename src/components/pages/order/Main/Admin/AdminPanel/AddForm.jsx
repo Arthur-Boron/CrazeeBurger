@@ -8,6 +8,7 @@ import { MdAddShoppingCart, MdOutlineEuro } from "react-icons/md"
 import { BsFillCameraFill } from 'react-icons/bs'
 import { FaHamburger } from 'react-icons/fa'
 import TextInput from '../../../../../reusable-ui/TextInput'
+import PrimaryButton from '../../../../../reusable-ui/PrimaryButton'
 
 
 const EMPTY_PRODUCT = {
@@ -92,9 +93,11 @@ function AddForm() {
                 required 
             />
         </div>
-        <button type="submit" className='submitButton'>
-            Submit
-        </button>
+        <PrimaryButton
+            className='submitButton'
+            Label="Ajouter un nouveau produit"
+            version="success"
+        />
         
     </AddFormStyled>
   )
@@ -147,7 +150,6 @@ const AddFormStyled = styled.form`
     .submitButton {
         grid-area: 4/2/5/3;
         width: 50%;
-        background-color: cyan;
     } 
 `
 

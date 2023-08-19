@@ -39,6 +39,7 @@ function LoginForm() {
             <PrimaryButton
                 Label="Accéder à mon espace"
                 Icon={<BiSolidChevronRight className='buttonIcon'/>}
+                version="primary"
             />
         </LoginFormStyled>
     )

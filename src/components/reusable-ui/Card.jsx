@@ -5,6 +5,7 @@ import PrimaryButton from './PrimaryButton'
 import {TiDelete} from 'react-icons/ti'
 
 function Card({title, imageSource, leftDescription, hasDeleteButton, onDelete}) {
+
   return (
     <CardStyled className="product">
       {hasDeleteButton && (<button className='delete-button' aria-label='delete-button' onClick={onDelete}>
@@ -18,7 +19,7 @@ function Card({title, imageSource, leftDescription, hasDeleteButton, onDelete}) 
         <div className="description">
           <div className="left-description">{leftDescription}</div>
           <div className="right-description">
-            <PrimaryButton className="primary-button" Label={"Ajouter"} />
+            <PrimaryButton className="primary-button" Label={"Ajouter"} version="primary"/>
           </div>
         </div>
       </div>
@@ -117,7 +118,7 @@ const CardStyled = styled.div`
 
                 .primary-button {
                     font-size: ${theme.fonts.size.XS};
-                    padding: ${theme.spacing.sm};
+                    margin: ${theme.spacing.xs} 0px;
                 }
             }
         }

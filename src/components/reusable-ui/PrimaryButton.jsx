@@ -1,10 +1,10 @@
 import React from 'react'
-import { styled } from 'styled-components'
+import { css, styled } from 'styled-components'
 import { theme } from '../../theme'
 
-function PrimaryButton({Label, Icon}) {
+function PrimaryButton({Label, Icon, version=primary, className}) {
   return (
-    <PrimaryButtonStyled type='submit'>
+    <PrimaryButtonStyled type='submit' className={className} version={version}>
         <span>{Label && Label}</span>
         {Icon && Icon}
     </PrimaryButtonStyled>
@@ -15,24 +15,54 @@ const PrimaryButtonStyled = styled.button`
   width: 100%;
   height: ${theme.gridUnit * 5}px;
   line-height: 28px;
-  border: 2px solid ${theme.colors.primary};
   border-radius: ${theme.borderRadius.round};
   outline: none;
   transition: .3s ease;
-  background: ${theme.colors.primary};
   color: ${theme.colors.white};
   font-family: 'Open Sans', sans-serif;
 
+  ${({version}) => extraStyle[version]};
+
   &:hover {
-    background: ${theme.colors.white};
-    color: ${theme.colors.primary};
     cursor: pointer;
   }
 
   &:active {
-    background-color: ${theme.colors.primary};
     color: ${theme.colors.white};
   }
 `
+
+const extraPrimaryStyle = css`
+  border: 2px solid ${theme.colors.primary};
+  background: ${theme.colors.primary};
+
+  &:hover {
+    color: ${theme.colors.primary};
+    background: ${theme.colors.white};
+  }
+
+  &:active {
+    background: ${theme.colors.primary};
+  }
+`
+
+const extraSuccessStyle = css`
+  border: 2px solid ${theme.colors.success};
+  background: ${theme.colors.success};
+
+  &:hover {
+    color: ${theme.colors.success};
+    background: ${theme.colors.white};
+  }
+
+  &:active {
+    background: ${theme.colors.success};
+  }
+`
+
+const extraStyle = {
+    primary : extraPrimaryStyle,
+    success: extraSuccessStyle
+}
 
 export default PrimaryButton
