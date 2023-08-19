@@ -4,7 +4,7 @@ import { styled } from 'styled-components'
 import TextInput from '../../reusable-ui/TextInput'
 import { BsPersonCircle } from 'react-icons/bs'
 import { BiSolidChevronRight } from 'react-icons/bi'
-import PrimaryButton from '../../reusable-ui/PrimaryButton'
+import Button from '../../reusable-ui/Button'
 import { theme } from '../../../theme'
 
 function LoginForm() {
@@ -36,7 +36,7 @@ function LoginForm() {
                 version="light"
                 required 
             />
-            <PrimaryButton
+            <Button
                 Label="Accéder à mon espace"
                 Icon={<BiSolidChevronRight className='buttonIcon'/>}
                 version="primary"

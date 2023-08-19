@@ -2,16 +2,16 @@ import React from 'react'
 import { css, styled } from 'styled-components'
 import { theme } from '../../theme'
 
-function PrimaryButton({Label, Icon, version=primary, className}) {
+function Button({Label, Icon, version=primary, className}) {
   return (
-    <PrimaryButtonStyled type='submit' className={className} version={version}>
+    <ButtonStyled type='submit' className={className} version={version}>
         <span>{Label && Label}</span>
         {Icon && Icon}
-    </PrimaryButtonStyled>
+    </ButtonStyled>
   )
 }
 
-const PrimaryButtonStyled = styled.button`
+const ButtonStyled = styled.button`
   width: 100%;
   height: ${theme.gridUnit * 5}px;
   line-height: 28px;
@@ -65,4 +65,4 @@ const extraStyle = {
     success: extraSuccessStyle
 }
 
-export default PrimaryButton
+export default Button

@@ -1,7 +1,7 @@
 import React from 'react'
 import { styled } from 'styled-components'
 import { theme } from '../../theme'
-import PrimaryButton from './PrimaryButton'
+import Button from './Button'
 import {TiDelete} from 'react-icons/ti'
 
 function Card({title, imageSource, leftDescription, hasDeleteButton, onDelete}) {
@@ -19,7 +19,7 @@ function Card({title, imageSource, leftDescription, hasDeleteButton, onDelete}) 
         <div className="description">
           <div className="left-description">{leftDescription}</div>
           <div className="right-description">
-            <PrimaryButton className="primary-button" Label={"Ajouter"} version="primary"/>
+            <Button className="primary-button" Label={"Ajouter"} version="primary"/>
           </div>
         </div>
       </div>
