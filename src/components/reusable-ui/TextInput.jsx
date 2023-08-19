@@ -17,10 +17,7 @@ const TextInputStyled = styled.div`
     line-height: 28px;
     align-items: center;
     position: relative;
-    ${(props) =>  {
-        if (props.version === 'light') return extraLightStyle
-        if (props.version === 'dark') return extraDarkStyle ;
-    }};
+    ${({version}) => extraStyle[version]};
     
 
     input {
@@ -107,5 +104,10 @@ const extraDarkStyle = css`
         border: 3px solid ${theme.colors.primary} !important;
     }
 `
+
+const extraStyle = {
+    light : extraLightStyle,
+    dark: extraDarkStyle
+}
 
 export default TextInput
