@@ -9,6 +9,7 @@ import { BsFillCameraFill } from 'react-icons/bs'
 import { FaHamburger } from 'react-icons/fa'
 import TextInput from '../../../../../reusable-ui/TextInput'
 import Button from '../../../../../reusable-ui/Button'
+import ImagePreview from './ImagePreview'
 
 
 export const EMPTY_PRODUCT = {
@@ -59,9 +60,7 @@ function AddForm() {
 
   return (
     <AddFormStyled action='submit' onSubmit={handleSubmit}>
-        <div className='previewImage'>
-            {newProduct.imageSource ? <img src={newProduct.imageSource} alt={newProduct.title} /> : <div className='empty-image'>Aucune Image</div>}
-        </div>
+        <ImagePreview imageSource={newProduct.imageSource} title={newProduct.title} />
         <div className='inputFields'>
             <TextInput
                 name="title"
@@ -109,35 +108,6 @@ const AddFormStyled = styled.form`
     height: 100%;
     grid-row-gap: ${theme.spacing.xs};
     grid-column-gap: ${theme.spacing.md};
-
-    .previewImage {
-        grid-area: 1/1/4/2;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-left: 20px;
-        padding: 8px 0px;
-
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            object-position: center;
-        }
-
-        .empty-image {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 3px solid ${theme.colors.greyLight};
-            line-height: 1.5;
-            color: ${theme.colors.greySemiDark};
-            border-radius: ${theme.borderRadius.round};
-        }
-        
-    }
     
     .inputFields {
         grid-area: 1/2/4/2;
