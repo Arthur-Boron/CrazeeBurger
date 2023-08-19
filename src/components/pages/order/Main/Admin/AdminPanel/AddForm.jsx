@@ -11,7 +11,7 @@ import TextInput from '../../../../../reusable-ui/TextInput'
 import Button from '../../../../../reusable-ui/Button'
 
 
-const EMPTY_PRODUCT = {
+export const EMPTY_PRODUCT = {
     id: "",
     imageSource: "",
     title: "",
@@ -23,8 +23,7 @@ const EMPTY_PRODUCT = {
 
 function AddForm() {
 
-    const {handleAddProduct} = useContext(OrderContext)
-    const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+    const {handleAddProduct, newProduct, setNewProduct} = useContext(OrderContext)
 
     const displayToastNotification = (productName) => {
         toast.info(`Produit '${productName}' ajouté avec succès`, {
