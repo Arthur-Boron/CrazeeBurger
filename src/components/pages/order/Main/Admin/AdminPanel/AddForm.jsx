@@ -66,13 +66,8 @@ function AddForm() {
                 {
                     inputs.map((input) => {
                         return  <TextInput
-                            key={input.key}
-                            name={input.name}
-                            value={input.value}
+                            {...input}
                             onChange={handleChange}
-                            Icon={input.Icon}
-                            type={input.type}
-                            placeholder={input.placeholder}
                             version="dark"
                             required 
                         />
