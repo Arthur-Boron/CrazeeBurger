@@ -5,9 +5,10 @@ import {formatPrice} from '../../../../../utils/maths'
 import OrderContext from '../../../../../context/OrderContext'
 import { toast } from 'react-toastify'
 import "react-toastify/dist/ReactToastify.css"
-import { MdAddShoppingCart } from "react-icons/md"
+import { MdRemoveShoppingCart } from "react-icons/md"
 import EmptyMenuAdmin from './EmptyMenuAdmin'
 import EmptyMenuClient from './EmptyMenuClient'
+import { theme } from '../../../../../theme'
 
 function Menu() {
 
@@ -15,14 +16,14 @@ function Menu() {
   const IMG_BY_DEFAULT = '/images/coming-soon.png'
 
   const displayToastNotification = (productName) => {
-    toast.info(`Produit '${productName}' supprimé avec succès`, {
-    icon: <MdAddShoppingCart size={30} />,
+    toast.success(`Produit '${productName}' supprimé avec succès`, {
+    icon: <MdRemoveShoppingCart size={30} color={theme.colors.success}/>,
     theme: "light",
     position: "bottom-right",
-    autoClose: 2000,
+    autoClose: 1000,
     hideProgressBar: false,
     closeOnClick: true,
-    pauseOnHover: true,
+    pauseOnHover: false,
     draggable: true,
     progress: undefined,
     })

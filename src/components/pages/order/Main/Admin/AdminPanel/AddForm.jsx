@@ -26,14 +26,14 @@ function AddForm() {
     const {handleAddProduct, newProduct, setNewProduct} = useContext(OrderContext)
 
     const displayToastNotification = (productName) => {
-        toast.info(`Produit '${productName}' ajouté avec succès`, {
-        icon: <MdAddShoppingCart size={30} />,
+        toast.success(`Produit '${productName}' ajouté avec succès`, {
+        icon: <MdAddShoppingCart size={30} color={theme.colors.success} />,
         theme: "light",
         position: "bottom-right",
-        autoClose: 2000,
+        autoClose: 1000,
         hideProgressBar: false,
         closeOnClick: true,
-        pauseOnHover: true,
+        pauseOnHover: false,
         draggable: true,
         progress: undefined,
         })
