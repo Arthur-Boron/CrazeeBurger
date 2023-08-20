@@ -1,24 +1,55 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import { styled } from 'styled-components'
-import { fakeMenu2 } from '../../../../../fakeData/fakeMenu'
 import Card from '../../../../reusable-ui/Card'
 import {formatPrice} from '../../../../../utils/maths'
+import OrderContext from '../../../../../context/OrderContext'
+import { toast } from 'react-toastify'
+import "react-toastify/dist/ReactToastify.css"
+import { MdRemoveShoppingCart } from "react-icons/md"
+import EmptyMenuAdmin from './EmptyMenuAdmin'
+import EmptyMenuClient from './EmptyMenuClient'
+import { theme } from '../../../../../theme'
 
 function Menu() {
 
-  const [menu, setFakeMenu] = useState(fakeMenu2)
+  const {menu, isModeAdmin, handleDeleteProduct, regenerateMenu} = useContext(OrderContext)
+  const IMG_BY_DEFAULT = '/images/coming-soon.png'
 
-  return (
+  const displayToastNotification = (productName) => {
+    toast.success(`Produit '${productName}' supprimé avec succès`, {
+    icon: <MdRemoveShoppingCart size={30} color={theme.colors.success}/>,
+    theme: "light",
+    position: "bottom-right",
+    autoClose: 1000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: true,
+    progress: undefined,
+    })
+  }
+
+  const handleDelete = (productToDelete) => {
+    handleDeleteProduct(productToDelete.id)
+    displayToastNotification(productToDelete.title)
+  }
+
+  return menu.length === 0 ? (
+    isModeAdmin ? 
+      <EmptyMenuAdmin onReset={regenerateMenu} /> : 
+      <EmptyMenuClient />
+  ) : (
     <MenuStyled>
-      {menu.map(product => {
-        return (
-          <Card key={product.id} 
-            title={product.title} 
-            imageSource={product.imageSource} 
-            leftDescription={formatPrice(product.price)}
-          />
-        )
-      })}
+      {menu.map(({ id, title, imageSource = IMG_BY_DEFAULT, price }) => (
+        <Card 
+          key={id} 
+          title={title} 
+          imageSource={imageSource} 
+          leftDescription={formatPrice(price)}
+          hasDeleteButton={isModeAdmin}
+          onDelete={() => handleDelete({ id, title, imageSource, price })}
+        />
+      ))}
     </MenuStyled>
   )
 }

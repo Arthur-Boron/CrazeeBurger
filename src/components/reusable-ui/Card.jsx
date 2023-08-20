@@ -1,11 +1,16 @@
 import React from 'react'
 import { styled } from 'styled-components'
 import { theme } from '../../theme'
-import PrimaryButton from './PrimaryButton'
+import Button from './Button'
+import {TiDelete} from 'react-icons/ti'
 
-function Card({title, imageSource, leftDescription}) {
+function Card({title, imageSource, leftDescription, hasDeleteButton, onDelete}) {
+
   return (
     <CardStyled className="product">
+      {hasDeleteButton && (<button className='delete-button' aria-label='delete-button' onClick={onDelete}>
+        <TiDelete className='icon' />
+      </button>)}
       <div className="image-container">
         <img src={imageSource} alt={title} />
       </div>
@@ -14,7 +19,7 @@ function Card({title, imageSource, leftDescription}) {
         <div className="description">
           <div className="left-description">{leftDescription}</div>
           <div className="right-description">
-            <PrimaryButton className="primary-button" Label={"Ajouter"} />
+            <Button className="primary-button" Label={"Ajouter"} version="primary"/>
           </div>
         </div>
       </div>
@@ -32,6 +37,31 @@ const CardStyled = styled.div`
     box-sizing: border-box;
     display: grid;
     grid-template-rows: 65% 1fr;
+    position: relative;
+
+    .delete-button {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      color: ${theme.colors.primary};
+      z-index: 2;
+      padding: 0;
+      border: none;
+      background: none;
+
+      &:hover {
+        color: ${theme.colors.red};
+      }
+
+      .icon {
+        width: 100%;
+        height: 100%;
+      }
+
+    }
 
     .image-container {
         width: 200px;
@@ -88,7 +118,7 @@ const CardStyled = styled.div`
 
                 .primary-button {
                     font-size: ${theme.fonts.size.XS};
-                    padding: ${theme.spacing.sm};
+                    margin: ${theme.spacing.xs} 0px;
                 }
             }
         }
