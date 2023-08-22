@@ -9,10 +9,12 @@ import { MdRemoveShoppingCart } from "react-icons/md"
 import EmptyMenuAdmin from './EmptyMenuAdmin'
 import EmptyMenuClient from './EmptyMenuClient'
 import { theme } from '../../../../../theme'
+import AdminTabContext from '../../../../../context/AdminTabContext'
 
 function Menu() {
 
   const {menu, isModeAdmin, handleDeleteProduct, regenerateMenu, productSelected, setProductSelected} = useContext(OrderContext)
+  const {setIsCollapsed, setSelectedTab} = useContext(AdminTabContext)
   const IMG_BY_DEFAULT = '/images/coming-soon.png'
 
   const checkIfProductIsSelected = (productId, idProductClickedOn) => {
@@ -40,6 +42,8 @@ function Menu() {
 
   const handleClick = (cardId) => {
     if (isModeAdmin) {
+      setIsCollapsed(false)
+      setSelectedTab('edit')
       const productClickedOn = menu.find((product) => product.id == cardId)
       setProductSelected(productClickedOn)
     }
