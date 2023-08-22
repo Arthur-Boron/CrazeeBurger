@@ -1,5 +1,4 @@
-import React, { useContext, useState } from 'react'
-import HintMessage from './HintMessage'
+import { useContext } from 'react'
 import OrderContext from '../../../../../../context/OrderContext'
 import { styled } from 'styled-components'
 import { theme } from '../../../../../../theme'
@@ -32,6 +31,7 @@ function EditForm() {
                 inputs.map((input) => {
                     return  <TextInput
                         {...input}
+                        key={input.key}
                         onChange={handleChange}
                         version="dark"
                         required 

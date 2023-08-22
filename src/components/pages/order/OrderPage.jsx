@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { styled } from 'styled-components'
 import Navbar from '../navbar/Navbar'
 import Main from './Main/Main'

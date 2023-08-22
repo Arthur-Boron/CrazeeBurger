@@ -1,9 +1,9 @@
-import React from 'react'
 import { styled } from 'styled-components'
 import { theme } from '../../theme'
 import Button from './Button'
 import {TiDelete} from 'react-icons/ti'
 
+// eslint-disable-next-line react/prop-types
 function Card({title, imageSource, leftDescription, hasDeleteButton, onDelete, onClick}) {
 
   return (
