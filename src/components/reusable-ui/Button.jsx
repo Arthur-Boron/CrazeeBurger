@@ -21,8 +21,6 @@ const ButtonStyled = styled.button`
   color: ${theme.colors.white};
   font-family: 'Open Sans', sans-serif;
 
-  ${({version}) => extraStyle[version]};
-
   &:hover {
     cursor: pointer;
   }
@@ -30,6 +28,8 @@ const ButtonStyled = styled.button`
   &:active {
     color: ${theme.colors.white};
   }
+
+  ${({version}) => extraStyle[version]};
 `
 
 const extraPrimaryStyle = css`
@@ -43,6 +43,22 @@ const extraPrimaryStyle = css`
 
   &:active {
     background: ${theme.colors.primary};
+  }
+`
+
+const extraSecondaryStyle = css`
+  border: 2px solid ${theme.colors.white};
+  background: ${theme.colors.white};
+  color: ${theme.colors.primary};
+
+  &:hover {
+    color: ${theme.colors.white};
+    background: ${theme.colors.primary};
+  }
+
+  &:active {
+    background: ${theme.colors.white};
+    color: ${theme.colors.primary};
   }
 `
 
@@ -62,6 +78,7 @@ const extraSuccessStyle = css`
 
 const extraStyle = {
     primary : extraPrimaryStyle,
+    secondary: extraSecondaryStyle,
     success: extraSuccessStyle
 }
 

@@ -12,8 +12,12 @@ import { theme } from '../../../../../theme'
 
 function Menu() {
 
-  const {menu, isModeAdmin, handleDeleteProduct, regenerateMenu, setProductSelected} = useContext(OrderContext)
+  const {menu, isModeAdmin, handleDeleteProduct, regenerateMenu, productSelected, setProductSelected} = useContext(OrderContext)
   const IMG_BY_DEFAULT = '/images/coming-soon.png'
+
+  const checkIfProductIsSelected = (productId, idProductClickedOn) => {
+    return idProductClickedOn === productId
+  }
 
   const displayToastNotification = (productName) => {
     toast.success(`Produit '${productName}' supprimé avec succès`, {
@@ -35,8 +39,19 @@ function Menu() {
   }
 
   const handleClick = (cardId) => {
-    const productClickedOn = menu.find((product) => product.id == cardId)
-    setProductSelected(productClickedOn)
+    if (isModeAdmin) {
+      const productClickedOn = menu.find((product) => product.id == cardId)
+      setProductSelected(productClickedOn)
+    }
+  }
+
+  const handleCardAddedInBasket = (event) => {
+    event.stopPropagation();
+  }
+
+  const handleCardDelete = (event, id, title) => {
+    event.stopPropagation();
+    handleDelete(id, title)
   }
 
   return menu.length === 0 ? (
@@ -52,9 +67,11 @@ function Menu() {
           imageSource={imageSource} 
           leftDescription={formatPrice(price)}
           hasDeleteButton={isModeAdmin}
-          onDelete={() => handleDelete({ id, title })}
+          onAddProductInBasket={(event) => handleCardAddedInBasket(event)}
+          onDelete={(event) => handleCardDelete(event, {id, title})}
           onClick={() => handleClick(id)}
           isHoverable={isModeAdmin}
+          isSelected={checkIfProductIsSelected(id, productSelected.id)}
         />
       ))}
     </MenuStyled>

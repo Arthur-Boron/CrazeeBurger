@@ -3,10 +3,10 @@ import { theme } from '../../theme'
 import Button from './Button'
 import {TiDelete} from 'react-icons/ti'
 
-function Card({title, imageSource, leftDescription, hasDeleteButton, onDelete, onClick, isHoverable}) {
+function Card({title, imageSource, leftDescription, hasDeleteButton, onAddProductInBasket, onDelete, onClick, isHoverable, isSelected}) {
 
   return (
-    <CardStyled className="product" onClick={onClick} $isHoverable={isHoverable}>
+    <CardStyled className="product" onClick={onClick} $isHoverable={isHoverable} $isSelected={isSelected}>
       {hasDeleteButton && (<button className='delete-button' aria-label='delete-button' onClick={onDelete}>
         <TiDelete className='icon' />
       </button>)}
@@ -18,7 +18,7 @@ function Card({title, imageSource, leftDescription, hasDeleteButton, onDelete, o
         <div className="description">
           <div className="left-description">{leftDescription}</div>
           <div className="right-description">
-            <Button className="primary-button" Label={"Ajouter"} version="primary"/>
+            <Button className="primary-button" Label={"Ajouter"} version={isSelected && isHoverable ? 'secondary' : 'primary'} onClick={onAddProductInBasket} />
           </div>
         </div>
       </div>
@@ -27,9 +27,7 @@ function Card({title, imageSource, leftDescription, hasDeleteButton, onDelete, o
 }
 
 const CardStyled = styled.div`
-
-    ${(props) => props.$isHoverable && hoverableStyle }
-
+      
     background-color: ${theme.colors.white};
     width: 240px;
     height: 330px;
@@ -125,6 +123,9 @@ const CardStyled = styled.div`
             }
         }
     }
+
+    ${({$isHoverable}) => $isHoverable && hoverableStyle }
+    ${({$isHoverable, $isSelected}) => $isSelected && $isHoverable && selectedStyle }
 `
 
 const hoverableStyle = css`
@@ -135,6 +136,26 @@ const hoverableStyle = css`
     cursor: pointer;
   }
 
+`
+
+const selectedStyle = css`
+  background-color: ${theme.colors.primary};
+
+  .delete-button {
+    color: ${theme.colors.white};
+
+    &:hover {
+      color: ${theme.colors.red};
+    }
+  }
+
+  .info-text {
+      .description {
+        .left-description {
+            color: ${theme.colors.white};
+        }
+      }
+  }
 `
 
 export default Card
