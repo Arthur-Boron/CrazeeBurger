@@ -6,7 +6,7 @@ import { theme } from '../../../theme'
 import OrderContext from '../../../context/OrderContext'
 import AdminTabContext from '../../../context/AdminTabContext'
 import { fakeMenu } from '../../../fakeData/fakeMenu'
-import { EMPTY_PRODUCT } from './Main/Admin/AdminPanel/AddForm'
+import { EMPTY_PRODUCT } from '../../../enums/product'
 
 
 function OrderPage() {
@@ -14,6 +14,7 @@ function OrderPage() {
   const [isModeAdmin, setIsModeAdmin] = useState(false)
   const [menu, setFakeMenu] = useState(fakeMenu.LARGE)
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
+  const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
 
   const handleAddProduct = (newProduct) => {
     const menuCopy = [...menu]
@@ -42,7 +43,10 @@ function OrderPage() {
     regenerateMenu,
 
     newProduct,
-    setNewProduct
+    setNewProduct,
+
+    productSelected,
+    setProductSelected
   }
 
   const [isCollapsed, setIsCollapsed] = useState(false)

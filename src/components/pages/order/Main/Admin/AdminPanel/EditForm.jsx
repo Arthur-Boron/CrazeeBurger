@@ -3,7 +3,10 @@ import HintMessage from './HintMessage'
 
 function EditForm() {
   return (
+    <div>
       <HintMessage />
+    </div>
+      
   )
 }
 

@@ -19,7 +19,7 @@ const HintMessageStyled = styled.div`
     font-size: ${theme.fonts.size.P3};
     color: ${theme.colors.greyBlue};
     position: relative;
-    top: 30%;
+    top: 50px;
     margin-left: 15%;
 
     span {

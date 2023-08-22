@@ -34,6 +34,11 @@ function Menu() {
     displayToastNotification(productToDelete.title)
   }
 
+  const handleClick = (cardId) => {
+    const productSelected = menu.find((product) => product.id == cardId)
+    console.log(productSelected)
+  }
+
   return menu.length === 0 ? (
     isModeAdmin ? 
       <EmptyMenuAdmin onReset={regenerateMenu} /> : 
@@ -47,7 +52,8 @@ function Menu() {
           imageSource={imageSource} 
           leftDescription={formatPrice(price)}
           hasDeleteButton={isModeAdmin}
-          onDelete={() => handleDelete({ id, title, imageSource, price })}
+          onDelete={() => handleDelete({ id, title })}
+          onClick={() => handleClick(id)}
         />
       ))}
     </MenuStyled>

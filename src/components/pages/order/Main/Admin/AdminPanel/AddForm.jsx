@@ -10,17 +10,6 @@ import Button from '../../../../../reusable-ui/Button'
 import ImagePreview from './ImagePreview'
 import getInputConfig from '../../../../../../config/addFormInputConfig'
 
-
-export const EMPTY_PRODUCT = {
-    id: "",
-    imageSource: "",
-    title: "",
-    price: 0,
-    quantity: 0,
-    isAvailable: true,
-    isAdvertised: false,
-}
-
 function AddForm() {
 
     const {handleAddProduct, newProduct, setNewProduct} = useContext(OrderContext)
