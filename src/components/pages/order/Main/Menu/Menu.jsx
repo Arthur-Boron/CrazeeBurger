@@ -12,7 +12,7 @@ import { theme } from '../../../../../theme'
 
 function Menu() {
 
-  const {menu, isModeAdmin, handleDeleteProduct, regenerateMenu} = useContext(OrderContext)
+  const {menu, isModeAdmin, handleDeleteProduct, regenerateMenu, setProductSelected} = useContext(OrderContext)
   const IMG_BY_DEFAULT = '/images/coming-soon.png'
 
   const displayToastNotification = (productName) => {
@@ -36,7 +36,7 @@ function Menu() {
 
   const handleClick = (cardId) => {
     const productSelected = menu.find((product) => product.id == cardId)
-    console.log(productSelected)
+    setProductSelected(productSelected)
   }
 
   return menu.length === 0 ? (
