@@ -13,7 +13,7 @@ import AdminTabContext from '../../../../../context/AdminTabContext'
 
 function Menu() {
 
-  const {menu, isModeAdmin, handleDeleteProduct, regenerateMenu, productSelected, setProductSelected} = useContext(OrderContext)
+  const {menu, isModeAdmin, handleDeleteProduct, regenerateMenu, productSelected, setProductSelected, titleInputRef} = useContext(OrderContext)
   const {setIsCollapsed, setSelectedTab} = useContext(AdminTabContext)
   const IMG_BY_DEFAULT = '/images/coming-soon.png'
 
@@ -40,12 +40,13 @@ function Menu() {
     displayToastNotification(productToDelete.title)
   }
 
-  const handleClick = (cardId) => {
+  const handleClick = async (cardId) => {
     if (isModeAdmin) {
-      setIsCollapsed(false)
-      setSelectedTab('edit')
+      await setIsCollapsed(false)
+      await setSelectedTab('edit')
       const productClickedOn = menu.find((product) => product.id == cardId)
-      setProductSelected(productClickedOn)
+      await setProductSelected(productClickedOn)
+      titleInputRef.current.focus()
     }
   }
 

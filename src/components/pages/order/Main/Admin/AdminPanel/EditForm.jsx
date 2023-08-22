@@ -8,7 +8,7 @@ import getInputConfig from '../../../../../../config/addFormInputConfig'
 
 function EditForm() {
 
-  const {productSelected, handleEditProduct} = useContext(OrderContext)
+  const {productSelected, handleEditProduct, titleInputRef} = useContext(OrderContext)
 
   const handleChange = (event) => {
     const newValue = event.target.value
@@ -33,6 +33,7 @@ function EditForm() {
                         {...input}
                         key={input.key}
                         onChange={handleChange}
+                        ref={input.name === "title" ? titleInputRef : null}
                         version="dark"
                         required 
                     />

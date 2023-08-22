@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { styled } from 'styled-components'
 import Navbar from '../navbar/Navbar'
 import Main from './Main/Main'
@@ -16,6 +16,7 @@ function OrderPage() {
   const [menu, setMenu] = useState(fakeMenu.LARGE)
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
+  const titleInputRef = useRef()
 
   const handleAddProduct = (newProduct) => {
     const menuCopy = deepClone(menu)
@@ -57,7 +58,9 @@ function OrderPage() {
     setNewProduct,
 
     productSelected,
-    setProductSelected
+    setProductSelected,
+
+    titleInputRef
   }
 
   const [isCollapsed, setIsCollapsed] = useState(false)

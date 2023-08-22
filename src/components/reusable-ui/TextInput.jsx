@@ -2,14 +2,14 @@ import React from 'react'
 import { css, styled } from 'styled-components'
 import { theme } from '../../theme'
 
-function TextInput({value, onChange, Icon, className, version=light, ...extraProps}) {
+const TextInput = React.forwardRef(({value, onChange, Icon, className, version=light, ...extraProps}, ref) => {
   return (
     <TextInputStyled className={className} version={version}>
         <div className='inputIcon'>{Icon && Icon}</div>
-        <input value={value} type='text' onChange={onChange} {...extraProps}/>
+        <input ref={ref} value={value} type='text' onChange={onChange} {...extraProps}/>
     </TextInputStyled>
   )
-}
+})
 
 const TextInputStyled = styled.div`
     display: flex;

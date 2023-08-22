@@ -17,4 +17,6 @@ export default createContext({
 
     productSelected: {},
     setProductSelected: () => {},
+
+    titleInputRef: {}
 })
