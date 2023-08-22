@@ -6,15 +6,19 @@ import { theme } from '../../../../../../theme'
 import TextInput from '../../../../../reusable-ui/TextInput'
 import ImagePreview from './ImagePreview'
 import getInputConfig from '../../../../../../config/addFormInputConfig'
+import { EMPTY_PRODUCT } from '../../../../../../enums/product'
 
 function EditForm() {
 
-  const {productSelected, setProductSelected} = useContext(OrderContext)
+  const {productSelected, handleEditProduct} = useContext(OrderContext)
+  const [productBeingEdited, setProductBeingEdited] = useState(EMPTY_PRODUCT)
 
   const handleChange = (event) => {
     const newValue = event.target.value
     const propertyName = event.target.name
-    setProductSelected({...productSelected, [propertyName]: newValue})
+    const productUpdated = {...productSelected, [propertyName]: newValue}
+    setProductBeingEdited(productUpdated)
+    handleEditProduct(productUpdated)
   }
 
   const inputs = getInputConfig(productSelected)
