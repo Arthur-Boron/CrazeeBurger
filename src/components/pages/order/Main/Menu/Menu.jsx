@@ -35,8 +35,8 @@ function Menu() {
   }
 
   const handleClick = (cardId) => {
-    const productSelected = menu.find((product) => product.id == cardId)
-    setProductSelected(productSelected)
+    const productClickedOn = menu.find((product) => product.id == cardId)
+    setProductSelected(productClickedOn)
   }
 
   return menu.length === 0 ? (
@@ -54,6 +54,7 @@ function Menu() {
           hasDeleteButton={isModeAdmin}
           onDelete={() => handleDelete({ id, title })}
           onClick={() => handleClick(id)}
+          isHoverable={isModeAdmin}
         />
       ))}
     </MenuStyled>

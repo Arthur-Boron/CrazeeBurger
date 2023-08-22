@@ -1,13 +1,12 @@
-import { styled } from 'styled-components'
+import { css, styled } from 'styled-components'
 import { theme } from '../../theme'
 import Button from './Button'
 import {TiDelete} from 'react-icons/ti'
 
-// eslint-disable-next-line react/prop-types
-function Card({title, imageSource, leftDescription, hasDeleteButton, onDelete, onClick}) {
+function Card({title, imageSource, leftDescription, hasDeleteButton, onDelete, onClick, isHoverable}) {
 
   return (
-    <CardStyled className="product" onClick={onClick}>
+    <CardStyled className="product" onClick={onClick} $isHoverable={isHoverable}>
       {hasDeleteButton && (<button className='delete-button' aria-label='delete-button' onClick={onDelete}>
         <TiDelete className='icon' />
       </button>)}
@@ -28,6 +27,9 @@ function Card({title, imageSource, leftDescription, hasDeleteButton, onDelete, o
 }
 
 const CardStyled = styled.div`
+
+    ${(props) => props.$isHoverable && hoverableStyle }
+
     background-color: ${theme.colors.white};
     width: 240px;
     height: 330px;
@@ -123,6 +125,16 @@ const CardStyled = styled.div`
             }
         }
     }
+`
+
+const hoverableStyle = css`
+  &:hover {
+    transform :scale(1.05);
+    transition: ease-out 0.4s;
+    box-shadow: ${theme.shadows.orangeHighlight};
+    cursor: pointer;
+  }
+
 `
 
 export default Card
