@@ -85,7 +85,7 @@ const CardStyled = styled.div`
             bottom: 15px;
             font-size: ${theme.fonts.size.P4};
             font-weight: ${theme.fonts.weights.bold};
-            font-family: 'Amatic SC', cursive;
+            font-family: ${theme.fonts.family.stylish};
             color: ${theme.colors.dark};
             text-align: left;
             white-space: nowrap;

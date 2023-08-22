@@ -29,7 +29,7 @@ const LogoStyled = styled.div`
     line-height: 1em;
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    font-family: "Amatic SC", cursive;
+    font-family: ${theme.fonts.family.stylish};
   }
 
   img {
