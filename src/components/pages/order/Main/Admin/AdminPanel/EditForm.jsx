@@ -35,7 +35,9 @@ function EditForm() {
                     />
                 })
             }
-        
+        </div>
+        <div className='submitButton'>
+            <div className='sentence'>Cliquer sur un produit pour le modifier <span className='live-update'>en temps réél</span></div>
         </div>
     </EditFormStyled>
       
@@ -59,7 +61,14 @@ const EditFormStyled = styled.form`
 
     .submitButton {
         grid-area: 4/2/5/3;
-        width: 50%;
+        color: ${theme.colors.primary};
+        font-size: ${theme.fonts.size.SM};
+
+        .sentence {
+            .live-update {
+                text-decoration: underline;
+            }
+        }
     } 
 `
 
