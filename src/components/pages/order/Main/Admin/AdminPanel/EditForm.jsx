@@ -20,10 +20,6 @@ function EditForm() {
   const inputs = getInputConfig(productSelected)
 
   return (
-    // <div>
-    //   <HintMessage />
-    //   <span>{productSelected && productSelected.title}</span>
-    // </div>
     <EditFormStyled action='submit'>
         <ImagePreview imageSource={productSelected.imageSource} title={productSelected.title} />
         <div className='inputFields'>

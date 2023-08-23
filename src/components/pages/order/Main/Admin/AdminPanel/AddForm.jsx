@@ -57,8 +57,7 @@ function AddForm() {
                         return  <TextInput
                             {...input}
                             onChange={handleChange}
-                            version="dark"
-                            required 
+                            version="dark" 
                         />
                     })
                 }

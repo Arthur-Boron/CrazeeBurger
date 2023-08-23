@@ -3,11 +3,15 @@ import { styled } from 'styled-components'
 import { theme } from '../../../../../../theme'
 import AdminTabContext from '../../../../../../context/AdminTabContext'
 import getTabsConfig from '../../../../../../config/tabsConfig';
+import OrderContext from '../../../../../../context/OrderContext';
+import {EMPTY_PRODUCT} from '../../../../../../enums/product'
 
 function AdminPanel() {
     const { selectedTab } = useContext(AdminTabContext);
+    const {productSelected} = useContext(OrderContext)
 
-    const tabs = getTabsConfig()
+    const hasAlreadyBeenClicked = productSelected !== EMPTY_PRODUCT
+    const tabs = getTabsConfig(hasAlreadyBeenClicked)
     const activeTab = tabs.find(tab => tab.key === selectedTab);
 
     return (

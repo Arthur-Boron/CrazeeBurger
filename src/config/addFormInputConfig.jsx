@@ -10,7 +10,8 @@ const getInputConfig = (newProduct) =>
             value:newProduct.title,
             Icon: <FaHamburger />,
             placeholder:'Nom du produit',
-            type:"text"
+            type:"text",
+            required:true
         },
         {
             key: 'imageSource',
@@ -26,7 +27,8 @@ const getInputConfig = (newProduct) =>
             value: newProduct.price ? newProduct.price : '',
             Icon:<MdOutlineEuro />,
             placeholder:"Prix",
-            type:"number"
+            type:"number",
+            required:true
         }
     ]
  
