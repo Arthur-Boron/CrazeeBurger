@@ -1,11 +1,8 @@
 import { useContext } from 'react'
 import OrderContext from '../../../../../../context/OrderContext'
-import { styled } from 'styled-components'
-import { theme } from '../../../../../../theme'
-import TextInput from '../../../../../reusable-ui/TextInput'
-import ImagePreview from './ImagePreview'
 import getInputConfig from '../../../../../../config/addFormInputConfig'
 import EditFormMessage from './EditFormMessage'
+import Form from '../../../../../reusable-ui/Form'
 
 function EditForm() {
 
@@ -21,49 +18,11 @@ function EditForm() {
   const inputs = getInputConfig(productSelected)
 
   return (
-    <EditFormStyled action='submit'>
-        <ImagePreview imageSource={productSelected.imageSource} title={productSelected.title} />
-        <div className='inputFields'>
-            {
-                inputs.map((input) => {
-                    return  <TextInput
-                        {...input}
-                        key={input.key}
-                        onChange={handleChange}
-                        ref={input.name === "title" ? titleInputRef : null}
-                        version="dark"
-                        required 
-                    />
-                })
-            }
-        </div>
-        <div className='submitButton'>
-            <EditFormMessage />
-        </div>
-        
-    </EditFormStyled>
+    <Form onChange={handleChange} data={inputs} product={productSelected} titleInputRef={titleInputRef}>
+        <EditFormMessage />
+    </Form>
       
   )
 }
-
-const EditFormStyled = styled.form`
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-template-rows: repeat(4, 1fr);
-    height: 100%;
-    grid-row-gap: ${theme.spacing.xs};
-    grid-column-gap: ${theme.spacing.md};
-    
-    .inputFields {
-        grid-area: 1/2/4/2;
-        display: grid;
-        grid-template-rows: repeat(3, 1fr);
-        margin-right: 20px;
-    } 
-
-    .submitButton {
-        grid-area: 4/2/5/3;
-    } 
-`
 
 export default EditForm
