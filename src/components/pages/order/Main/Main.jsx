@@ -37,7 +37,7 @@ const MainStyled = styled.main`
       display: grid;
       overflow-y: hidden;
       //border radius needs to change when basket is closed
-      border-radius: 0px 0px ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
+      border-radius: 0px 0px ${theme.borderRadius.extraRound} 0px;
     }
 `
 
