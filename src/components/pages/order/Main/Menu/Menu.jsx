@@ -97,7 +97,7 @@ const MenuStyled = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     grid-row-gap: 60px;
     justify-items: center;
-    box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
+    box-shadow: ${theme.shadows.strong};
     overflow-y: auto;
 `
 

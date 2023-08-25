@@ -15,6 +15,7 @@ function Basket() {
 const BasketStyled = styled.div`
     display: flex;
     flex-direction: column;
+    
 
     .head {
       background-color: ${theme.colors.background_dark};
@@ -23,6 +24,7 @@ const BasketStyled = styled.div`
 
     .body {
       flex: 1;
+      box-shadow: ${theme.shadows.basket};
     }
 
     .footer {
