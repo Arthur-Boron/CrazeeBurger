@@ -1,14 +1,16 @@
 import React from 'react'
 import { styled } from 'styled-components'
 import { theme } from '../../../../../theme'
-import TextContainer from '../../../../reusable-ui/TextContainer'
+import Total from './Total'
+import Footer from './Footer'
+import { formatPrice } from '../../../../../utils/maths'
 
 function Basket() {
   return (
     <BasketStyled>
-        <TextContainer>head</TextContainer>
+        <Total amountToPay={formatPrice(0)}/>
         <div className='body'>body</div>
-        <TextContainer>footer</TextContainer>
+        <Footer />
     </BasketStyled>
   )
 }

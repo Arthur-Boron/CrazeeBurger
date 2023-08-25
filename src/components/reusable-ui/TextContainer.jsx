@@ -11,6 +11,7 @@ function TextContainer({children}) {
 const TextContainerStyled = styled.div`
     background-color: ${theme.colors.background_dark};
     height: 70px;
+    padding: 0px ${theme.spacing.md};
 `
 
 export default TextContainer
