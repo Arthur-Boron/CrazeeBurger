@@ -9,11 +9,18 @@ import { MdRemoveShoppingCart } from "react-icons/md"
 import EmptyMenuAdmin from './EmptyMenuAdmin'
 import EmptyMenuClient from './EmptyMenuClient'
 import { theme } from '../../../../../theme'
+import AdminTabContext from '../../../../../context/AdminTabContext'
+import { EMPTY_PRODUCT } from '../../../../../enums/product'
 
 function Menu() {
 
-  const {menu, isModeAdmin, handleDeleteProduct, regenerateMenu} = useContext(OrderContext)
+  const {menu, isModeAdmin, handleDeleteProduct, regenerateMenu, productSelected, setProductSelected, titleInputRef} = useContext(OrderContext)
+  const {setIsCollapsed, setSelectedTab} = useContext(AdminTabContext)
   const IMG_BY_DEFAULT = '/images/coming-soon.png'
+
+  const checkIfProductIsSelected = (productId, idProductClickedOn) => {
+    return idProductClickedOn === productId
+  }
 
   const displayToastNotification = (productName) => {
     toast.success(`Produit '${productName}' supprimé avec succès`, {
@@ -29,9 +36,31 @@ function Menu() {
     })
   }
 
-  const handleDelete = (productToDelete) => {
-    handleDeleteProduct(productToDelete.id)
-    displayToastNotification(productToDelete.title)
+  const handleDelete = (productIdToDelete, productTitle) => {
+    handleDeleteProduct(productIdToDelete)
+    displayToastNotification(productTitle)
+  }
+
+  const handleClick = async (cardId) => {
+    if (isModeAdmin) {
+      await setIsCollapsed(false)
+      await setSelectedTab('edit')
+      const productClickedOn = menu.find((product) => product.id == cardId)
+      await setProductSelected(productClickedOn)
+      titleInputRef.current.focus()
+    }
+  }
+
+  const handleCardAddedInBasket = (event) => {
+    event.stopPropagation();
+  }
+
+  const handleCardDelete = (event, {id, title}) => {
+    event.stopPropagation();
+    handleDelete(id, title)
+    if (productSelected.id == id) {
+      setProductSelected(EMPTY_PRODUCT)
+    }
   }
 
   return menu.length === 0 ? (
@@ -40,16 +69,24 @@ function Menu() {
       <EmptyMenuClient />
   ) : (
     <MenuStyled>
-      {menu.map(({ id, title, imageSource = IMG_BY_DEFAULT, price }) => (
-        <Card 
-          key={id} 
-          title={title} 
-          imageSource={imageSource} 
-          leftDescription={formatPrice(price)}
-          hasDeleteButton={isModeAdmin}
-          onDelete={() => handleDelete({ id, title, imageSource, price })}
-        />
-      ))}
+      {menu.map(({ id, title, imageSource, price }) => {
+        const finalImageSource = imageSource && imageSource !== "" ? imageSource : IMG_BY_DEFAULT;
+
+        return (
+            <Card 
+              key={id} 
+              title={title} 
+              imageSource={finalImageSource} 
+              leftDescription={formatPrice(price)}
+              hasDeleteButton={isModeAdmin}
+              onAddProductInBasket={(event) => handleCardAddedInBasket(event)}
+              onDelete={(event) => handleCardDelete(event, {id, title})}
+              onClick={() => handleClick(id)}
+              isHoverable={isModeAdmin}
+              isSelected={checkIfProductIsSelected(id, productSelected.id)}
+            />
+        );
+      })}
     </MenuStyled>
   )
 }

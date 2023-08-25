@@ -5,10 +5,18 @@ export default createContext({
     setIsModeAdmin: () => {},
     
     menu: [],
-    setFakeMenu: () => {},
+    setMenu: () => {},
+
     handleAddProduct: () => {},
+    handleEditProduct: () => {},
     handleDeleteProduct: () => {},
     regenerateMenu: () => {},
-    newProduct: [],
+
+    newProduct: {},
     setNewProduct: () => {},
+
+    productSelected: {},
+    setProductSelected: () => {},
+
+    titleInputRef: {}
 })

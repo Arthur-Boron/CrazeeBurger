@@ -1,13 +1,12 @@
-import React from 'react'
-import { styled } from 'styled-components'
+import { css, styled } from 'styled-components'
 import { theme } from '../../theme'
 import Button from './Button'
 import {TiDelete} from 'react-icons/ti'
 
-function Card({title, imageSource, leftDescription, hasDeleteButton, onDelete}) {
+function Card({title, imageSource, leftDescription, hasDeleteButton, onAddProductInBasket, onDelete, onClick, isHoverable, isSelected}) {
 
   return (
-    <CardStyled className="product">
+    <CardStyled className="product" onClick={onClick} $isHoverable={isHoverable} $isSelected={isSelected}>
       {hasDeleteButton && (<button className='delete-button' aria-label='delete-button' onClick={onDelete}>
         <TiDelete className='icon' />
       </button>)}
@@ -19,7 +18,7 @@ function Card({title, imageSource, leftDescription, hasDeleteButton, onDelete}) 
         <div className="description">
           <div className="left-description">{leftDescription}</div>
           <div className="right-description">
-            <Button className="primary-button" Label={"Ajouter"} version="primary"/>
+            <Button className="primary-button" Label={"Ajouter"} version={isSelected && isHoverable ? 'secondary' : 'primary'} onClick={onAddProductInBasket} />
           </div>
         </div>
       </div>
@@ -28,6 +27,7 @@ function Card({title, imageSource, leftDescription, hasDeleteButton, onDelete}) 
 }
 
 const CardStyled = styled.div`
+      
     background-color: ${theme.colors.white};
     width: 240px;
     height: 330px;
@@ -85,7 +85,7 @@ const CardStyled = styled.div`
             bottom: 15px;
             font-size: ${theme.fonts.size.P4};
             font-weight: ${theme.fonts.weights.bold};
-            font-family: 'Amatic SC', cursive;
+            font-family: ${theme.fonts.family.stylish};
             color: ${theme.colors.dark};
             text-align: left;
             white-space: nowrap;
@@ -123,6 +123,39 @@ const CardStyled = styled.div`
             }
         }
     }
+
+    ${({$isHoverable}) => $isHoverable && hoverableStyle }
+    ${({$isHoverable, $isSelected}) => $isSelected && $isHoverable && selectedStyle }
+`
+
+const hoverableStyle = css`
+  &:hover {
+    transform :scale(1.05);
+    transition: ease-out 0.4s;
+    box-shadow: ${theme.shadows.orangeHighlight};
+    cursor: pointer;
+  }
+
+`
+
+const selectedStyle = css`
+  background-color: ${theme.colors.primary};
+
+  .delete-button {
+    color: ${theme.colors.white};
+
+    &:hover {
+      color: ${theme.colors.red};
+    }
+  }
+
+  .info-text {
+      .description {
+        .left-description {
+            color: ${theme.colors.white};
+        }
+      }
+  }
 `
 
 export default Card
