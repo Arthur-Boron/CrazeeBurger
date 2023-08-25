@@ -63,11 +63,13 @@ function AddForm() {
                 }
             
             </div>
-            <Button
-                className='submitButton'
-                Label="Ajouter un nouveau produit"
-                version="success"
-            />
+            <div className='submitButton'>
+                <Button
+                    Label="Ajouter un nouveau produit"
+                    version="success"
+                />
+            </div>
+            
             
         </AddFormStyled>
     )
@@ -90,7 +92,10 @@ const AddFormStyled = styled.form`
 
     .submitButton {
         grid-area: 4/2/5/3;
-        width: 50%;
+
+        button {
+            width: 50%;
+        }
     } 
 `
 
