@@ -2,8 +2,9 @@ import { styled } from 'styled-components'
 import ImagePreview from '../pages/order/Main/Admin/AdminPanel/ImagePreview'
 import { theme } from '../../theme'
 import TextInput from './TextInput'
+import React from 'react'
 
-function Form({data, product, onSubmit, onChange, titleInputRef, children}) {
+const Form = React.forwardRef(({data, product, onSubmit, onChange, children}, ref) => {
   return (
     <FormStyled action='submit' onSubmit={onSubmit}>
         <ImagePreview imageSource={product.imageSource} title={product.title} />
@@ -13,7 +14,7 @@ function Form({data, product, onSubmit, onChange, titleInputRef, children}) {
                     return  <TextInput
                         {...input}
                         onChange={onChange}
-                        ref={titleInputRef && input.name === "title" ? titleInputRef : null}
+                        ref={ref && input.name === "title" ? ref : null}
                         version="dark" 
                     />
                 })
@@ -25,7 +26,7 @@ function Form({data, product, onSubmit, onChange, titleInputRef, children}) {
         </div>
     </FormStyled>
   )
-}
+})
 
 const FormStyled = styled.form`
     display: grid;

@@ -18,7 +18,7 @@ function EditForm() {
   const inputs = getInputConfig(productSelected)
 
   return (
-    <Form onChange={handleChange} data={inputs} product={productSelected} titleInputRef={titleInputRef}>
+    <Form onChange={handleChange} data={inputs} product={productSelected} ref={titleInputRef}>
         <EditFormMessage />
     </Form>
       
