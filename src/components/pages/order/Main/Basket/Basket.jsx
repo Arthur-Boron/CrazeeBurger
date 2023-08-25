@@ -4,12 +4,13 @@ import { theme } from '../../../../../theme'
 import Total from './Total'
 import Footer from './Footer'
 import { formatPrice } from '../../../../../utils/maths'
+import EmptyBasket from './EmptyBasket'
 
 function Basket() {
   return (
     <BasketStyled>
         <Total amountToPay={formatPrice(0)}/>
-        <div className='body'>body</div>
+        <EmptyBasket />
         <Footer />
     </BasketStyled>
   )
@@ -18,12 +19,6 @@ function Basket() {
 const BasketStyled = styled.div`
     display: flex;
     flex-direction: column;
-  
-
-    .body {
-      flex: 1;
-      box-shadow: ${theme.shadows.basket};
-    }
 `
 
 export default Basket

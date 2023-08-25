@@ -20,6 +20,7 @@ const FooterStyled = styled.span`
     font-family: ${theme.fonts.family.stylish};
     font-size: ${theme.fonts.size.P2};
     letter-spacing: 2px;
+    text-align: center;
 `
 
 export default Footer
