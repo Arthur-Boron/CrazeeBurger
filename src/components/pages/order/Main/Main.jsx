@@ -26,9 +26,10 @@ function Main() {
 const MainStyled = styled.main`
     background-color: ${theme.colors.background_white};
     height: calc(95vh - ${theme.spacing.xxl});
-    box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
+    box-shadow: ${theme.shadows.strong};
     border-radius: 0px 0px ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
     display: grid;
+    overflow: hidden;
     grid-template-columns: 25% 75%;
     
 
@@ -37,7 +38,7 @@ const MainStyled = styled.main`
       display: grid;
       overflow-y: hidden;
       //border radius needs to change when basket is closed
-      border-radius: 0px 0px ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
+      border-radius: 0px 0px ${theme.borderRadius.extraRound} 0px;
     }
 `
 

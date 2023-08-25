@@ -6,12 +6,13 @@ import Form from '../../../../../reusable-ui/Form'
 
 function EditForm() {
 
-  const {productSelected, handleEditProduct, titleInputRef} = useContext(OrderContext)
+  const {productSelected, handleEditProduct, setProductSelected, titleInputRef} = useContext(OrderContext)
 
   const handleChange = (event) => {
     const newValue = event.target.value
     const propertyName = event.target.name
     const productUpdated = {...productSelected, [propertyName]: newValue}
+    setProductSelected(productUpdated)
     handleEditProduct(productUpdated)
   }
 
