@@ -8,6 +8,7 @@ import getInputConfig from '../../../../../../config/addFormInputConfig'
 import Form from '../../../../../reusable-ui/Form'
 import Button from '../../../../../reusable-ui/Button'
 import { styled } from 'styled-components'
+import { EMPTY_PRODUCT } from '../../../../../../enums/product'
 
 function AddForm() {
 
@@ -35,6 +36,7 @@ function AddForm() {
             id: crypto.randomUUID()
         }
 
+        setNewProduct(EMPTY_PRODUCT)
         handleAddProduct(newProductToAdd)
         displayToastNotification(newProductToAdd.title)
     }
