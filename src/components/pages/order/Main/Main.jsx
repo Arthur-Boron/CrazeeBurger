@@ -29,6 +29,7 @@ const MainStyled = styled.main`
     box-shadow: ${theme.shadows.strong};
     border-radius: 0px 0px ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
     display: grid;
+    overflow: hidden;
     grid-template-columns: 25% 75%;
     
 
