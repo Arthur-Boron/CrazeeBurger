@@ -27,7 +27,7 @@ function Card({title, imageSource, leftDescription, hasDeleteButton, onAddProduc
 }
 
 const CardStyled = styled.div`
-      
+    user-select: none;
     background-color: ${theme.colors.white};
     width: 240px;
     height: 330px;

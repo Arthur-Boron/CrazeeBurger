@@ -1,17 +1,26 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { styled } from 'styled-components'
-import { theme } from '../../../../../theme'
 import Total from './Total'
 import Footer from './Footer'
-import { formatPrice } from '../../../../../utils/maths'
+import { formatPrice, replaceFrenchCommaWithDot } from '../../../../../utils/maths'
+import OrderContext from '../../../../../context/OrderContext'
+import BasketBody from './BasketBody'
 import EmptyBasket from './EmptyBasket'
 
 function Basket() {
+
+  const {basket, handleDeleteFromBasket} = useContext(OrderContext)
+  const isBasketEmpty = basket.length == 0
+
+  const amountToPay = basket.reduce((acc, curr) => {
+    return acc + (replaceFrenchCommaWithDot(curr.price).toFixed(2) * curr.quantity)
+  }, 0)
+
   return (
     <BasketStyled>
-        <Total amountToPay={formatPrice(0)}/>
-        <EmptyBasket />
-        <Footer />
+        <Total amountToPay={formatPrice(amountToPay)}/>
+        {isBasketEmpty ? <EmptyBasket /> : <BasketBody basket={basket} handleDeleteFromBasket={handleDeleteFromBasket}/>}
+        <Footer className="footer" />
     </BasketStyled>
   )
 }
@@ -19,6 +28,11 @@ function Basket() {
 const BasketStyled = styled.div`
     display: flex;
     flex-direction: column;
+
+    .footer {
+      position: sticky;
+      bottom: 0;
+    }
 `
 
 export default Basket
