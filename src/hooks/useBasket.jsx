@@ -29,9 +29,7 @@ export const useBasket = () => {
     const handleDeleteFromBasket = (productIdToDelete, newQuantity) => {
         const basketCopy = deepClone(basket)
         if (newQuantity == 0) {
-            console.log(productIdToDelete)
             const basketUpdated = filterId(productIdToDelete, basketCopy)
-            console.log(basketCopy)
             setBasket(basketUpdated)
         } else {
             const productToDecrementIndex = findIndexById(productIdToDelete, basket)
