@@ -15,7 +15,7 @@ import { findById } from '../../../../../utils/array'
 
 function Menu() {
 
-  const {menu, isModeAdmin, handleAddToBasket, handleDeleteProduct, regenerateMenu, productSelected, setProductSelected, titleInputRef} = useContext(OrderContext)
+  const {menu, isModeAdmin, handleAddToBasket, handleDeleteProduct, handleDeleteFromBasket, regenerateMenu, productSelected, setProductSelected, titleInputRef} = useContext(OrderContext)
   const {setIsCollapsed, setSelectedTab} = useContext(AdminTabContext)
 
   const checkIfProductIsSelected = (productId, idProductClickedOn) => {
@@ -38,6 +38,7 @@ function Menu() {
 
   const handleDelete = (productIdToDelete, productTitle) => {
     handleDeleteProduct(productIdToDelete)
+    handleDeleteFromBasket(productIdToDelete, 0)
     displayToastNotification(productTitle)
   }
 
