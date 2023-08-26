@@ -3,14 +3,17 @@ import { BsCartDashFill, BsCartXFill } from 'react-icons/bs'
 import { styled } from 'styled-components'
 import { theme } from '../../../../../theme'
 
-function ListedItem({title, imageSource, bottomDescription, quantity, className}) {
+function ListedItem({title, imageSource, bottomDescription, quantity, className, onDelete, onSuppressOneElement}) {
+
   return (
     <ListedItemStyled className={className}>
-        <div className="delete-buttons">
-            <div className='icon-container orange'>
-                <BsCartDashFill className='icon'/>
-            </div>
-            <div className='icon-container red'>
+        <div className={`delete-buttons ${quantity === 1 ? 'single-icon' : ''}`}>
+            { quantity !== 1 && (
+                <div className='icon-container orange' onClick={onSuppressOneElement}>
+                    <BsCartDashFill className='icon'/>
+                </div>
+            )}
+            <div className='icon-container red' onClick={onDelete}>
                 <BsCartXFill className='icon'/>
             </div>
         </div> 
@@ -35,6 +38,7 @@ function ListedItem({title, imageSource, bottomDescription, quantity, className}
 
 const ListedItemStyled = styled.div`
     box-sizing: border-box;
+    user-select: none;
     height: 90px;
     padding: ${theme.spacing.xs} ${theme.spacing.md};
     display: grid;
@@ -138,6 +142,10 @@ const ListedItemStyled = styled.div`
                 &:hover {
                     color: ${theme.colors.redSecondary};
                 }
+
+                &:active {
+                    color: ${theme.colors.white};
+                }
             }
             
             .orange {
@@ -148,6 +156,10 @@ const ListedItemStyled = styled.div`
                 background: ${theme.colors.primary_line};
             }
         }
+    }
+
+    .delete-buttons.single-icon .icon-container {
+        height: 100%;
     }
 `
 

@@ -5,23 +5,34 @@ import { formatPrice } from '../../../../../utils/maths';
 import { IMG_BY_DEFAULT } from '../../../../../enums/product';
 
 function BasketBody({basket}) {
-  return (
-    <BasketBodyStyled>
-        {basket.map(({ id, title, imageSource, price, quantity }) => {
-            const finalImageSource = imageSource && imageSource !== "" ? imageSource : IMG_BY_DEFAULT;
 
-            return (
-                <ListedItem 
-                    key={id} 
-                    title={title} 
-                    imageSource={finalImageSource} 
-                    bottomDescription={formatPrice(price)}
-                    quantity={quantity}
-                />
-            );
-      })}
-    </BasketBodyStyled>
-  )
+    const handleDeleteAllQuantityFromCart = (id) => {
+
+    }
+
+    const handleDeleteOneQuantityFromCart = (id) => {
+
+    }
+
+    return (
+        <BasketBodyStyled>
+            {basket.map(({ id, title, imageSource, price, quantity }) => {
+                const finalImageSource = imageSource && imageSource !== "" ? imageSource : IMG_BY_DEFAULT;
+
+                return (
+                    <ListedItem 
+                        key={id} 
+                        title={title} 
+                        imageSource={finalImageSource} 
+                        bottomDescription={formatPrice(price)}
+                        quantity={quantity}
+                        onDelete={() => handleDeleteAllQuantityFromCart({id})}
+                        onSuppressOneElement={() =>handleDeleteOneQuantityFromCart({id})}
+                    />
+                );
+        })}
+        </BasketBodyStyled>
+    )
 }
 
 const BasketBodyStyled = styled.div`
