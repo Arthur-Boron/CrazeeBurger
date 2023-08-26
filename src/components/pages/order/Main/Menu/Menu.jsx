@@ -11,10 +11,11 @@ import EmptyMenuClient from './EmptyMenuClient'
 import { theme } from '../../../../../theme'
 import AdminTabContext from '../../../../../context/AdminTabContext'
 import { EMPTY_PRODUCT, IMG_BY_DEFAULT } from '../../../../../enums/product'
+import { findById } from '../../../../../utils/array'
 
 function Menu() {
 
-  const {menu, isModeAdmin, handleDeleteProduct, regenerateMenu, productSelected, setProductSelected, titleInputRef} = useContext(OrderContext)
+  const {menu, isModeAdmin, handleAddToBasket, handleDeleteProduct, regenerateMenu, productSelected, setProductSelected, titleInputRef} = useContext(OrderContext)
   const {setIsCollapsed, setSelectedTab} = useContext(AdminTabContext)
 
   const checkIfProductIsSelected = (productId, idProductClickedOn) => {
@@ -44,14 +45,16 @@ function Menu() {
     if (isModeAdmin) {
       await setIsCollapsed(false)
       await setSelectedTab('edit')
-      const productClickedOn = menu.find((product) => product.id == cardId)
+      const productClickedOn = findById(cardId, menu)
       await setProductSelected(productClickedOn)
       titleInputRef.current.focus()
     }
   }
 
-  const handleCardAddedInBasket = (event) => {
+  const handleCardAddedInBasket = (event, {id}) => {
     event.stopPropagation();
+    const productToAdd = findById(id, menu)
+    handleAddToBasket(productToAdd)
   }
 
   const handleCardDelete = (event, {id, title}) => {
@@ -78,7 +81,7 @@ function Menu() {
               imageSource={finalImageSource} 
               leftDescription={formatPrice(price)}
               hasDeleteButton={isModeAdmin}
-              onAddProductInBasket={(event) => handleCardAddedInBasket(event)}
+              onAddProductInBasket={(event) => handleCardAddedInBasket(event, {id})}
               onDelete={(event) => handleCardDelete(event, {id, title})}
               onClick={() => handleClick(id)}
               isHoverable={isModeAdmin}

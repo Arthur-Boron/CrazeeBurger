@@ -5,10 +5,6 @@ export default createContext({
     setIsModeAdmin: () => {},
     
     menu: [],
-    handleAddProduct: () => {},
-    handleEditProduct: () => {},
-    handleDeleteProduct: () => {},
-    regenerateMenu: () => {},
 
     basket:[],
 

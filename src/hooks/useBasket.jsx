@@ -2,10 +2,10 @@ import { useState } from "react"
 import { fakeBasket } from "../fakeData/fakeBasket"
 
 export const useBasket = () => {
-    const [basket, setBasket] = useState(fakeBasket.LARGE)
+    const [basket, setBasket] = useState(fakeBasket.EMPTY)
     
-    const handleAddProduct = (newProduct) => {
-        
+    const handleAddToBasket = (productToAdd) => {
+        console.log(productToAdd.title)
     }
 
     const handleEditProduct = (productBeingEdited) => {
@@ -20,5 +20,5 @@ export const useBasket = () => {
         setBasket(fakeBasket.LARGE)
     }
 
-    return {basket, handleAddProduct, handleEditProduct, handleDeleteProduct, regenerateBasket}
+    return {basket, handleAddToBasket, handleEditProduct, handleDeleteProduct, regenerateBasket}
 }

@@ -17,7 +17,7 @@ function OrderPage() {
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
   const titleInputRef = useRef()
   const {menu, handleAddProduct, handleEditProduct, handleDeleteProduct, regenerateMenu} = useMenu()
-  const {basket} = useBasket()
+  const {basket, handleAddToBasket} = useBasket()
 
   const orderContextValue = {
     isModeAdmin,
@@ -29,6 +29,7 @@ function OrderPage() {
     regenerateMenu,
 
     basket,
+    handleAddToBasket,
 
     newProduct,
     setNewProduct,
