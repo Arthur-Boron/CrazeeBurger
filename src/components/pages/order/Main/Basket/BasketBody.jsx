@@ -1,6 +1,6 @@
 import { styled } from 'styled-components'
 import { theme } from '../../../../../theme'
-import ListedItem from '../../../../reusable-ui/ListedItem';
+import ListedItem from './ListedItem';
 import { formatPrice } from '../../../../../utils/maths';
 import { IMG_BY_DEFAULT } from '../../../../../enums/product';
 

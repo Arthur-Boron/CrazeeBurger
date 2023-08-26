@@ -1,7 +1,7 @@
 import React from 'react'
 import { BsCartDashFill, BsCartXFill } from 'react-icons/bs'
 import { styled } from 'styled-components'
-import { theme } from '../../theme'
+import { theme } from '../../../../../theme'
 
 function ListedItem({title, imageSource, bottomDescription, quantity, className}) {
   return (
@@ -125,29 +125,27 @@ const ListedItemStyled = styled.div`
             align-items: stretch; 
 
             .icon-container {
-                width: 100%;   /* 100% of parent width */
-                height: 50%;  /* 50% of parent height */
+                width: 100%;
+                height: 50%;
                 display: flex;
                 align-items: center;
                 justify-content: center;
 
                 .icon {
                     width: ${theme.fonts.size.P3};
-                    /* Remove the height from here */
                 }
     
-                
                 &:hover {
-                    color: black;
+                    color: ${theme.colors.redSecondary};
                 }
             }
             
             .orange {
-                background: ${theme.colors.red};
+                background: ${theme.colors.primary};
             }
 
             .red {
-                background: ${theme.colors.redSecondary};
+                background: ${theme.colors.primary_line};
             }
         }
     }
