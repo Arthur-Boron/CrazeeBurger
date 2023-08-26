@@ -6,11 +6,11 @@ import { IMG_BY_DEFAULT } from '../../../../../enums/product';
 
 function BasketBody({basket, handleDeleteFromBasket}) {
 
-    const handleDeleteAllQuantityFromCart = (id) => {
+    const handleDeleteAllQuantityFromCart = ({id}) => {
         handleDeleteFromBasket(id, 0)
     }
 
-    const handleDeleteOneQuantityFromCart = (id, quantity) => {
+    const handleDeleteOneQuantityFromCart = ({id, quantity}) => {
         handleDeleteFromBasket(id, quantity -1)
     }
 

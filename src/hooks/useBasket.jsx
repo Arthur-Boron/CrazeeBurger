@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { fakeBasket } from "../fakeData/fakeBasket"
-import { deepClone, findById, findIndexById } from "../utils/array"
+import { deepClone, filterId, findById, findIndexById } from "../utils/array"
 
 export const useBasket = () => {
     const [basket, setBasket] = useState(fakeBasket.EMPTY)
@@ -29,10 +29,12 @@ export const useBasket = () => {
     const handleDeleteFromBasket = (productIdToDelete, newQuantity) => {
         const basketCopy = deepClone(basket)
         if (newQuantity == 0) {
-            const basketUpdated = basketCopy.filter((product) => product.id !== productIdToDelete.id)
+            console.log(productIdToDelete)
+            const basketUpdated = filterId(productIdToDelete, basketCopy)
+            console.log(basketCopy)
             setBasket(basketUpdated)
         } else {
-            const productToDecrementIndex = findIndexById(productIdToDelete.id, basket)
+            const productToDecrementIndex = findIndexById(productIdToDelete, basket)
             basketCopy[productToDecrementIndex].quantity -= 1;
             setBasket(basketCopy)
         }
