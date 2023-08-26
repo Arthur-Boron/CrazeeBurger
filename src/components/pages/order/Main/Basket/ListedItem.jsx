@@ -3,9 +3,9 @@ import { BsCartDashFill, BsCartXFill } from 'react-icons/bs'
 import { styled } from 'styled-components'
 import { theme } from '../../../../../theme'
 
-function ListedItem({title, imageSource, bottomDescription, quantity, className, isClickable, onDelete, onSuppressOneElement}) {
+function ListedItem({title, imageSource, bottomDescription, quantity, className, isClickable, onClick, onDelete, onSuppressOneElement}) {
   return (
-    <ListedItemStyled className={className} $isClickable={isClickable}>
+    <ListedItemStyled className={className} $isClickable={isClickable} onClick={onClick}>
         <div className={`delete-buttons ${quantity === 1 ? 'single-icon' : ''}`}>
             { quantity !== 1 && (
                 <div className='icon-container orange' onClick={onSuppressOneElement}>

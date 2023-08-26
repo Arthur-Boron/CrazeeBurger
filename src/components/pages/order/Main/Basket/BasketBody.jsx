@@ -4,22 +4,32 @@ import ListedItem from './ListedItem';
 import { formatPrice } from '../../../../../utils/maths';
 import OrderContext from '../../../../../context/OrderContext';
 import { useContext } from 'react';
+import { IMG_BY_DEFAULT } from '../../../../../enums/product';
 
 function BasketBody({basketDetails}) {
 
-    const {isModeAdmin, handleDeleteFromBasket} = useContext(OrderContext)
+    const {isModeAdmin, handleDeleteFromBasket, handleProductSelected} = useContext(OrderContext)
 
-    const handleDeleteAllQuantityFromCart = ({id}) => {
+    const handleDeleteAllQuantityFromCart = (event, {id}) => {
+        event.stopPropagation()
         handleDeleteFromBasket(id, 0)
     }
 
-    const handleDeleteOneQuantityFromCart = ({id, quantity}) => {
+    const handleDeleteOneQuantityFromCart = (event, {id, quantity}) => {
+        event.stopPropagation()
         handleDeleteFromBasket(id, quantity -1)
+    }
+
+    const handleClick = ({id}) => {
+        if (isModeAdmin) {
+            handleProductSelected(id)
+        }
     }
 
     return (
         <BasketBodyStyled>
-            {basketDetails.map(({ id, quantity, title, finalImageSource, price }) => {
+            {basketDetails.map(({ id, quantity, title, imageSource, price }) => {
+                const finalImageSource = imageSource && imageSource !== "" ? imageSource : IMG_BY_DEFAULT;
                 return (
                     <ListedItem 
                         key={id} 
@@ -27,9 +37,10 @@ function BasketBody({basketDetails}) {
                         imageSource={finalImageSource} 
                         bottomDescription={formatPrice(price)}
                         quantity={quantity}
-                        onDelete={() => handleDeleteAllQuantityFromCart({id})}
-                        onSuppressOneElement={() =>handleDeleteOneQuantityFromCart({id, quantity})}
+                        onDelete={(event) => handleDeleteAllQuantityFromCart(event, {id})}
+                        onSuppressOneElement={(event) =>handleDeleteOneQuantityFromCart(event, {id, quantity})}
                         isClickable={isModeAdmin}
+                        onClick={() => handleClick({id})}
                     />
                 );
         })}

@@ -9,14 +9,11 @@ import { MdRemoveShoppingCart } from "react-icons/md"
 import EmptyMenuAdmin from './EmptyMenuAdmin'
 import EmptyMenuClient from './EmptyMenuClient'
 import { theme } from '../../../../../theme'
-import AdminTabContext from '../../../../../context/AdminTabContext'
 import { EMPTY_PRODUCT, IMG_BY_DEFAULT } from '../../../../../enums/product'
-import { findById } from '../../../../../utils/array'
 
 function Menu() {
 
-  const {menu, isModeAdmin, handleAddToBasket, handleDeleteProduct, handleDeleteFromBasket, regenerateMenu, productSelected, setProductSelected, titleInputRef} = useContext(OrderContext)
-  const {setIsCollapsed, setSelectedTab} = useContext(AdminTabContext)
+  const {menu, isModeAdmin, handleAddToBasket, handleDeleteProduct, handleDeleteFromBasket, regenerateMenu, productSelected, setProductSelected, handleProductSelected} = useContext(OrderContext)
 
   const checkIfProductIsSelected = (productId, idProductClickedOn) => {
     return idProductClickedOn === productId
@@ -40,16 +37,6 @@ function Menu() {
     handleDeleteProduct(productIdToDelete)
     handleDeleteFromBasket(productIdToDelete, 0)
     displayToastNotification(productTitle)
-  }
-
-  const handleClick = async (cardId) => {
-    if (isModeAdmin) {
-      await setIsCollapsed(false)
-      await setSelectedTab('edit')
-      const productClickedOn = findById(cardId, menu)
-      await setProductSelected(productClickedOn)
-      titleInputRef.current.focus()
-    }
   }
 
   const handleCardAddedInBasket = (event, {id}) => {
@@ -83,7 +70,7 @@ function Menu() {
               hasDeleteButton={isModeAdmin}
               onAddProductInBasket={(event) => handleCardAddedInBasket(event, {id})}
               onDelete={(event) => handleCardDelete(event, {id, title})}
-              onClick={() => handleClick(id)}
+              onClick={() => handleProductSelected(id)}
               isHoverable={isModeAdmin}
               isSelected={checkIfProductIsSelected(id, productSelected.id)}
             />

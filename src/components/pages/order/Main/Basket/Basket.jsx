@@ -7,7 +7,6 @@ import OrderContext from '../../../../../context/OrderContext'
 import BasketBody from './BasketBody'
 import EmptyBasket from './EmptyBasket'
 import { findById } from '../../../../../utils/array'
-import { IMG_BY_DEFAULT } from '../../../../../enums/product'
 
 function Basket() {
 
@@ -17,12 +16,12 @@ function Basket() {
   const getBasketItemsWithDetails = (basket, menu) => {
     return basket.map(item => {
         const { title, imageSource, price } = findById(item.id, menu);
-        const finalImageSource = imageSource && imageSource !== "" ? imageSource : IMG_BY_DEFAULT;
+        
         return {
             ...item,
             title,
             price,
-            finalImageSource
+            imageSource
         };
     });
   }
