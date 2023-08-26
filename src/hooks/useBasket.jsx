@@ -26,13 +26,21 @@ export const useBasket = () => {
         
     }
 
-    const handleDeleteProduct = (productIdToDelete, quantity) => {
-        
+    const handleDeleteFromBasket = (productIdToDelete, newQuantity) => {
+        const basketCopy = deepClone(basket)
+        if (newQuantity == 0) {
+            const basketUpdated = basketCopy.filter((product) => product.id !== productIdToDelete.id)
+            setBasket(basketUpdated)
+        } else {
+            const productToDecrementIndex = findIndexById(productIdToDelete.id, basket)
+            basketCopy[productToDecrementIndex].quantity -= 1;
+            setBasket(basketCopy)
+        }
     }
 
     const regenerateBasket = () => {
         setBasket(fakeBasket.LARGE)
     }
 
-    return {basket, handleAddToBasket, handleEditProduct, handleDeleteProduct, regenerateBasket}
+    return {basket, handleAddToBasket, handleEditProduct, handleDeleteFromBasket, regenerateBasket}
 }

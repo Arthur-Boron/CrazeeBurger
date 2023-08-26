@@ -4,14 +4,14 @@ import ListedItem from './ListedItem';
 import { formatPrice } from '../../../../../utils/maths';
 import { IMG_BY_DEFAULT } from '../../../../../enums/product';
 
-function BasketBody({basket}) {
+function BasketBody({basket, handleDeleteFromBasket}) {
 
     const handleDeleteAllQuantityFromCart = (id) => {
-
+        handleDeleteFromBasket(id, 0)
     }
 
-    const handleDeleteOneQuantityFromCart = (id) => {
-
+    const handleDeleteOneQuantityFromCart = (id, quantity) => {
+        handleDeleteFromBasket(id, quantity -1)
     }
 
     return (
@@ -27,7 +27,7 @@ function BasketBody({basket}) {
                         bottomDescription={formatPrice(price)}
                         quantity={quantity}
                         onDelete={() => handleDeleteAllQuantityFromCart({id})}
-                        onSuppressOneElement={() =>handleDeleteOneQuantityFromCart({id})}
+                        onSuppressOneElement={() =>handleDeleteOneQuantityFromCart({id, quantity})}
                     />
                 );
         })}

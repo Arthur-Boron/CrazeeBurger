@@ -9,18 +9,17 @@ import EmptyBasket from './EmptyBasket'
 
 function Basket() {
 
-  const {basket} = useContext(OrderContext)
+  const {basket, handleDeleteFromBasket} = useContext(OrderContext)
   const isBasketEmpty = basket.length == 0
 
   const amountToPay = basket.reduce((acc, curr) => {
-    console.log(curr.price, replaceFrenchCommaWithDot(curr.price).toFixed(2))
     return acc + (replaceFrenchCommaWithDot(curr.price).toFixed(2) * curr.quantity)
   }, 0)
 
   return (
     <BasketStyled>
         <Total amountToPay={formatPrice(amountToPay)}/>
-        {isBasketEmpty ? <EmptyBasket /> : <BasketBody basket={basket}/>}
+        {isBasketEmpty ? <EmptyBasket /> : <BasketBody basket={basket} handleDeleteFromBasket={handleDeleteFromBasket}/>}
         <Footer className="footer" />
     </BasketStyled>
   )
