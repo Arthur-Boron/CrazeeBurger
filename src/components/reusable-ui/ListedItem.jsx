@@ -1,5 +1,5 @@
 import React from 'react'
-import { MdDeleteForever } from 'react-icons/md'
+import { BsCartDashFill, BsCartXFill } from 'react-icons/bs'
 import { styled } from 'styled-components'
 import { theme } from '../../theme'
 
@@ -7,8 +7,13 @@ function ListedItem({title, imageSource, bottomDescription, quantity, className}
   return (
     <ListedItemStyled className={className}>
         <div className="delete-buttons">
-            <MdDeleteForever className='icon'/>
-        </div>  
+            <div className='icon-container orange'>
+                <BsCartDashFill className='icon'/>
+            </div>
+            <div className='icon-container red'>
+                <BsCartXFill className='icon'/>
+            </div>
+        </div> 
         <div className="image-container">
             <img src={imageSource} alt={title} />
         </div>
@@ -101,36 +106,48 @@ const ListedItemStyled = styled.div`
     }
 
 
-    :hover {
+    &:hover {
         .delete-buttons {
             border: none;
+            cursor: pointer;
             box-sizing: border-box;
             position: absolute;
             top: 0;
             right: 0;
             bottom: 0;
-            width: 76px;
+            width: 70px;
             border-top-right-radius: ${theme.borderRadius.round};
             border-bottom-right-radius: ${theme.borderRadius.round};
-            padding: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: ${theme.colors.red};
+            overflow: hidden;
             color: ${theme.colors.white};
-            cursor: pointer;
+            display: flex;
+            flex-direction: column; 
+            align-items: stretch; 
 
-            .icon {
-                width: ${theme.fonts.size.P3};
-                height: ${theme.fonts.size.P3};
-            }
-
-            &:hover {
-                text-decoration: underline;
+            .icon-container {
+                width: 100%;   /* 100% of parent width */
+                height: 50%;  /* 50% of parent height */
+                display: flex;
+                align-items: center;
+                justify-content: center;
 
                 .icon {
-                    color: ${theme.colors.dark};
+                    width: ${theme.fonts.size.P3};
+                    /* Remove the height from here */
                 }
+    
+                
+                &:hover {
+                    color: black;
+                }
+            }
+            
+            .orange {
+                background: ${theme.colors.red};
+            }
+
+            .red {
+                background: ${theme.colors.redSecondary};
             }
         }
     }
