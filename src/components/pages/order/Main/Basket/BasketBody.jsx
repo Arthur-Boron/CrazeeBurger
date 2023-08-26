@@ -20,12 +20,6 @@ function BasketBody({basketDetails}) {
         handleDeleteFromBasket(id, quantity -1)
     }
 
-    const handleClick = ({id}) => {
-        if (isModeAdmin) {
-            handleProductSelected(id)
-        }
-    }
-
     return (
         <BasketBodyStyled>
             {basketDetails.map(({ id, quantity, title, imageSource, price }) => {
@@ -40,7 +34,7 @@ function BasketBody({basketDetails}) {
                         onDelete={(event) => handleDeleteAllQuantityFromCart(event, {id})}
                         onSuppressOneElement={(event) =>handleDeleteOneQuantityFromCart(event, {id, quantity})}
                         isClickable={isModeAdmin}
-                        onClick={() => handleClick({id})}
+                        onClick={() => handleProductSelected(id)}
                     />
                 );
         })}
