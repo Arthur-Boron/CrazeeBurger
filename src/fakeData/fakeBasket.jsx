@@ -4,7 +4,7 @@ export const SMALL = [
   {
     id: "1",
     title: "Burger Meal",
-    imageSource: "images/burger1.png",
+    imageSource: "/images/burger1.png",
     quantity: 1,
   },
 ]
@@ -12,28 +12,28 @@ export const SMALL = [
 export const MEDIUM = [
   {
     id: "1",
-    imageSource: "images/burger1.png",
+    imageSource: "/images/burger-bacon-egg.png",
     title: "Burger Smoke BBQ",
     price: 5,
     quantity: 2,
   },
   {
     id: "2",
-    imageSource: "images/burger6.png",
+    imageSource: "/images/burger-vegan.png",
     title: "Vegan Burger",
     price: 5,
     quantity: 1,
   },
   {
     id: "3",
-    imageSource: "https://www.ecomiam.com/images/Image/Frites-du-bistro-Code-Menlog.jpg",
+    imageSource: "/images/burger1.png",
     title: "Burger House",
     price: 5,
     quantity: 4,
   },
   {
     id: "4",
-    imageSource: "images/drink1.png",
+    imageSource: "/images/burger2.png",
     title: "Cheese Burger",
     price: 5,
     quantity: 4,
@@ -43,8 +43,8 @@ export const MEDIUM = [
 export const LARGE = [
   {
     id: "1",
-    imageSource: "/images/fries3.png",
-    title: "New York Fries",
+    imageSource: "",
+    title: "New Burger",
     price: 3.1678,
     quantity: 13,
     isAvailable: true,
