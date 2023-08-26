@@ -5,3 +5,7 @@ export function deepClone (array) {
 export function findById (id, array) {
     return array.find((obj) => obj.id == id)
 }
+
+export function findIndexById (id, array) {
+    return array.findIndex((obj) => obj.id == id)
+}
