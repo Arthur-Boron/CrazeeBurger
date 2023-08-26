@@ -150,11 +150,11 @@ const ListedItemStyled = styled.div`
             }
             
             .orange {
-                background: ${theme.colors.primary};
+                background: ${theme.colors.primary_line};
             }
 
             .red {
-                background: ${theme.colors.primary_line};
+                background: ${theme.colors.red};
             }
         }
     }
