@@ -8,7 +8,7 @@ import { IMG_BY_DEFAULT } from '../../../../../enums/product';
 
 function BasketBody({basketDetails}) {
 
-    const {isModeAdmin, handleDeleteFromBasket, handleProductSelected} = useContext(OrderContext)
+    const {isModeAdmin, productSelected, handleDeleteFromBasket, handleProductSelected} = useContext(OrderContext)
 
     const handleDeleteAllQuantityFromCart = (event, {id}) => {
         event.stopPropagation()
@@ -24,6 +24,7 @@ function BasketBody({basketDetails}) {
         <BasketBodyStyled>
             {basketDetails.map(({ id, quantity, title, imageSource, price }) => {
                 const finalImageSource = imageSource && imageSource !== "" ? imageSource : IMG_BY_DEFAULT;
+                const isSelected = productSelected.id == id
                 return (
                     <ListedItem 
                         key={id} 
@@ -34,6 +35,7 @@ function BasketBody({basketDetails}) {
                         onDelete={(event) => handleDeleteAllQuantityFromCart(event, {id})}
                         onSuppressOneElement={(event) =>handleDeleteOneQuantityFromCart(event, {id, quantity})}
                         isClickable={isModeAdmin}
+                        isSelected={isSelected}
                         onClick={() => handleProductSelected(id)}
                     />
                 );
