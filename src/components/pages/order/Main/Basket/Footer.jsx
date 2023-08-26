@@ -3,9 +3,9 @@ import { styled } from 'styled-components'
 import TextContainer from '../../../../reusable-ui/TextContainer'
 import { theme } from '../../../../../theme'
 
-function Footer() {
+function Footer({className}) {
   return (
-    <TextContainer>
+    <TextContainer className={className}>
         <FooterStyled>Codé avec ❤️ et React.JS</FooterStyled>
     </TextContainer>
   )
@@ -19,6 +19,7 @@ const FooterStyled = styled.span`
     align-items: center;
     font-family: ${theme.fonts.family.stylish};
     font-size: ${theme.fonts.size.P2};
+    border-bottom-left-radius: ${theme.borderRadius.extraRound};
     letter-spacing: 2px;
     text-align: center;
 `

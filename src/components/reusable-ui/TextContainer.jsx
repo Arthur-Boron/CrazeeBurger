@@ -2,9 +2,9 @@ import React from 'react'
 import { styled } from 'styled-components'
 import { theme } from '../../theme'
 
-function TextContainer({children}) {
+function TextContainer({className, children}) {
   return (
-    <TextContainerStyled>{children}</TextContainerStyled>
+    <TextContainerStyled className={className}>{children}</TextContainerStyled>
   )
 }
 
