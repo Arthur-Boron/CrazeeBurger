@@ -9,7 +9,7 @@ import EmptyBasket from './EmptyBasket'
 
 function Basket() {
 
-  const {basket, handleDeleteFromBasket} = useContext(OrderContext)
+  const {basket, isModeAdmin, handleDeleteFromBasket} = useContext(OrderContext)
   const isBasketEmpty = basket.length == 0
 
   const amountToPay = basket.reduce((acc, curr) => {
@@ -19,7 +19,7 @@ function Basket() {
   return (
     <BasketStyled>
         <Total amountToPay={formatPrice(amountToPay)}/>
-        {isBasketEmpty ? <EmptyBasket /> : <BasketBody basket={basket} handleDeleteFromBasket={handleDeleteFromBasket}/>}
+        {isBasketEmpty ? <EmptyBasket /> : <BasketBody basket={basket} isModeAdmin={isModeAdmin} handleDeleteFromBasket={handleDeleteFromBasket}/>}
         <Footer className="footer" />
     </BasketStyled>
   )

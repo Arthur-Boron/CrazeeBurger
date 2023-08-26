@@ -4,7 +4,7 @@ import ListedItem from './ListedItem';
 import { formatPrice } from '../../../../../utils/maths';
 import { IMG_BY_DEFAULT } from '../../../../../enums/product';
 
-function BasketBody({basket, handleDeleteFromBasket}) {
+function BasketBody({basket, isModeAdmin, handleDeleteFromBasket}) {
 
     const handleDeleteAllQuantityFromCart = ({id}) => {
         handleDeleteFromBasket(id, 0)
@@ -28,6 +28,7 @@ function BasketBody({basket, handleDeleteFromBasket}) {
                         quantity={quantity}
                         onDelete={() => handleDeleteAllQuantityFromCart({id})}
                         onSuppressOneElement={() =>handleDeleteOneQuantityFromCart({id, quantity})}
+                        isClickable={isModeAdmin}
                     />
                 );
         })}

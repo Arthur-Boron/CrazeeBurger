@@ -3,10 +3,9 @@ import { BsCartDashFill, BsCartXFill } from 'react-icons/bs'
 import { styled } from 'styled-components'
 import { theme } from '../../../../../theme'
 
-function ListedItem({title, imageSource, bottomDescription, quantity, className, onDelete, onSuppressOneElement}) {
-
+function ListedItem({title, imageSource, bottomDescription, quantity, className, isClickable, onDelete, onSuppressOneElement}) {
   return (
-    <ListedItemStyled className={className}>
+    <ListedItemStyled className={className} $isClickable={isClickable}>
         <div className={`delete-buttons ${quantity === 1 ? 'single-icon' : ''}`}>
             { quantity !== 1 && (
                 <div className='icon-container orange' onClick={onSuppressOneElement}>
@@ -37,6 +36,7 @@ function ListedItem({title, imageSource, bottomDescription, quantity, className,
 }
 
 const ListedItemStyled = styled.div`
+    cursor: ${({$isClickable}) => $isClickable ? "pointer" : "default"};
     box-sizing: border-box;
     user-select: none;
     height: 90px;
