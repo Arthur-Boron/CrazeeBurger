@@ -35,7 +35,7 @@ const BasketBodyStyled = styled.div`
         margin: ${theme.spacing.md} ${theme.spacing.sm} ${theme.spacing.xs} ${theme.spacing.sm};
     }
 
-    > :last-child {
+    > :last-child:not(:only-child) {
         margin: ${theme.spacing.xs} ${theme.spacing.sm} ${theme.spacing.md} ${theme.spacing.sm};
     }
 
