@@ -5,25 +5,21 @@ import { deepClone, filterId, findById, findIndexById } from "../utils/array"
 export const useBasket = () => {
     const [basket, setBasket] = useState(fakeBasket.EMPTY)
     
-    const handleAddToBasket = (productToAdd) => {
+    const handleAddToBasket = (productIdToAdd) => {
         const basketCopy = deepClone(basket)
-        const isProductAlreadyInBasket = findById(productToAdd.id, basket) !== undefined
+        const isProductAlreadyInBasket = findById(productIdToAdd, basket) !== undefined
         if (!isProductAlreadyInBasket) {
             const newBasketProduct = {
-                ...productToAdd,
+                id: productIdToAdd,
                 quantity: 1
             }
             const basketUpdated = [newBasketProduct, ...basketCopy];
             setBasket(basketUpdated)
         } else {
-            const productToAddIndex = findIndexById(productToAdd.id, basket)
+            const productToAddIndex = findIndexById(productIdToAdd, basket)
             basketCopy[productToAddIndex].quantity += 1;
             setBasket(basketCopy)
         }
-    }
-
-    const handleEditProduct = (productBeingEdited) => {
-        
     }
 
     const handleDeleteFromBasket = (productIdToDelete, newQuantity) => {
@@ -38,9 +34,5 @@ export const useBasket = () => {
         }
     }
 
-    const regenerateBasket = () => {
-        setBasket(fakeBasket.LARGE)
-    }
-
-    return {basket, handleAddToBasket, handleEditProduct, handleDeleteFromBasket, regenerateBasket}
+    return {basket, handleAddToBasket, handleDeleteFromBasket}
 }

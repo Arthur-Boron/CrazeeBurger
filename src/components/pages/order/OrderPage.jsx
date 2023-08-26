@@ -8,6 +8,7 @@ import AdminTabContext from '../../../context/AdminTabContext'
 import { EMPTY_PRODUCT } from '../../../enums/product'
 import { useMenu } from '../../../hooks/useMenu'
 import { useBasket } from '../../../hooks/useBasket'
+import { findById } from '../../../utils/array'
 
 
 function OrderPage() {
@@ -18,6 +19,16 @@ function OrderPage() {
   const titleInputRef = useRef()
   const {menu, handleAddProduct, handleEditProduct, handleDeleteProduct, regenerateMenu} = useMenu()
   const {basket, handleAddToBasket, handleDeleteFromBasket} = useBasket()
+
+  const handleProductSelected = async (cardId) => {
+    if (isModeAdmin) {
+      await setIsCollapsed(false)
+      await setSelectedTab('edit')
+      const productClickedOn = findById(cardId, menu)
+      await setProductSelected(productClickedOn)
+      titleInputRef.current.focus()
+    }
+  }
 
   const orderContextValue = {
     isModeAdmin,
@@ -34,6 +45,7 @@ function OrderPage() {
 
     newProduct,
     setNewProduct,
+    handleProductSelected,
 
     productSelected,
     setProductSelected,
