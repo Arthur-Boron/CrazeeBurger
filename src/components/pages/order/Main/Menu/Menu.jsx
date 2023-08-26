@@ -10,13 +10,12 @@ import EmptyMenuAdmin from './EmptyMenuAdmin'
 import EmptyMenuClient from './EmptyMenuClient'
 import { theme } from '../../../../../theme'
 import AdminTabContext from '../../../../../context/AdminTabContext'
-import { EMPTY_PRODUCT } from '../../../../../enums/product'
+import { EMPTY_PRODUCT, IMG_BY_DEFAULT } from '../../../../../enums/product'
 
 function Menu() {
 
   const {menu, isModeAdmin, handleDeleteProduct, regenerateMenu, productSelected, setProductSelected, titleInputRef} = useContext(OrderContext)
   const {setIsCollapsed, setSelectedTab} = useContext(AdminTabContext)
-  const IMG_BY_DEFAULT = '/images/coming-soon.png'
 
   const checkIfProductIsSelected = (productId, idProductClickedOn) => {
     return idProductClickedOn === productId
