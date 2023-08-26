@@ -6,6 +6,7 @@ import { BsPersonCircle } from 'react-icons/bs'
 import { BiSolidChevronRight } from 'react-icons/bi'
 import Button from '../../reusable-ui/Button'
 import { theme } from '../../../theme'
+import { createUser } from '../../../api/user'
 
 function LoginForm() {
 
@@ -14,6 +15,7 @@ function LoginForm() {
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        createUser(inputValue)
         setInputValue("")
         navigate('order/' + inputValue)
     }
