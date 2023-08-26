@@ -54,8 +54,7 @@ function Menu() {
 
   const handleCardAddedInBasket = (event, {id}) => {
     event.stopPropagation();
-    const productToAdd = findById(id, menu)
-    handleAddToBasket(productToAdd)
+    handleAddToBasket(id)
   }
 
   const handleCardDelete = (event, {id, title}) => {

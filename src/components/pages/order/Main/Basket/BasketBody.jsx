@@ -2,9 +2,12 @@ import { styled } from 'styled-components'
 import { theme } from '../../../../../theme'
 import ListedItem from './ListedItem';
 import { formatPrice } from '../../../../../utils/maths';
-import { IMG_BY_DEFAULT } from '../../../../../enums/product';
+import OrderContext from '../../../../../context/OrderContext';
+import { useContext } from 'react';
 
-function BasketBody({basket, isModeAdmin, handleDeleteFromBasket}) {
+function BasketBody({basketDetails}) {
+
+    const {isModeAdmin, handleDeleteFromBasket} = useContext(OrderContext)
 
     const handleDeleteAllQuantityFromCart = ({id}) => {
         handleDeleteFromBasket(id, 0)
@@ -16,9 +19,7 @@ function BasketBody({basket, isModeAdmin, handleDeleteFromBasket}) {
 
     return (
         <BasketBodyStyled>
-            {basket.map(({ id, title, imageSource, price, quantity }) => {
-                const finalImageSource = imageSource && imageSource !== "" ? imageSource : IMG_BY_DEFAULT;
-
+            {basketDetails.map(({ id, quantity, title, finalImageSource, price }) => {
                 return (
                     <ListedItem 
                         key={id} 
