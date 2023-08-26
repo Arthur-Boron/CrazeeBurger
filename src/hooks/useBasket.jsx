@@ -22,10 +22,6 @@ export const useBasket = () => {
         }
     }
 
-    const handleEditProduct = (productBeingEdited) => {
-        
-    }
-
     const handleDeleteFromBasket = (productIdToDelete, newQuantity) => {
         const basketCopy = deepClone(basket)
         if (newQuantity == 0) {
@@ -38,9 +34,5 @@ export const useBasket = () => {
         }
     }
 
-    const regenerateBasket = () => {
-        setBasket(fakeBasket.LARGE)
-    }
-
-    return {basket, handleAddToBasket, handleEditProduct, handleDeleteFromBasket, regenerateBasket}
+    return {basket, handleAddToBasket, handleDeleteFromBasket}
 }
