@@ -29,20 +29,20 @@ export const getUser = async(username) => {
 }
 
 export const createUser = async(username) => {
-    let userId = await getIdByUserName(username)
-    if (userId == undefined) {
-        const docRef = doc(db, "users", crypto.randomUUID());
-        const newDoc = {
-            username: username,
-            menu: fakeMenu.LARGE
-        }
-        setDoc(docRef, newDoc);
-    } else {
-        const docRef = doc(db, "users", userId);
-        const newDoc = {
-            username: username,
-            menu: fakeMenu.LARGE
-        }
-        setDoc(docRef, newDoc);
+    const docRef = doc(db, "users", crypto.randomUUID());
+    const newDoc = {
+        username: username,
+        menu: fakeMenu.LARGE
+    }
+    setDoc(docRef, newDoc);
+}
+
+export const authenticateUser = async(username) => {
+    //1- get user to see if it exists
+    const user = await getUser(username)
+
+    //2- if not, create user
+    if (!user) {
+        createUser(username)
     }
 }
