@@ -2,11 +2,11 @@ import React from 'react'
 import { css, styled } from 'styled-components'
 import { theme } from '../../theme'
 
-const TextInput = React.forwardRef(({value, onChange, Icon, className, version=light, ...extraProps}, ref) => {
+const TextInput = React.forwardRef(({id, value, onChange, Icon, className, version=light, ...extraProps}, ref) => {
   return (
     <TextInputStyled className={className} version={version}>
         <div className='inputIcon'>{Icon && Icon}</div>
-        <input ref={ref} value={value} type='text' onChange={onChange} {...extraProps}/>
+        <input id={id} ref={ref} name={value} value={value} type='text' onChange={onChange} {...extraProps}/>
     </TextInputStyled>
   )
 })

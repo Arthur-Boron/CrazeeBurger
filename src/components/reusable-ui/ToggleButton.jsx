@@ -11,6 +11,7 @@ function ToggleButton({
   return (
     <ToggleButtonStyled>
       <input
+        name="togglebutton"
         type="checkbox"
         className="toggle"
         id="rounded"
