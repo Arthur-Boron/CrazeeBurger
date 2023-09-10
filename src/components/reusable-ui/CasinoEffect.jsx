@@ -8,7 +8,7 @@ function CasinoEffect({count}) {
                 initial={{ y: '50%', opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: '-50%', opacity: 0 }}
-                transition={{ duration: 0.15 }}
+                transition={{ duration: 0.10 }}
             >
                 {count}
             </motion.span>

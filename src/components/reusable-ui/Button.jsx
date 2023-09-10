@@ -9,7 +9,7 @@ function Button({Label, Icon, version='primary', className, onClick}) {
     if (!isClickable) return;
 
     setIsClickable(false);
-    setTimeout(() => setIsClickable(true), 500);
+    setTimeout(() => setIsClickable(true), 300);
 
     if (onClick) onClick(e);
   }
