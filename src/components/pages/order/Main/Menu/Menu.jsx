@@ -62,7 +62,7 @@ function Menu() {
   // Si le menu est vide
   if (menu.length === 0) {
     return isModeAdmin ? (
-      <EmptyMenuAdmin onReset={regenerateMenu} />
+      <EmptyMenuAdmin onReset={() => regenerateMenu(user.id)} />
     ) : (
       <EmptyMenuClient />
     );

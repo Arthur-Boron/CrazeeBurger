@@ -27,8 +27,9 @@ export const useMenu = () => {
         syncBothMenus(userId, menuUpdated)
     }
 
-    const regenerateMenu = () => {
+    const regenerateMenu = (userId) => {
         setMenu(fakeMenu.LARGE)
+        syncBothMenus(userId, fakeMenu.LARGE)
     }
 
     return {menu, setMenu, handleAddProduct, handleEditProduct, handleDeleteProduct, regenerateMenu}
