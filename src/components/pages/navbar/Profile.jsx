@@ -2,19 +2,25 @@ import { BsPersonCircle } from "react-icons/bs"
 import { Link, useParams } from "react-router-dom"
 import styled from "styled-components"
 import { theme } from "../../../theme"
+import AuthContext from "../../../context/AuthContext"
+import { useContext } from "react"
 
 function Profile() {
 
-  const {name} = useParams()
+  const {user} = useContext(AuthContext)
+  
+  const logout = () => {
+    localStorage.removeItem('user');
+  }
 
   return (
     <ProfileStyled>
       <div className="info">
         <p>
-          Hey, <b>{name}</b>
+          Hey, <b>{user.name}</b>
         </p>
         <Link to="/">
-          <div className="description">
+          <div className="description" onClick={logout}>
             <small>Se déconnecter</small>
           </div>
         </Link>

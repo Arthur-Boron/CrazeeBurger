@@ -25,24 +25,34 @@ const getDataByUserName = async (username) => {
 }
 
 export const getUser = async(username) => {
-    return getDataByUserName(username)
+    return getIdByUserName(username)
 }
 
 export const createUser = async(username) => {
-    const docRef = doc(db, "users", crypto.randomUUID());
+    const userId = crypto.randomUUID();
+    const docRef = doc(db, "users", userId);
+    
     const newDoc = {
         username: username,
         menu: fakeMenu.LARGE
     }
-    setDoc(docRef, newDoc);
+    
+    try {
+        await setDoc(docRef, newDoc);
+        return userId;  // retourne l'ID du nouvel utilisateur créé
+    } catch (error) {
+        console.error("Erreur lors de l'enregistrement des données :", error);
+    }
 }
 
 export const authenticateUser = async(username) => {
     //1- get user to see if it exists
-    const user = await getUser(username)
+    const userId = await getUser(username)
 
-    //2- if not, create user
-    if (!user) {
-        createUser(username)
+    if (!userId) {
+        const newUser = await createUser(username);
+        return newUser;
     }
+
+    return userId;
 }

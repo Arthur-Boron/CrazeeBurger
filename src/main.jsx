@@ -11,6 +11,7 @@ import LoginPage from './components/pages/login/LoginPage.jsx';
 import { ToastContainer } from 'react-toastify';
 import { styled } from 'styled-components';
 import { theme } from './theme';
+import { AuthProvider } from './provider/AuthProvider';
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />
   },
   {
-      path: "/order/:name",
+      path: "/order",
       element: <OrderPage />,
       errorElement: <ErrorPage />
   }
@@ -38,7 +39,9 @@ const ToastContainerStyled = styled(ToastContainer)`
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ToastContainerStyled />
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>
 )
 
