@@ -9,8 +9,8 @@ import { EMPTY_PRODUCT } from '../../../enums/product'
 import { useMenu } from '../../../hooks/useMenu'
 import { useBasket } from '../../../hooks/useBasket'
 import { findById } from '../../../utils/array'
-import {getMenuAndBasket} from '../../../api/product'
 import AuthContext from '../../../context/AuthContext'
+import { initializeSession } from './helpers/initializeSession'
 
 
 function OrderPage() {
@@ -33,15 +33,10 @@ function OrderPage() {
     }
   }
 
-  const initializeMenuAndBasket = async () => {
-    const menuAndBasketReceived = await getMenuAndBasket(user.id)
-    setMenu(menuAndBasketReceived.menu)
-    setBasket(menuAndBasketReceived.basket)
-  }
-
   useEffect(() => {
-    initializeMenuAndBasket()
+    initializeSession(user.id, setMenu, setBasket)
   }, [])
+  
 
   const orderContextValue = {
     isModeAdmin,
