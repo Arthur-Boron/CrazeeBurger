@@ -1,4 +1,4 @@
-import { collection, doc, getDoc, getDocs, query, setDoc, where } from "firebase/firestore"
+import { collection, doc, getDocs, query, setDoc, where } from "firebase/firestore"
 import { db } from "./firebase-config"
 import { fakeMenu } from "../fakeData/fakeMenu"
 
@@ -23,7 +23,8 @@ export const createUser = async(username) => {
     
     const newDoc = {
         username: username,
-        menu: fakeMenu.LARGE
+        menu: fakeMenu.LARGE,
+        basket: []
     }
     
     try {

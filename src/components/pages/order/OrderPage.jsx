@@ -9,7 +9,7 @@ import { EMPTY_PRODUCT } from '../../../enums/product'
 import { useMenu } from '../../../hooks/useMenu'
 import { useBasket } from '../../../hooks/useBasket'
 import { findById } from '../../../utils/array'
-import {getMenu} from '../../../api/product'
+import {getMenuAndBasket} from '../../../api/product'
 import AuthContext from '../../../context/AuthContext'
 
 
@@ -20,7 +20,7 @@ function OrderPage() {
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
   const titleInputRef = useRef()
   const {menu, setMenu, handleAddProduct, handleEditProduct, handleDeleteProduct, regenerateMenu} = useMenu()
-  const {basket, handleAddToBasket, handleDeleteFromBasket} = useBasket()
+  const {basket, setBasket, handleAddToBasket, handleDeleteFromBasket} = useBasket()
   const {user} = useContext(AuthContext)
 
   const handleProductSelected = async (cardId) => {
@@ -33,12 +33,14 @@ function OrderPage() {
     }
   }
 
-  const initializeMenu = async () => {
-    const menuReceived = await getMenu(user.id)
-    setMenu(menuReceived)
+  const initializeMenuAndBasket = async () => {
+    const menuAndBasketReceived = await getMenuAndBasket(user.id)
+    setMenu(menuAndBasketReceived.menu)
+    setBasket(menuAndBasketReceived.basket)
   }
+
   useEffect(() => {
-    initializeMenu()
+    initializeMenuAndBasket()
   }, [])
 
   const orderContextValue = {

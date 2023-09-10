@@ -9,11 +9,20 @@ export const syncBothMenus = (userId, menu) => {
     updateDoc(docRef, newDoc)
 }
 
-export const getMenu = async (userId) => {
+export const syncBothBaskets = (userId, basket) => {
+    const docRef = doc(db, "users", userId);
+    const newDoc = {
+        basket: basket
+    }
+    updateDoc(docRef, newDoc)
+}
+
+export const getMenuAndBasket = async (userId) => {
     const docRef = doc(db, "users", userId)
     const docSnapshot = await getDoc(docRef);
     if (docSnapshot.exists()) {
-        return docSnapshot.data().menu;
+        const {menu, basket} = docSnapshot.data();
+        return {menu, basket}
     } else {
         return null;
     }
