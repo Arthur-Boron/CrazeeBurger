@@ -1,16 +1,25 @@
 import React from 'react'
 import { styled } from 'styled-components'
 import { theme } from '../../../../../../theme'
+import { AnimatePresence, motion } from 'framer-motion'
 
 function ImagePreview({imageSource, title}) {
   return (
-    <ImagePreviewStyled>
-        {imageSource ? <img src={imageSource} alt={title} /> : <div className='empty-image'>Aucune Image</div>}
-    </ImagePreviewStyled>
+    <AnimatePresence mode='wait'>
+      <ImagePreviewStyled
+        key={imageSource}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.15 }}
+      >
+          {imageSource ? <img src={imageSource} alt={title} /> : <div className='empty-image'>Aucune Image</div>}
+      </ImagePreviewStyled>
+    </AnimatePresence>
   )
 }
 
-const ImagePreviewStyled = styled.div`
+const ImagePreviewStyled = styled(motion.div)`
   grid-area: 1/1/4/2;
   display: flex;
   align-items: center;
