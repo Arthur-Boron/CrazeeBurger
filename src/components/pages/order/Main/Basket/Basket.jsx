@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { styled } from 'styled-components'
 import Total from './Total'
 import Footer from './Footer'
@@ -13,6 +13,21 @@ function Basket() {
 
   const {basket, menu} = useContext(OrderContext)
   const isBasketEmpty = basket?.length == 0
+  const [displayEmptyBasket, setDisplayEmptyBasket] = useState(!isBasketEmpty);
+
+  useEffect(() => {
+    if (basket === undefined) {
+      return
+    }
+
+    if (isBasketEmpty) {
+      setTimeout(() => {
+        setDisplayEmptyBasket(true);
+      }, 500);
+    } else {
+      setDisplayEmptyBasket(false);
+    }
+  }, [isBasketEmpty, basket]);
   
   const getBasketItemsWithDetails = (basket, menu) => {
     return basket?.map(item => {
@@ -38,7 +53,7 @@ function Basket() {
         <Total amountToPay={formatPrice(amountToPay)}/>
         {basket === undefined ? (
             <LoadingBasket />
-        ) : isBasketEmpty ? (
+        ) : displayEmptyBasket ? (
             <EmptyBasket />
         ) : (
             <BasketBody basketDetails={basketDetails} />
