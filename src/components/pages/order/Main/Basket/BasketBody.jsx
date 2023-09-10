@@ -5,19 +5,21 @@ import { formatPrice } from '../../../../../utils/maths';
 import OrderContext from '../../../../../context/OrderContext';
 import { useContext } from 'react';
 import { IMG_BY_DEFAULT } from '../../../../../enums/product';
+import AuthContext from '../../../../../context/AuthContext';
 
 function BasketBody({basketDetails}) {
 
     const {isModeAdmin, productSelected, handleDeleteFromBasket, handleProductSelected} = useContext(OrderContext)
+    const {user} = useContext(AuthContext)
 
     const handleDeleteAllQuantityFromCart = (event, {id}) => {
         event.stopPropagation()
-        handleDeleteFromBasket(id, 0)
+        handleDeleteFromBasket(id, 0, user.id)
     }
 
     const handleDeleteOneQuantityFromCart = (event, {id, quantity}) => {
         event.stopPropagation()
-        handleDeleteFromBasket(id, quantity -1)
+        handleDeleteFromBasket(id, quantity -1, user.id)
     }
 
     return (

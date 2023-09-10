@@ -5,6 +5,7 @@ import { FaHamburger } from 'react-icons/fa'
 const getInputConfig = (newProduct) => 
     [
         {
+            id: 'title',
             key: 'title',
             name:"title",
             value:newProduct.title,
@@ -14,6 +15,7 @@ const getInputConfig = (newProduct) =>
             required:true
         },
         {
+            id: 'imageSource',
             key: 'imageSource',
             name:"imageSource",
             value:newProduct.imageSource,
@@ -22,6 +24,7 @@ const getInputConfig = (newProduct) =>
             type:"text"
         },
         {
+            id: 'price',
             key: 'price',
             name:"price",
             value: newProduct.price ? newProduct.price : '',

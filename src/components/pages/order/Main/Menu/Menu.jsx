@@ -10,10 +10,13 @@ import EmptyMenuAdmin from './EmptyMenuAdmin'
 import EmptyMenuClient from './EmptyMenuClient'
 import { theme } from '../../../../../theme'
 import { EMPTY_PRODUCT, IMG_BY_DEFAULT } from '../../../../../enums/product'
+import AuthContext from '../../../../../context/AuthContext'
+import LoadingMenu from './LoadingMenu'
 
 function Menu() {
 
   const {menu, isModeAdmin, handleAddToBasket, handleDeleteProduct, handleDeleteFromBasket, regenerateMenu, productSelected, setProductSelected, handleProductSelected} = useContext(OrderContext)
+  const {user} = useContext(AuthContext)
 
   const checkIfProductIsSelected = (productId, idProductClickedOn) => {
     return idProductClickedOn === productId
@@ -34,14 +37,14 @@ function Menu() {
   }
 
   const handleDelete = (productIdToDelete, productTitle) => {
-    handleDeleteProduct(productIdToDelete)
+    handleDeleteProduct(productIdToDelete, user.id)
     handleDeleteFromBasket(productIdToDelete, 0)
     displayToastNotification(productTitle)
   }
 
   const handleCardAddedInBasket = (event, {id}) => {
     event.stopPropagation();
-    handleAddToBasket(id)
+    handleAddToBasket(id, user.id)
   }
 
   const handleCardDelete = (event, {id, title}) => {
@@ -52,11 +55,20 @@ function Menu() {
     }
   }
 
-  return menu.length === 0 ? (
-    isModeAdmin ? 
-      <EmptyMenuAdmin onReset={regenerateMenu} /> : 
+  if (menu === undefined) {
+    return <LoadingMenu />;
+  }
+
+  // Si le menu est vide
+  if (menu.length === 0) {
+    return isModeAdmin ? (
+      <EmptyMenuAdmin onReset={() => regenerateMenu(user.id)} />
+    ) : (
       <EmptyMenuClient />
-  ) : (
+    );
+  }
+
+  return (
     <MenuStyled>
       {menu.map(({ id, title, imageSource, price }) => {
         const finalImageSource = imageSource && imageSource !== "" ? imageSource : IMG_BY_DEFAULT;
