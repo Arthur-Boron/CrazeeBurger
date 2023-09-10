@@ -13,17 +13,6 @@ const getIdByUserName = async (username) => {
     }
 }
 
-const getDataByUserName = async (username) => {
-    const docRef = collection(db, "users")
-    const querySnapshot = await getDocs(query(docRef, where("username", "==", username)));
-    if (!querySnapshot.empty) {
-        const userDoc = querySnapshot.docs[0];
-        return userDoc.data();
-    } else {
-        return null;
-    }
-}
-
 export const getUser = async(username) => {
     return getIdByUserName(username)
 }

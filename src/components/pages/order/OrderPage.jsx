@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import { styled } from 'styled-components'
 import Navbar from '../navbar/Navbar'
 import Main from './Main/Main'
@@ -9,6 +9,8 @@ import { EMPTY_PRODUCT } from '../../../enums/product'
 import { useMenu } from '../../../hooks/useMenu'
 import { useBasket } from '../../../hooks/useBasket'
 import { findById } from '../../../utils/array'
+import {getMenu} from '../../../api/product'
+import AuthContext from '../../../context/AuthContext'
 
 
 function OrderPage() {
@@ -17,8 +19,9 @@ function OrderPage() {
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
   const titleInputRef = useRef()
-  const {menu, handleAddProduct, handleEditProduct, handleDeleteProduct, regenerateMenu} = useMenu()
+  const {menu, setMenu, handleAddProduct, handleEditProduct, handleDeleteProduct, regenerateMenu} = useMenu()
   const {basket, handleAddToBasket, handleDeleteFromBasket} = useBasket()
+  const {user} = useContext(AuthContext)
 
   const handleProductSelected = async (cardId) => {
     if (isModeAdmin) {
@@ -29,6 +32,14 @@ function OrderPage() {
       titleInputRef.current.focus()
     }
   }
+
+  const initializeMenu = async () => {
+    const menuReceived = await getMenu(user.id)
+    setMenu(menuReceived)
+  }
+  useEffect(() => {
+    initializeMenu()
+  }, [])
 
   const orderContextValue = {
     isModeAdmin,
