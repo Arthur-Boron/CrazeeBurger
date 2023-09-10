@@ -2,6 +2,7 @@ import { css, styled } from 'styled-components'
 import { theme } from '../../theme'
 import Button from './Button'
 import {TiDelete} from 'react-icons/ti'
+import {motion} from 'framer-motion'
 
 function Card({title, imageSource, leftDescription, hasDeleteButton, onAddProductInBasket, onDelete, onClick, isHoverable, isSelected}) {
 
@@ -10,9 +11,15 @@ function Card({title, imageSource, leftDescription, hasDeleteButton, onAddProduc
       {hasDeleteButton && (<button className='delete-button' aria-label='delete-button' onClick={onDelete}>
         <TiDelete className='icon' />
       </button>)}
-      <div className="image-container">
+      <motion.div className="image-container"
+        key={imageSource}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.15 }}
+      >
         <img src={imageSource} alt={title} />
-      </div>
+      </motion.div>
       <div className="info-text">
         <div className="title">{title}</div>
         <div className="description">
