@@ -9,10 +9,12 @@ import Form from '../../../../../reusable-ui/Form'
 import Button from '../../../../../reusable-ui/Button'
 import { styled } from 'styled-components'
 import { EMPTY_PRODUCT } from '../../../../../../enums/product'
+import AuthContext from '../../../../../../context/AuthContext'
 
 function AddForm() {
 
     const {handleAddProduct, newProduct, setNewProduct} = useContext(OrderContext)
+    const {user} = useContext(AuthContext)
 
     const displayToastNotification = (productName) => {
         toast.success(`Produit '${productName}' ajouté avec succès`, {
@@ -37,7 +39,7 @@ function AddForm() {
         }
 
         setNewProduct(EMPTY_PRODUCT)
-        handleAddProduct(newProductToAdd)
+        handleAddProduct(newProductToAdd, user.id)
         displayToastNotification(newProductToAdd.title)
     }
 
