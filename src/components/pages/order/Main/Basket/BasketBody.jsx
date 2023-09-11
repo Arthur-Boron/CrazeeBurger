@@ -63,6 +63,7 @@ const BasketBodyStyled = styled.div`
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+    overflow-x: hidden;
 
     > :first-child {
         margin: ${theme.spacing.md} ${theme.spacing.sm} ${theme.spacing.xs} ${theme.spacing.sm};
