@@ -3,7 +3,7 @@ import { styled } from 'styled-components'
 import AdminTabs from './AdminTabs'
 import AdminPanel from './AdminPanel/AdminPanel'
 import AdminTabContext from '../../../../../context/AdminTabContext'
-import { motion, useAnimation } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 function Admin() {
 
