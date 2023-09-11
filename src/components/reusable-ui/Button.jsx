@@ -3,19 +3,9 @@ import { css, styled } from 'styled-components'
 import { theme } from '../../theme'
 
 function Button({Label, Icon, version='primary', className, onClick}) {
-  const [isClickable, setIsClickable] = useState(true);
-
-  function handleButtonClick(e) {
-    if (!isClickable) return;
-
-    setIsClickable(false);
-    setTimeout(() => setIsClickable(true), 300);
-
-    if (onClick) onClick(e);
-  }
 
   return (
-    <ButtonStyled type='submit' className={className} version={version} onClick={handleButtonClick} disabled={!isClickable}>
+    <ButtonStyled type='submit' className={className} version={version} onClick={onClick}>
         <span>{Label && Label}</span>
         {Icon && Icon}
     </ButtonStyled>
@@ -33,9 +23,7 @@ const ButtonStyled = styled.button`
   font-family: 'Open Sans', sans-serif;
 
   &:hover {
-    ${({ disabled }) => !disabled && `
-      cursor: pointer;
-    `};
+    cursor: pointer;
   }
 
   &:active {
@@ -43,7 +31,6 @@ const ButtonStyled = styled.button`
   }
 
   ${({version}) => extraStyle[version]};
-  ${({ disabled }) => disabled && disabledStyle};
 `
 
 const extraPrimaryStyle = css`
@@ -95,10 +82,5 @@ const extraStyle = {
     secondary: extraSecondaryStyle,
     success: extraSuccessStyle
 }
-
-const disabledStyle = css`
-    opacity: 0.6;
-    cursor: not-allowed;
-`;
 
 export default Button
