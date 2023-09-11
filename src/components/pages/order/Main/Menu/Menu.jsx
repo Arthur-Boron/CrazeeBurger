@@ -71,11 +71,11 @@ function Menu() {
 
   return (
     <MenuStyled>
+      <AnimatePresence>
       {menu.map(({ id, title, imageSource, price }) => {
         const finalImageSource = imageSource && imageSource !== "" ? imageSource : IMG_BY_DEFAULT;
 
         return (
-          <AnimatePresence mode='wait' key={id}>
             <motion.div
               key={id}
               initial={{ opacity: 0, x: '-100%' }}
@@ -96,9 +96,9 @@ function Menu() {
                 isSelected={checkIfProductIsSelected(id, productSelected.id)}
               />
             </motion.div>
-          </AnimatePresence>
         );
       })}
+      </AnimatePresence>
     </MenuStyled>
   )
 }
