@@ -11,6 +11,7 @@ import { useBasket } from '../../../hooks/useBasket'
 import { findById } from '../../../utils/array'
 import AuthContext from '../../../context/AuthContext'
 import { initializeSession } from './helpers/initializeSession'
+import { useNavigate } from 'react-router-dom'
 
 
 function OrderPage() {
@@ -33,8 +34,14 @@ function OrderPage() {
     }
   }
 
+  const navigate = useNavigate()
+
   useEffect(() => {
-    initializeSession(user.id, setMenu, setBasket)
+    if (user) {
+      initializeSession(user.id, setMenu, setBasket)
+    } else {
+      navigate('/')
+    }
   }, [])
   
 
@@ -74,12 +81,12 @@ function OrderPage() {
   return (
     <OrderContext.Provider value={orderContextValue}>
       <AdminTabContext.Provider value={adminTabsContextValue}>
-        <OrderPageStyled>
+        {user && <OrderPageStyled>
           <div className='container'>
             <Navbar/>
             <Main />
           </div>
-        </OrderPageStyled>
+        </OrderPageStyled>}
       </AdminTabContext.Provider>
     </OrderContext.Provider>
     
