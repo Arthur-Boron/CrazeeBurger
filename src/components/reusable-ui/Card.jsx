@@ -8,9 +8,14 @@ function Card({title, imageSource, leftDescription, hasDeleteButton, onAddProduc
 
   return (
     <CardStyled className="product" onClick={onClick} $isHoverable={isHoverable} $isSelected={isSelected}>
-      {hasDeleteButton && (<button className='delete-button' aria-label='delete-button' onClick={onDelete}>
-        <TiDelete className='icon' />
-      </button>)}
+      {hasDeleteButton && (
+        <motion.button className='delete-button' aria-label='delete-button' onClick={onDelete}
+          initial={{ opacity: 0, x: '80%' }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <TiDelete className='icon' />
+        </motion.button>)}
       <motion.div className="image-container"
         key={imageSource}
         initial={{ opacity: 0 }}
