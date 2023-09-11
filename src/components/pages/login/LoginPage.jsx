@@ -13,13 +13,12 @@ function LoginPage() {
     const splashTimer = setTimeout(() => {
       setShowSplash(false);
 
-      // Après que le splash screen ait disparu, déclenchez l'affichage du formulaire
       const formTimer = setTimeout(() => {
         setShowLoginForm(true);
-      }, 500); // par exemple, attendez 0.5 seconde
+      }, 500);
 
       return () => clearTimeout(formTimer);
-    }, 3000);
+    }, 500);
 
     return () => clearTimeout(splashTimer);
   }, []);
