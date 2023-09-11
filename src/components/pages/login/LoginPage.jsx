@@ -1,13 +1,55 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import LoginForm from './LoginForm'
 import Logo from '../../reusable-ui/Logo'
 import { styled } from 'styled-components'
+import { AnimatePresence, motion } from 'framer-motion';
 
 function LoginPage() {
+
+  const [showSplash, setShowSplash] = useState(true);
+  const [showLoginForm, setShowLoginForm] = useState(false);
+
+  useEffect(() => {
+    const splashTimer = setTimeout(() => {
+      setShowSplash(false);
+
+      // Après que le splash screen ait disparu, déclenchez l'affichage du formulaire
+      const formTimer = setTimeout(() => {
+        setShowLoginForm(true);
+      }, 500); // par exemple, attendez 0.5 seconde
+
+      return () => clearTimeout(formTimer);
+    }, 3000);
+
+    return () => clearTimeout(splashTimer);
+  }, []);
+
   return (
     <LoginPageStyled>
-      <Logo className="logo-login-page"/>
-      <LoginForm />
+      <AnimatePresence>
+        {showSplash && (
+          <motion.div
+            key="splash"
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <Logo className="logo-login-page" />
+          </motion.div>
+        )}
+
+        {showLoginForm && (
+          <motion.div 
+            key="form"
+            initial={{ y: "100vh" }} 
+            animate={{ y: 0 }} 
+            transition={{ duration: 0.5 }}
+          >
+            <Logo className="logo-login-page" />
+            <LoginForm />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </LoginPageStyled>
   )
 }
@@ -18,6 +60,7 @@ const LoginPageStyled = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 
   &::before {
     content: "";
@@ -36,6 +79,7 @@ const LoginPageStyled = styled.div`
 
   .logo-login-page {
     transform: scale(2.5);
+    justify-content: center;
   }
 `
 
