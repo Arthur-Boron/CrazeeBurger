@@ -1,5 +1,5 @@
 import { BsPersonCircle } from "react-icons/bs"
-import { Link, useParams } from "react-router-dom"
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 import { theme } from "../../../theme"
 import AuthContext from "../../../context/AuthContext"
@@ -17,7 +17,7 @@ function Profile() {
     <ProfileStyled>
       <div className="info">
         <p>
-          Hey, <b>{user.name}</b>
+          Hey, <b>{user ? user.name : 'Guest'}</b>
         </p>
         <Link to="/">
           <div className="description" onClick={logout}>
