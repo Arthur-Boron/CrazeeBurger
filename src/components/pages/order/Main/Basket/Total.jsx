@@ -2,13 +2,14 @@ import React from 'react'
 import { styled } from 'styled-components'
 import { theme } from '../../../../../theme'
 import TextContainer from '../../../../reusable-ui/TextContainer'
+import CasinoEffect from '../../../../reusable-ui/CasinoEffect'
 
 function Total({amountToPay}) {
   return (
     <TextContainer>
         <TotalStyled>
             <span>TOTAL</span>
-            <span>{amountToPay}</span>
+            <CasinoEffect count={amountToPay} />
         </TotalStyled>
     </TextContainer>
   )

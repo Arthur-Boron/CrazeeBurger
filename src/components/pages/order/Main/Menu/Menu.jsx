@@ -12,6 +12,7 @@ import { theme } from '../../../../../theme'
 import { EMPTY_PRODUCT, IMG_BY_DEFAULT } from '../../../../../enums/product'
 import AuthContext from '../../../../../context/AuthContext'
 import LoadingMenu from './LoadingMenu'
+import {AnimatePresence, motion} from 'framer-motion'
 
 function Menu() {
 
@@ -38,7 +39,7 @@ function Menu() {
 
   const handleDelete = (productIdToDelete, productTitle) => {
     handleDeleteProduct(productIdToDelete, user.id)
-    handleDeleteFromBasket(productIdToDelete, 0)
+    handleDeleteFromBasket(productIdToDelete, 0, user.id)
     displayToastNotification(productTitle)
   }
 
@@ -70,24 +71,34 @@ function Menu() {
 
   return (
     <MenuStyled>
+      <AnimatePresence>
       {menu.map(({ id, title, imageSource, price }) => {
         const finalImageSource = imageSource && imageSource !== "" ? imageSource : IMG_BY_DEFAULT;
 
         return (
-            <Card 
-              key={id} 
-              title={title} 
-              imageSource={finalImageSource} 
-              leftDescription={formatPrice(price)}
-              hasDeleteButton={isModeAdmin}
-              onAddProductInBasket={(event) => handleCardAddedInBasket(event, {id})}
-              onDelete={(event) => handleCardDelete(event, {id, title})}
-              onClick={() => handleProductSelected(id)}
-              isHoverable={isModeAdmin}
-              isSelected={checkIfProductIsSelected(id, productSelected.id)}
-            />
+            <motion.div
+              key={id}
+              initial={{ opacity: 0, x: '-100%' }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <Card 
+                key={id} 
+                title={title} 
+                imageSource={finalImageSource} 
+                leftDescription={formatPrice(price)}
+                hasDeleteButton={isModeAdmin}
+                onAddProductInBasket={(event) => handleCardAddedInBasket(event, {id})}
+                onDelete={(event) => handleCardDelete(event, {id, title})}
+                onClick={() => handleProductSelected(id)}
+                isHoverable={isModeAdmin}
+                isSelected={checkIfProductIsSelected(id, productSelected.id)}
+              />
+            </motion.div>
         );
       })}
+      </AnimatePresence>
     </MenuStyled>
   )
 }

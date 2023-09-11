@@ -6,6 +6,7 @@ import OrderContext from '../../../../../context/OrderContext';
 import { useContext } from 'react';
 import { IMG_BY_DEFAULT } from '../../../../../enums/product';
 import AuthContext from '../../../../../context/AuthContext';
+import { AnimatePresence, motion } from 'framer-motion';
 
 function BasketBody({basketDetails}) {
 
@@ -24,24 +25,34 @@ function BasketBody({basketDetails}) {
 
     return (
         <BasketBodyStyled>
-            {basketDetails.map(({ id, quantity, title, imageSource, price }) => {
-                const finalImageSource = imageSource && imageSource !== "" ? imageSource : IMG_BY_DEFAULT;
-                const isSelected = productSelected.id == id
-                return (
-                    <ListedItem 
-                        key={id} 
-                        title={title} 
-                        imageSource={finalImageSource} 
-                        bottomDescription={formatPrice(price)}
-                        quantity={quantity}
-                        onDelete={(event) => handleDeleteAllQuantityFromCart(event, {id})}
-                        onSuppressOneElement={(event) =>handleDeleteOneQuantityFromCart(event, {id, quantity})}
-                        isClickable={isModeAdmin}
-                        isSelected={isSelected}
-                        onClick={() => handleProductSelected(id)}
-                    />
-                );
-        })}
+            <AnimatePresence>
+                {basketDetails.map(({ id, quantity, title, imageSource, price }) => {
+                    const finalImageSource = imageSource && imageSource !== "" ? imageSource : IMG_BY_DEFAULT;
+                    const isSelected = productSelected.id == id
+                    return (
+                        <motion.div 
+                            key={id}
+                            initial={{ x: '100%' }}
+                            animate={{ x: '0%' }}
+                            exit={{ x: '-100%' }}
+                            transition={{ duration: 0.3 }}
+                        >
+                            <ListedItem 
+                                key={id} 
+                                title={title} 
+                                imageSource={finalImageSource} 
+                                bottomDescription={formatPrice(price)}
+                                quantity={quantity}
+                                onDelete={(event) => handleDeleteAllQuantityFromCart(event, {id})}
+                                onSuppressOneElement={(event) =>handleDeleteOneQuantityFromCart(event, {id, quantity})}
+                                isClickable={isModeAdmin}
+                                isSelected={isSelected}
+                                onClick={() => handleProductSelected(id)}
+                            />
+                        </motion.div>
+                    );
+                })}
+            </AnimatePresence>
         </BasketBodyStyled>
     )
 }
@@ -52,6 +63,7 @@ const BasketBodyStyled = styled.div`
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+    overflow-x: hidden;
 
     > :first-child {
         margin: ${theme.spacing.md} ${theme.spacing.sm} ${theme.spacing.xs} ${theme.spacing.sm};

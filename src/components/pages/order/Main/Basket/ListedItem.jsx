@@ -2,6 +2,7 @@ import React from 'react'
 import { BsCartDashFill, BsCartXFill } from 'react-icons/bs'
 import { styled } from 'styled-components'
 import { theme } from '../../../../../theme'
+import CasinoEffect from '../../../../reusable-ui/CasinoEffect'
 
 function ListedItem({title, imageSource, bottomDescription, quantity, className, isClickable, onClick, onDelete, onSuppressOneElement, isSelected}) {
   return (
@@ -28,7 +29,7 @@ function ListedItem({title, imageSource, bottomDescription, quantity, className,
             </div>
             
             <div className="quantity">
-                x {quantity}
+                <CasinoEffect count={'x ' + quantity} />
             </div>
         </div>
     </ListedItemStyled>
