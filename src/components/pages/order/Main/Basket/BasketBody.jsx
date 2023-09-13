@@ -8,6 +8,7 @@ import { IMG_BY_DEFAULT, product_not_available } from '../../../../../enums/prod
 import AuthContext from '../../../../../context/AuthContext';
 import { AnimatePresence, motion } from 'framer-motion';
 import { convertStringToBoolean } from '../../../../../utils/string';
+import Sticker from '../../../../reusable-ui/Sticker';
 
 function BasketBody({basketDetails}) {
 
@@ -27,7 +28,7 @@ function BasketBody({basketDetails}) {
     return (
         <BasketBodyStyled>
             <AnimatePresence>
-                {basketDetails.map(({ id, quantity, title, imageSource, price, isAvailable }) => {
+                {basketDetails.map(({ id, quantity, title, imageSource, price, isAvailable, isAdvertised }) => {
                     const finalImageSource = imageSource && imageSource !== "" ? imageSource : IMG_BY_DEFAULT;
                     const bottomDescription = convertStringToBoolean(isAvailable) ? formatPrice(price) : product_not_available
                     const isSelected = productSelected.id == id
@@ -39,6 +40,7 @@ function BasketBody({basketDetails}) {
                             exit={{ x: '-100%' }}
                             transition={{ duration: 0.3 }}
                         >
+                            {convertStringToBoolean(isAdvertised) && <Sticker className='sticker'/>}
                             <ListedItem 
                                 key={id} 
                                 title={title} 
@@ -66,6 +68,14 @@ const BasketBodyStyled = styled.div`
     flex-direction: column;
     overflow-y: auto;
     overflow-x: hidden;
+
+    .sticker {
+        position: absolute;
+        z-index: 3;
+        bottom: 10%;
+        left: 21%;
+        transform: translate(-5%, -21%);
+    }
 
     > :first-child {
         margin: ${theme.spacing.md} ${theme.spacing.sm} ${theme.spacing.xs} ${theme.spacing.sm};
