@@ -90,9 +90,12 @@ const ListedItemStyled = styled.div`
                 }
             }
 
-            .price {
+            .bottom-description {
                 font-size: ${theme.fonts.size.SM};
                 font-weight: ${theme.fonts.weights.medium};
+                text-overflow: ellipsis;
+                overflow: hidden;
+                white-space: nowrap;
             }
         }
     }

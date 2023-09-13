@@ -31,13 +31,14 @@ function Basket() {
   
   const getBasketItemsWithDetails = (basket, menu) => {
     return basket?.map(item => {
-        const { title, imageSource, price } = findById(item.id, menu);
+        const { title, imageSource, price, isAvailable } = findById(item.id, menu);
         
         return {
             ...item,
             title,
             price,
-            imageSource
+            imageSource,
+            isAvailable
         };
     });
   }

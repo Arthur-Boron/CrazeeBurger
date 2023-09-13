@@ -7,6 +7,7 @@ import { useContext } from 'react';
 import { IMG_BY_DEFAULT } from '../../../../../enums/product';
 import AuthContext from '../../../../../context/AuthContext';
 import { AnimatePresence, motion } from 'framer-motion';
+import { convertStringToBoolean } from '../../../../../utils/string';
 
 function BasketBody({basketDetails}) {
 
@@ -26,8 +27,9 @@ function BasketBody({basketDetails}) {
     return (
         <BasketBodyStyled>
             <AnimatePresence>
-                {basketDetails.map(({ id, quantity, title, imageSource, price }) => {
+                {basketDetails.map(({ id, quantity, title, imageSource, price, isAvailable }) => {
                     const finalImageSource = imageSource && imageSource !== "" ? imageSource : IMG_BY_DEFAULT;
+                    const bottomDescription = convertStringToBoolean(isAvailable) ? formatPrice(price) : 'Non disponible'
                     const isSelected = productSelected.id == id
                     return (
                         <motion.div 
@@ -41,7 +43,7 @@ function BasketBody({basketDetails}) {
                                 key={id} 
                                 title={title} 
                                 imageSource={finalImageSource} 
-                                bottomDescription={formatPrice(price)}
+                                bottomDescription={bottomDescription}
                                 quantity={quantity}
                                 onDelete={(event) => handleDeleteAllQuantityFromCart(event, {id})}
                                 onSuppressOneElement={(event) =>handleDeleteOneQuantityFromCart(event, {id, quantity})}
