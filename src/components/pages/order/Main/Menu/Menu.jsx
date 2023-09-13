@@ -14,6 +14,7 @@ import AuthContext from '../../../../../context/AuthContext'
 import LoadingMenu from './LoadingMenu'
 import {AnimatePresence, motion} from 'framer-motion'
 import { convertStringToBoolean } from '../../../../../utils/string'
+import Ribbon from '../../../../reusable-ui/Ribbon'
 
 function Menu() {
 
@@ -73,7 +74,7 @@ function Menu() {
   return (
     <MenuStyled>
       <AnimatePresence>
-      {menu.map(({ id, title, imageSource, price, isAvailable }) => {
+      {menu.map(({ id, title, imageSource, price, isAvailable, isAdvertised }) => {
         const finalImageSource = imageSource && imageSource !== "" ? imageSource : IMG_BY_DEFAULT;
 
         return (
@@ -84,6 +85,7 @@ function Menu() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
             >
+              {isAdvertised && <Ribbon />}
               <Card 
                 key={id} 
                 title={title} 
