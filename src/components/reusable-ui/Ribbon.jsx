@@ -1,9 +1,15 @@
 import styled from "styled-components"
 import { theme } from "../../theme"
+import { motion } from "framer-motion"
 
 export default function Ribbon({ label = "nouveau", className }) {
   return (
-    <RibbonStyled className={className}>
+    <RibbonStyled className={className}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+    >
       <div className="ribbon ribbon-top-left">
         <span>{label}</span>
       </div>
@@ -11,7 +17,7 @@ export default function Ribbon({ label = "nouveau", className }) {
   )
 }
 
-const RibbonStyled = styled.div`
+const RibbonStyled = styled(motion.div)`
   z-index: 2;
   position: relative;
 
