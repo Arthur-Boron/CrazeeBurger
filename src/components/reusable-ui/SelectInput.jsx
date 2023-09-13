@@ -28,7 +28,7 @@ const SelectInputStyled = styled.div`
 
     select {
         width: 100%;
-        height: ${theme.gridUnit * 5}px;
+        height: 46px;
         line-height: 28px;
         padding: 0 1rem;
         padding-left: 2.5rem;
@@ -37,14 +37,10 @@ const SelectInputStyled = styled.div`
         color: ${theme.colors.dark};
         transition: .3s ease;
         font-family: 'Open Sans', sans-serif;
-        
-
-        &::placeholder {
-            color: ${theme.colors.greyMedium};
-        }
 
         &:focus, &:hover {
             outline: none;
+            cursor: pointer;
             border-color: ${theme.colors.primary};
         }
     }
@@ -69,45 +65,11 @@ const extraLightStyle = css`
     select {
         background: ${theme.colors.white}
     }
-
-    select:-webkit-autofill,
-    select:-internal-autofill-selected {
-        background-color: ${theme.colors.white} !important;
-        color: black !important;
-        -webkit-box-shadow: 0 0 0px 1000px ${theme.colors.white} inset !important;
-        border: 3px solid ${theme.colors.white} !important;
-    }
-
-    select:-webkit-autofill:hover,
-    select:-webkit-autofill:focus,
-    select:-webkit-autofill:active {
-        background-color: ${theme.colors.white} !important;
-        color: black !important;
-        -webkit-box-shadow: 0 0 0px 1000px ${theme.colors.white} inset !important;
-        border: 3px solid ${theme.colors.primary} !important;
-    }
 `
 
 const extraDarkStyle = css`
     select {
         background: ${theme.colors.greyLight}
-    }
-
-    select:-webkit-autofill,
-    select:-internal-autofill-selected {
-        background-color: ${theme.colors.greyLight} !important;
-        color: black !important;
-        -webkit-box-shadow: 0 0 0px 1000px ${theme.colors.greyLight} inset !important;
-        border: 3px solid ${theme.colors.greyLight} !important;
-    }
-
-    select:-webkit-autofill:hover,
-    select:-webkit-autofill:focus,
-    select:-webkit-autofill:active {
-        background-color: ${theme.colors.greyLight} !important;
-        color: black !important;
-        -webkit-box-shadow: 0 0 0px 1000px ${theme.colors.greyLight} inset !important;
-        border: 3px solid ${theme.colors.primary} !important;
     }
 `
 
