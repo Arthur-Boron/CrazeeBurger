@@ -47,9 +47,7 @@ const getInputConfig = (newProduct) =>
                 { value: false, label: 'En rupture' },
               ],
             Icon:<BiPackage />,
-            placeholder:"Disponibilité",
-            type:"select",
-            required:true
+            type:"select"
         },
         {
             id: 'advertised',
@@ -61,9 +59,7 @@ const getInputConfig = (newProduct) =>
                 { value: false, label: 'Sans pub' },
               ],
             Icon:<GoMegaphone />,
-            placeholder:"Annoncé",
             type:"select",
-            required:true
         }
     ]
  

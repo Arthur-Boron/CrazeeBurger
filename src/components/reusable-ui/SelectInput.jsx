@@ -2,11 +2,11 @@ import React from 'react'
 import { css, styled } from 'styled-components'
 import { theme } from '../../theme'
 
-const SelectInput = React.forwardRef(({id, value, options, onChange, Icon, className, version=light, ...extraProps}, ref) => {
+function SelectInput({id, value, options, onChange, Icon, className, version=light, ...extraProps}) {
   return (
     <SelectInputStyled className={className} version={version}>
         <div className='inputIcon'>{Icon && Icon}</div>
-        <select id={id} ref={ref} name={value} value={value} onChange={onChange} {...extraProps}>
+        <select id={id} name={value} value={value} onChange={onChange} {...extraProps}>
             {options.map((option, index) => (
                 <option key={index} value={option.value}>
                     {option.label}
@@ -15,7 +15,7 @@ const SelectInput = React.forwardRef(({id, value, options, onChange, Icon, class
         </select>
     </SelectInputStyled>
   )
-})
+}
 
 const SelectInputStyled = styled.div`
     display: flex;
