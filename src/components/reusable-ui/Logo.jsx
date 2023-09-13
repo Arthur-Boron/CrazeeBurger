@@ -8,7 +8,7 @@ function Logo({className, onClick}) {
       <h1>
         Crazee
       </h1>
-      <img src='/images/logo-burger.png' alt='logo-crazee-burger'/>
+      <img src='/images/logo-burger.webp' alt='logo-crazee-burger'/>
       <h1>
         Burger
       </h1>

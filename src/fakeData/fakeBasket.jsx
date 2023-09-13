@@ -4,7 +4,7 @@ export const SMALL = [
   {
     id: "1",
     title: "Burger Meal",
-    imageSource: "/images/burger1.png",
+    imageSource: "/images/burger1.webp",
     quantity: 1,
   },
 ]
@@ -12,28 +12,28 @@ export const SMALL = [
 export const MEDIUM = [
   {
     id: "1",
-    imageSource: "/images/burger-bacon-egg.png",
+    imageSource: "/images/burger-bacon-egg.webp",
     title: "Burger Smoke BBQ",
     price: 5,
     quantity: 2,
   },
   {
     id: "2",
-    imageSource: "/images/burger-vegan.png",
+    imageSource: "/images/burger-vegan.webp",
     title: "Vegan Burger",
     price: 5,
     quantity: 1,
   },
   {
     id: "3",
-    imageSource: "/images/burger1.png",
+    imageSource: "/images/burger1.webp",
     title: "Burger House",
     price: 5,
     quantity: 4,
   },
   {
     id: "4",
-    imageSource: "/images/burger2.png",
+    imageSource: "/images/burger2.webp",
     title: "Cheese Burger",
     price: 5,
     quantity: 4,
@@ -52,7 +52,7 @@ export const LARGE = [
   },
   {
     id: "2",
-    imageSource: "/images/drink1.png",
+    imageSource: "/images/drink1.webp",
     title: "Coke 25cl",
     price: 3.568,
     quantity: 1,
@@ -61,7 +61,7 @@ export const LARGE = [
   },
   {
     id: "3",
-    imageSource: "/images/burger3.png",
+    imageSource: "/images/burger3.webp",
     title: "Burger poulet",
     price: 5.367,
     quantity: 5,
@@ -70,7 +70,7 @@ export const LARGE = [
   },
   {
     id: "4",
-    imageSource: "/images/burger-vegan.png",
+    imageSource: "/images/burger-vegan.webp",
     title: "Vegan Burger",
     price: 5.4985,
     quantity: 1,
@@ -79,7 +79,7 @@ export const LARGE = [
   },
   {
     id: "5",
-    imageSource: "/images/drink2.png",
+    imageSource: "/images/drink2.webp",
     title: "Pepsi 25cl",
     price: 3.487,
     quantity: 1,
@@ -88,7 +88,7 @@ export const LARGE = [
   },
   {
     id: "6",
-    imageSource: "/images/drink3.png",
+    imageSource: "/images/drink3.webp",
     title: "Iced Tea 25cl",
     price: 3.356,
     quantity: 1,
@@ -97,7 +97,7 @@ export const LARGE = [
   },
   {
     id: "7",
-    imageSource: "/images/burger-bacon-egg.png",
+    imageSource: "/images/burger-bacon-egg.webp",
     title: "Burger Smoke Bdhbedhbeheb",
     price: 5.598,
     quantity: 1,
@@ -106,7 +106,7 @@ export const LARGE = [
   },
   {
     id: "8",
-    imageSource: "/images/frites1.png",
+    imageSource: "/images/frites1.webp",
     title: "Frites Paprika",
     price: 2.567,
     quantity: 1,
@@ -115,7 +115,7 @@ export const LARGE = [
   },
   {
     id: "9",
-    imageSource: "/images/wedges1.png",
+    imageSource: "/images/wedges1.webp",
     title: "Crispy Potatoes",
     price: 3.7,
     quantity: 1,
@@ -124,7 +124,7 @@ export const LARGE = [
   },
   {
     id: "10",
-    imageSource: "/images/ice-cream.png",
+    imageSource: "/images/ice-cream.webp",
     title: "Glaces artisanales",
     price: 4.678,
     quantity: 1,
@@ -136,7 +136,7 @@ export const LARGE = [
 export const LARGE_WEIRD = [
   {
     id: "1",
-    imageSource: "/images/fries3.png",
+    imageSource: "/images/fries3.webp",
     title: "New York Fries",
     price: 3.1678,
     quantity: 13,
@@ -145,7 +145,7 @@ export const LARGE_WEIRD = [
   },
   {
     id: "2",
-    imageSource: "/images/drink1.png",
+    imageSource: "/images/drink1.webp",
     title: "Coke 25cl",
     price: 3.568,
     quantity: 1,
@@ -154,7 +154,7 @@ export const LARGE_WEIRD = [
   },
   {
     id: "3",
-    imageSource: "/images/burger3.png",
+    imageSource: "/images/burger3.webp",
     title: "Burger poulet chanmé",
     price: 0.0,
     quantity: 5,
@@ -163,7 +163,7 @@ export const LARGE_WEIRD = [
   },
   {
     id: "4",
-    imageSource: "/images/burger-vegan.png",
+    imageSource: "/images/burger-vegan.webp",
     title: "Vegan Burger",
     price: 5.4985,
     quantity: 1,
@@ -172,7 +172,7 @@ export const LARGE_WEIRD = [
   },
   {
     id: "5",
-    imageSource: "/images/drink2.png",
+    imageSource: "/images/drink2.webp",
     title: "Pepsi 25cl MEGA OUF XXXL",
     price: 3.487,
     quantity: 1,
@@ -181,7 +181,7 @@ export const LARGE_WEIRD = [
   },
   {
     id: "6",
-    imageSource: "/images/drink3.png",
+    imageSource: "/images/drink3.webp",
     title: "",
     price: 3.356,
     quantity: 1,
@@ -190,7 +190,7 @@ export const LARGE_WEIRD = [
   },
   {
     id: "7",
-    imageSource: "/images/burger-bacon-egg.png",
+    imageSource: "/images/burger-bacon-egg.webp",
     title: "Burger Smoke Bdhbedhbeheb",
     price: 5.598,
     quantity: 1,
@@ -199,7 +199,7 @@ export const LARGE_WEIRD = [
   },
   {
     id: "8",
-    imageSource: "/images/frites1.png",
+    imageSource: "/images/frites1.webp",
     title: "Frites Paprika",
     price: 2.567,
     quantity: 1,
@@ -208,7 +208,7 @@ export const LARGE_WEIRD = [
   },
   {
     id: "9",
-    imageSource: "/images/wedges1.png",
+    imageSource: "/images/wedges1.webp",
     title: "Crispy Potatoes",
     price: 3.7,
     quantity: 1,
@@ -217,7 +217,7 @@ export const LARGE_WEIRD = [
   },
   {
     id: "10",
-    imageSource: "/images/ice-cream.png",
+    imageSource: "/images/ice-cream.webp",
     title: "Glaces artisanales",
     price: 4.678,
     quantity: 1,
