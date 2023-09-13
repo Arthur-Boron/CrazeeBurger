@@ -95,7 +95,7 @@ function Menu() {
                 onClick={() => handleProductSelected(id)}
                 isHoverable={isModeAdmin}
                 isSelected={checkIfProductIsSelected(id, productSelected.id)}
-                isOverlapImage={convertStringToBoolean(isAvailable)} 
+                isOverlapImage={!convertStringToBoolean(isAvailable)} 
                 overlapImageSource={IMG_PRODUCT_NOT_AVAILABLE} 
               />
             </motion.div>
