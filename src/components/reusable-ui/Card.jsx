@@ -170,7 +170,15 @@ const CardStyled = styled.div`
         }
     }
 
+    ${({$isHoverable}) => $isHoverable && hoverableStyle }
     ${({$isHoverable, $isSelected}) => $isSelected && $isHoverable && selectedStyle }
+`
+
+const hoverableStyle = css`
+  &:hover {
+    box-shadow: ${theme.shadows.orangeHighlight};
+  }
+
 `
 
 const selectedStyle = css`
