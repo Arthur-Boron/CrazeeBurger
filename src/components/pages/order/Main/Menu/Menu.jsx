@@ -9,10 +9,11 @@ import { MdRemoveShoppingCart } from "react-icons/md"
 import EmptyMenuAdmin from './EmptyMenuAdmin'
 import EmptyMenuClient from './EmptyMenuClient'
 import { theme } from '../../../../../theme'
-import { EMPTY_PRODUCT, IMG_BY_DEFAULT } from '../../../../../enums/product'
+import { EMPTY_PRODUCT, IMG_BY_DEFAULT, IMG_PRODUCT_NOT_AVAILABLE } from '../../../../../enums/product'
 import AuthContext from '../../../../../context/AuthContext'
 import LoadingMenu from './LoadingMenu'
 import {AnimatePresence, motion} from 'framer-motion'
+import { convertStringToBoolean } from '../../../../../utils/string'
 
 function Menu() {
 
@@ -72,7 +73,7 @@ function Menu() {
   return (
     <MenuStyled>
       <AnimatePresence>
-      {menu.map(({ id, title, imageSource, price }) => {
+      {menu.map(({ id, title, imageSource, price, isAvailable }) => {
         const finalImageSource = imageSource && imageSource !== "" ? imageSource : IMG_BY_DEFAULT;
 
         return (
@@ -94,6 +95,8 @@ function Menu() {
                 onClick={() => handleProductSelected(id)}
                 isHoverable={isModeAdmin}
                 isSelected={checkIfProductIsSelected(id, productSelected.id)}
+                isOverlapImage={convertStringToBoolean(isAvailable)} 
+                overlapImageSource={IMG_PRODUCT_NOT_AVAILABLE} 
               />
             </motion.div>
         );

@@ -4,10 +4,16 @@ import Button from './Button'
 import {TiDelete} from 'react-icons/ti'
 import {motion} from 'framer-motion'
 
-function Card({title, imageSource, leftDescription, hasDeleteButton, onAddProductInBasket, onDelete, onClick, isHoverable, isSelected}) {
+function Card({title, imageSource, leftDescription, hasDeleteButton, onAddProductInBasket, onDelete, onClick, isHoverable, isSelected, isOverlapImage, overlapImageSource}) {
 
   return (
     <CardStyled className="product" onClick={onClick} $isHoverable={isHoverable} $isSelected={isSelected}>
+      {isOverlapImage && (
+        <div className='overlap'>
+          <div className='transparent-layer'></div>
+          <img className='overlap-image' src={overlapImageSource} />
+        </div>
+      )}
       {hasDeleteButton && (
         <motion.button className='delete-button' aria-label='delete-button' onClick={onDelete}
           initial={{ opacity: 0, x: '80%' }}
@@ -73,6 +79,31 @@ const CardStyled = styled.div`
         height: 100%;
       }
 
+    }
+
+    .overlap {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .transparent-layer {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 70%;
+        background: snow;
+        border-radius: ${theme.borderRadius.extraRound};
+      }
+
+      .overlap-image {
+        width: 200px;
+        height: 160px;
+        object-fit: contain;
+        z-index: 1;
+      }
     }
 
     .image-container {
