@@ -39,7 +39,7 @@ function Card({title, imageSource, leftDescription, hasDeleteButton, onAddProduc
         <div className="description">
           <div className="left-description">{leftDescription}</div>
           <div className="right-description">
-            <Button className="primary-button" Label={"Ajouter"} version={isSelected && isHoverable ? 'secondary' : 'primary'} onClick={onAddProductInBasket} />
+            <Button className="primary-button" Label={"Ajouter"} version={isSelected && isHoverable ? 'secondary' : 'primary'} disabled={isOverlapImage} onClick={onAddProductInBasket} />
           </div>
         </div>
       </div>

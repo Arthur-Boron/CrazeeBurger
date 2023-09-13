@@ -2,10 +2,10 @@ import React, { useState } from 'react'
 import { css, styled } from 'styled-components'
 import { theme } from '../../theme'
 
-function Button({Label, Icon, version='primary', className, onClick}) {
+function Button({Label, Icon, version='primary', className, onClick, disabled}) {
 
   return (
-    <ButtonStyled type='submit' className={className} version={version} onClick={onClick}>
+    <ButtonStyled type='submit' className={className} version={version} onClick={onClick} disabled={disabled}>
         <span>{Label && Label}</span>
         {Icon && Icon}
     </ButtonStyled>
@@ -28,6 +28,11 @@ const ButtonStyled = styled.button`
 
   &:active {
     color: ${theme.colors.white};
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 70%;
   }
 
   ${({version}) => extraStyle[version]};
