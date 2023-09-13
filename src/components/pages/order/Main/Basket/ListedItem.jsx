@@ -38,7 +38,7 @@ function ListedItem({title, imageSource, bottomDescription, quantity, className,
 
 const ListedItemStyled = styled.div`
     cursor: ${({$isClickable}) => $isClickable ? "pointer" : "default"};
-    background: ${({$isSelected}) => $isSelected && theme.colors.primary};
+    background: ${({$isSelected, $isClickable}) => $isSelected && $isClickable && theme.colors.primary};
     box-sizing: border-box;
     user-select: none;
     height: 90px;
@@ -66,7 +66,7 @@ const ListedItemStyled = styled.div`
         display: grid;
         grid-template-columns: 75% 1fr;
         font-size: ${theme.fonts.size.P0};
-        color: ${({$isSelected}) => $isSelected ? theme.colors.white : theme.colors.primary};
+        color: ${({$isSelected, $isClickable}) => $isSelected && $isClickable ? theme.colors.white : theme.colors.primary};
 
         .description {
             display: grid;

@@ -8,6 +8,7 @@ import BasketBody from './BasketBody'
 import EmptyBasket from './EmptyBasket'
 import { findById } from '../../../../../utils/array'
 import LoadingBasket from './LoadingBasket'
+import { convertStringToBoolean } from '../../../../../utils/string'
 
 function Basket() {
 
@@ -46,6 +47,7 @@ function Basket() {
   const basketDetails = getBasketItemsWithDetails(basket, menu);
 
   const amountToPay = basketDetails?.reduce((acc, curr) => {
+    if (!convertStringToBoolean(curr.isAvailable)) return acc
     return acc + (replaceFrenchCommaWithDot(curr.price).toFixed(2) * curr.quantity);
   }, 0);
 
