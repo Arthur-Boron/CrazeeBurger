@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { styled } from 'styled-components'
+import { css, styled } from 'styled-components'
 import Card from '../../../../reusable-ui/Card'
 import {formatPrice} from '../../../../../utils/maths'
 import OrderContext from '../../../../../context/OrderContext'
@@ -84,8 +84,10 @@ function Menu() {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
+              whileHover={isModeAdmin && { scale: 1.05, cursor: 'pointer' }}
+              isHoverable={true}
             >
-              {isAdvertised && <Ribbon />}
+              {convertStringToBoolean(isAdvertised) && <Ribbon />}
               <Card 
                 key={id} 
                 title={title} 

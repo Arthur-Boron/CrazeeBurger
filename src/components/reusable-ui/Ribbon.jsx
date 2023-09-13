@@ -14,22 +14,6 @@ export default function Ribbon({ label = "nouveau", className }) {
 const RibbonStyled = styled.div`
   z-index: 2;
   position: relative;
-  
-  body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: #f0f0f0;
-  }
-  .box {
-    position: relative;
-    max-width: 600px;
-    width: 90%;
-    height: 400px;
-    background: #fff;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  }
 
   /* common */
   .ribbon {
