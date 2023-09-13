@@ -10,3 +10,4 @@ export const EMPTY_PRODUCT = Object.freeze({
 
 export const IMG_BY_DEFAULT = '/images/coming-soon.png'
 export const IMG_PRODUCT_NOT_AVAILABLE = '/images/stock-epuise.png'
+export const product_not_available = 'Non disponible'

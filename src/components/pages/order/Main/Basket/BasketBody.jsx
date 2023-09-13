@@ -4,7 +4,7 @@ import ListedItem from './ListedItem';
 import { formatPrice } from '../../../../../utils/maths';
 import OrderContext from '../../../../../context/OrderContext';
 import { useContext } from 'react';
-import { IMG_BY_DEFAULT } from '../../../../../enums/product';
+import { IMG_BY_DEFAULT, product_not_available } from '../../../../../enums/product';
 import AuthContext from '../../../../../context/AuthContext';
 import { AnimatePresence, motion } from 'framer-motion';
 import { convertStringToBoolean } from '../../../../../utils/string';
@@ -29,7 +29,7 @@ function BasketBody({basketDetails}) {
             <AnimatePresence>
                 {basketDetails.map(({ id, quantity, title, imageSource, price, isAvailable }) => {
                     const finalImageSource = imageSource && imageSource !== "" ? imageSource : IMG_BY_DEFAULT;
-                    const bottomDescription = convertStringToBoolean(isAvailable) ? formatPrice(price) : 'Non disponible'
+                    const bottomDescription = convertStringToBoolean(isAvailable) ? formatPrice(price) : product_not_available
                     const isSelected = productSelected.id == id
                     return (
                         <motion.div 
