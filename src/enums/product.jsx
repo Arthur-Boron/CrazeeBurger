@@ -8,6 +8,6 @@ export const EMPTY_PRODUCT = Object.freeze({
     isAdvertised: false,
 })
 
-export const IMG_BY_DEFAULT = '/images/coming-soon.png'
-export const IMG_PRODUCT_NOT_AVAILABLE = '/images/stock-epuise.png'
+export const IMG_BY_DEFAULT = '/images/coming-soon.webp'
+export const IMG_PRODUCT_NOT_AVAILABLE = '/images/stock-epuise.webp'
 export const product_not_available = 'Non disponible'
