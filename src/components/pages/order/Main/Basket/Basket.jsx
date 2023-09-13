@@ -8,6 +8,7 @@ import BasketBody from './BasketBody'
 import EmptyBasket from './EmptyBasket'
 import { findById } from '../../../../../utils/array'
 import LoadingBasket from './LoadingBasket'
+import { convertStringToBoolean } from '../../../../../utils/string'
 
 function Basket() {
 
@@ -31,13 +32,15 @@ function Basket() {
   
   const getBasketItemsWithDetails = (basket, menu) => {
     return basket?.map(item => {
-        const { title, imageSource, price } = findById(item.id, menu);
+        const { title, imageSource, price, isAvailable, isAdvertised } = findById(item.id, menu);
         
         return {
             ...item,
             title,
             price,
-            imageSource
+            imageSource,
+            isAvailable,
+            isAdvertised
         };
     });
   }
@@ -45,6 +48,7 @@ function Basket() {
   const basketDetails = getBasketItemsWithDetails(basket, menu);
 
   const amountToPay = basketDetails?.reduce((acc, curr) => {
+    if (!convertStringToBoolean(curr.isAvailable)) return acc
     return acc + (replaceFrenchCommaWithDot(curr.price).toFixed(2) * curr.quantity);
   }, 0);
 

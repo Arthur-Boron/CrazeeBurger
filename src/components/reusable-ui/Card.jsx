@@ -4,10 +4,19 @@ import Button from './Button'
 import {TiDelete} from 'react-icons/ti'
 import {motion} from 'framer-motion'
 
-function Card({title, imageSource, leftDescription, hasDeleteButton, onAddProductInBasket, onDelete, onClick, isHoverable, isSelected}) {
+function Card({title, imageSource, leftDescription, hasDeleteButton, onAddProductInBasket, onDelete, onClick, isHoverable, isSelected, isOverlapImage, overlapImageSource}) {
 
   return (
     <CardStyled className="product" onClick={onClick} $isHoverable={isHoverable} $isSelected={isSelected}>
+      {isOverlapImage && (
+        <div className='overlap'>
+          <div className='transparent-layer'></div>
+          <motion.img initial={{ opacity: 0, y: '-80%' }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
+          className='overlap-image' src={overlapImageSource} />
+        </div>
+      )}
       {hasDeleteButton && (
         <motion.button className='delete-button' aria-label='delete-button' onClick={onDelete}
           initial={{ opacity: 0, x: '80%' }}
@@ -30,7 +39,7 @@ function Card({title, imageSource, leftDescription, hasDeleteButton, onAddProduc
         <div className="description">
           <div className="left-description">{leftDescription}</div>
           <div className="right-description">
-            <Button className="primary-button" Label={"Ajouter"} version={isSelected && isHoverable ? 'secondary' : 'primary'} onClick={onAddProductInBasket} />
+            <Button className="primary-button" Label={"Ajouter"} version={isSelected && isHoverable ? 'secondary' : 'primary'} disabled={isOverlapImage} onClick={onAddProductInBasket} />
           </div>
         </div>
       </div>
@@ -73,6 +82,31 @@ const CardStyled = styled.div`
         height: 100%;
       }
 
+    }
+
+    .overlap {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .transparent-layer {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 70%;
+        background: snow;
+        border-radius: ${theme.borderRadius.extraRound};
+      }
+
+      .overlap-image {
+        width: 200px;
+        height: 160px;
+        object-fit: contain;
+        z-index: 1;
+      }
     }
 
     .image-container {
@@ -142,10 +176,7 @@ const CardStyled = styled.div`
 
 const hoverableStyle = css`
   &:hover {
-    transform :scale(1.05);
-    transition: ease-out 0.4s;
     box-shadow: ${theme.shadows.orangeHighlight};
-    cursor: pointer;
   }
 
 `
